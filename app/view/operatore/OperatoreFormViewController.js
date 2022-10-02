@@ -22,9 +22,7 @@ Ext.define('AritmiaRef.view.operatore.OperatoreFormViewController', {
         const form=combo.up('form');
         const viewModel= form.getViewModel();
         const selectedRecord=viewModel.get('recordOperatore');
-        selectedRecord.set('code',record.get('code'));
-        selectedRecord.set('description',record.get('description'));
-        selectedRecord.set('roleFk',record.get('id'));
+        selectedRecord.set('roleDescription',record.get('code'));
     },
 
     onOperatoreComboboxSelect: function(combo, record, eOpts) {
@@ -33,6 +31,7 @@ Ext.define('AritmiaRef.view.operatore.OperatoreFormViewController', {
         const viewModel= form.getViewModel();
         const selectedRecord=viewModel.get('recordOperatore');
         selectedRecord.set('firstName',record.get('firstName'));
+        selectedRecord.set('lastName',record.get('lastName'));
         selectedRecord.set('email',record.get('email'));
         selectedRecord.set('phone',record.get('phone'));
         selectedRecord.set('idNumber',record.get('idNumber'));

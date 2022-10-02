@@ -56,6 +56,10 @@ Ext.define('AritmiaRef.model.OperatoreJoined', {
             name: 'roleFk'
         },
         {
+            type: 'int',
+            name: 'operatoreFk'
+        },
+        {
             type: 'string',
             name: 'roleDescription'
         },

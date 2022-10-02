@@ -62,7 +62,7 @@ Ext.define('AritmiaRef.view.operatore.OperatoreForm', {
         {
             xtype: 'combobox',
             fieldLabel: 'Cognome:',
-            name: 'lastName',
+            name: 'operatoreFk',
             allowBlank: false,
             autoLoadOnValue: true,
             displayField: 'lastName',
@@ -70,9 +70,9 @@ Ext.define('AritmiaRef.view.operatore.OperatoreForm', {
             queryMode: 'local',
             store: 'Operatori',
             typeAhead: true,
-            valueField: 'lastName',
+            valueField: 'id',
             bind: {
-                value: '{recordOperatore.lastName}'
+                value: '{recordOperatore.operatoreFk}'
             },
             listConfig: {
                 xtype: 'boundlist',

@@ -7,17 +7,20 @@
     "codeClass": null,
     "userConfig": {
         "designer|userClassName": "PrestazioneJoined",
-        "identifier": "sequential"
+        "requires": [
+            "Ext.data.identifier.Uuid"
+        ]
     },
     "configAlternates": {
         "designer|userClassName": "string",
-        "identifier": "string"
+        "identifier": "string",
+        "requires": "typedarray"
     },
     "name": "MyModel",
     "designerId": "7cea5ed7-91b8-4f9e-96ce-f2a42bbde620",
     "cn": [
         {
-            "type": "Ext.data.field.Integer",
+            "type": "Ext.data.field.String",
             "reference": {
                 "name": "fields",
                 "type": "array"
@@ -29,8 +32,8 @@
             "configAlternates": {
                 "name": "string"
             },
-            "name": "MyInteger6",
-            "designerId": "89e105fe-a455-4e10-9232-f13fb3fa8062"
+            "name": "MyString9",
+            "designerId": "f099aa30-9dbd-4884-a50c-3ab5ecd46998"
         },
         {
             "type": "Ext.data.field.String",
@@ -165,6 +168,16 @@
                     "designerId": "3d284adf-95a2-4738-934e-96484240cb95"
                 }
             ]
+        },
+        {
+            "type": "Ext.data.identifier.Uuid",
+            "reference": {
+                "name": "identifier",
+                "type": "object"
+            },
+            "codeClass": null,
+            "name": "MyUuid",
+            "designerId": "05283fd0-fc49-42f8-b216-a9e943153280"
         }
     ]
 }

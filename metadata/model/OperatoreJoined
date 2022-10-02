@@ -129,6 +129,22 @@
             "designerId": "b49f2792-f29c-45ee-83bb-ac8b755859b1"
         },
         {
+            "type": "Ext.data.field.Integer",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "operatoreFk"
+            },
+            "configAlternates": {
+                "name": "string"
+            },
+            "name": "MyInteger6",
+            "designerId": "3045baec-56b8-4b82-a105-8afd6b6c0b13"
+        },
+        {
             "type": "Ext.data.field.String",
             "reference": {
                 "name": "fields",

@@ -45,7 +45,7 @@
                 "store": "Prestazioni",
                 "typeAhead": true,
                 "value": [
-                    "{recordPrestazione.id}"
+                    "{recordPrestazione.prestazioneFk}"
                 ],
                 "valueField": "id"
             },

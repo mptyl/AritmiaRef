@@ -17,18 +17,17 @@ Ext.define('AritmiaRef.model.PrestazioneJoined', {
     extend: 'Ext.data.Model',
 
     requires: [
-        'Ext.data.field.Integer',
         'Ext.data.field.String',
+        'Ext.data.field.Integer',
         'Ext.data.proxy.Rest',
         'Ext.data.reader.Json',
-        'Ext.data.writer.Json'
+        'Ext.data.writer.Json',
+        'Ext.data.identifier.Uuid'
     ],
-
-    identifier: 'sequential',
 
     fields: [
         {
-            type: 'int',
+            type: 'string',
             name: 'id'
         },
         {
@@ -63,5 +62,9 @@ Ext.define('AritmiaRef.model.PrestazioneJoined', {
             type: 'json',
             writeAllFields: true
         }
+    },
+
+    identifier: {
+        type: 'uuid'
     }
 });

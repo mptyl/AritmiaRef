@@ -32,9 +32,15 @@ Ext.define('AritmiaRef.view.visita.VisitaViewController', {
         const me=this;
         const grid=me.lookupReference('operatoriGrid');
         const store=grid.getStore();
-        store.remove(grid.getSelection());
-        store.sync();
-        store.reload();
+        const selectedRows=grid.getSelectionModel().getSelection();
+        if(selectedRows.length){
+            store.remove(selectedRows);
+        }
+        store.sync({
+            callback: function(){
+                store.reload();
+            }
+        });
 
 
     },
@@ -53,9 +59,16 @@ Ext.define('AritmiaRef.view.visita.VisitaViewController', {
         const me=this;
         const grid=me.lookupReference('prestazioniGrid');
         const store=grid.getStore();
-        store.remove(grid.getSelection());
-        store.sync();
-        store.reload()
+        const selectedRows=grid.getSelectionModel().getSelection();
+        if(selectedRows.length){
+            store.remove(selectedRows);
+        }
+        store.sync({
+            callback: function(){
+                store.reload();
+            }
+        });
+
     }
 
 });

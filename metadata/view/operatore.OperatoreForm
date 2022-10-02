@@ -78,9 +78,7 @@
                             "        const form=combo.up('form');",
                             "        const viewModel= form.getViewModel();",
                             "        const selectedRecord=viewModel.get('recordOperatore');",
-                            "        selectedRecord.set('code',record.get('code'));",
-                            "        selectedRecord.set('description',record.get('description'));",
-                            "        selectedRecord.set('roleFk',record.get('id'));"
+                            "        selectedRecord.set('roleDescription',record.get('code'));"
                         ],
                         "name": "select",
                         "scope": "me"
@@ -110,14 +108,14 @@
                 "displayField": "lastName",
                 "fieldLabel": "Cognome:",
                 "forceSelection": true,
-                "name": "lastName",
+                "name": "operatoreFk",
                 "queryMode": "local",
                 "store": "Operatori",
                 "typeAhead": true,
                 "value": [
-                    "{recordOperatore.lastName}"
+                    "{recordOperatore.operatoreFk}"
                 ],
-                "valueField": "lastName"
+                "valueField": "id"
             },
             "configAlternates": {
                 "allowBlank": "boolean",
@@ -192,6 +190,7 @@
                             "        const viewModel= form.getViewModel();",
                             "        const selectedRecord=viewModel.get('recordOperatore');",
                             "        selectedRecord.set('firstName',record.get('firstName'));",
+                            "        selectedRecord.set('lastName',record.get('lastName'));",
                             "        selectedRecord.set('email',record.get('email'));",
                             "        selectedRecord.set('phone',record.get('phone'));",
                             "        selectedRecord.set('idNumber',record.get('idNumber'));"

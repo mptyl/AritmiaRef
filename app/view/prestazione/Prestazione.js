@@ -54,7 +54,7 @@ Ext.define('AritmiaRef.view.prestazione.Prestazione', {
             typeAhead: true,
             valueField: 'id',
             bind: {
-                value: '{recordPrestazione.id}'
+                value: '{recordPrestazione.prestazioneFk}'
             },
             listeners: {
                 select: 'onPrestazioneComboboxSelect'
