@@ -14,7 +14,7 @@
                 "width": null
             }
         },
-        "urlPrefix": "http://localhost:49352/",
+        "urlPrefix": "http://localhost:51713/",
         "exportPath": "",
         "lockUrlPrefix": true,
         "buildShouldOverwriteIndex": true,
@@ -76,7 +76,7 @@
             "022ec52f-9628-4b5b-a0fe-759cc305388f"
         ],
         "resource": [
-            "b7293e0f-8e80-4826-8ac8-c22ce18e75df",
+            "73b9b406-e41a-49f9-8cf3-3c3f081fd486",
             "efa3151d-f411-416b-a78d-276e3b22783a",
             "3d10d034-00bb-4ac2-b233-bdb4a466e702"
         ],
