@@ -683,7 +683,7 @@ Ext.define('AritmiaRef.view.visita.Visita', {
                         {
                             xtype: 'gridcolumn',
                             flex: 1,
-                            dataIndex: 'id',
+                            dataIndex: 'code',
                             text: 'Codice prestazione'
                         },
                         {

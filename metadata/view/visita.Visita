@@ -2230,7 +2230,7 @@
                             },
                             "codeClass": null,
                             "userConfig": {
-                                "dataIndex": "id",
+                                "dataIndex": "code",
                                 "flex": 1,
                                 "text": "Codice prestazione"
                             },

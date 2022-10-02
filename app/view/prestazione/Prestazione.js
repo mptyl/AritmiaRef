@@ -45,10 +45,13 @@ Ext.define('AritmiaRef.view.prestazione.Prestazione', {
             fieldLabel: 'Codice prestazione:',
             name: 'prestazioneFk',
             autoLoadOnValue: true,
+            autoSelect: false,
+            autoSelectLast: false,
             displayField: 'code',
             forceSelection: true,
             queryMode: 'local',
             store: 'Prestazioni',
+            typeAhead: true,
             valueField: 'id',
             bind: {
                 value: '{recordPrestazione.id}'

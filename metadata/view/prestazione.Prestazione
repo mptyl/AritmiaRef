@@ -34,6 +34,8 @@
             "codeClass": null,
             "userConfig": {
                 "autoLoadOnValue": true,
+                "autoSelect": false,
+                "autoSelectLast": false,
                 "displayField": "code",
                 "fieldLabel": "Codice prestazione:",
                 "forceSelection": true,
@@ -41,6 +43,7 @@
                 "name": "prestazioneFk",
                 "queryMode": "local",
                 "store": "Prestazioni",
+                "typeAhead": true,
                 "value": [
                     "{recordPrestazione.id}"
                 ],
@@ -56,7 +59,10 @@
                 "forceSelection": "boolean",
                 "queryMode": "string",
                 "store": "store",
-                "valueField": "datafield"
+                "valueField": "datafield",
+                "autoSelect": "boolean",
+                "autoSelectLast": "boolean",
+                "typeAhead": "boolean"
             },
             "name": "MyComboBox3",
             "designerId": "932bffd1-476c-4109-9cfa-9a10392132cf",
