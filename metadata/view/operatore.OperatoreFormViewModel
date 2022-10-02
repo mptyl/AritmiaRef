@@ -1,0 +1,22 @@
+{
+    "type": "Ext.app.ViewModel",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "data": [
+            "{recordOperatore: null, storeOperatoriJoined: null, action:null}",
+            "\t"
+        ],
+        "designer|userAlias": "operatore.operatoreform",
+        "designer|userClassName": "operatore.OperatoreFormViewModel"
+    },
+    "configAlternates": {
+        "data": "object",
+        "designer|userAlias": "string",
+        "designer|userClassName": "string"
+    },
+    "designerId": "a45b1a93-f752-4fa8-abb7-9e71de231c24"
+}

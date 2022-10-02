@@ -1,0 +1,483 @@
+{
+    "type": "Ext.form.Panel",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "bodyPadding": 10,
+        "designer|userAlias": "operatore.operatoreform",
+        "designer|userClassName": "operatore.OperatoreForm",
+        "fieldDefaults": [
+            "{labelWidth:120,labelAlign:'right',selectOnFocus:true}"
+        ],
+        "layout": "form",
+        "reference": "operatorForm"
+    },
+    "configAlternates": {
+        "bodyPadding": "auto",
+        "designer|displayName": "string",
+        "fieldDefaults": "object",
+        "layout": "string",
+        "reference": "string",
+        "twoWayBindable": "object",
+        "designer|userAlias": "string",
+        "designer|userClassName": "string"
+    },
+    "name": "MyForm5",
+    "designerId": "09756dc6-64f8-4288-a459-50e0860af412",
+    "viewControllerInstanceId": "7363d0b0-993c-4871-97fc-483c76d7d823",
+    "viewModelInstanceId": "a45b1a93-f752-4fa8-abb7-9e71de231c24",
+    "cn": [
+        {
+            "type": "Ext.form.field.ComboBox",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "autoLoadOnValue": true,
+                "displayField": "code",
+                "fieldLabel": "Ruolo:",
+                "forceSelection": true,
+                "name": "roleFk",
+                "queryMode": "local",
+                "store": "Roles",
+                "value": [
+                    "{recordOperatore.roleFk}"
+                ],
+                "valueField": "id"
+            },
+            "configAlternates": {
+                "fieldLabel": "string",
+                "name": "string",
+                "displayField": "datafield",
+                "forceSelection": "boolean",
+                "queryMode": "string",
+                "store": "store",
+                "valueField": "datafield",
+                "value": "binding",
+                "autoLoadOnValue": "boolean"
+            },
+            "name": "MyComboBox1",
+            "designerId": "f25bf535-ffa0-4013-9c6a-32e62f37d462",
+            "cn": [
+                {
+                    "type": "viewcontrollereventbinding",
+                    "reference": {
+                        "name": "listeners",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "fn": "onRoleComboboxSelect",
+                        "implHandler": [
+                            " const me=this;",
+                            "        const form=combo.up('form');",
+                            "        const viewModel= form.getViewModel();",
+                            "        const selectedRecord=viewModel.get('recordOperatore');",
+                            "        selectedRecord.set('code',record.get('code'));",
+                            "        selectedRecord.set('description',record.get('description'));",
+                            "        selectedRecord.set('roleFk',record.get('id'));"
+                        ],
+                        "name": "select",
+                        "scope": "me"
+                    },
+                    "configAlternates": {
+                        "fn": "string",
+                        "implHandler": "code",
+                        "name": "string",
+                        "scope": "string"
+                    },
+                    "name": "onRoleComboboxSelect",
+                    "designerId": "293d8d1a-861b-4b41-9403-dd8664dbf2be"
+                }
+            ]
+        },
+        {
+            "type": "Ext.form.field.ComboBox",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "allowBlank": false,
+                "autoLoadOnValue": true,
+                "designer|displayName": "lastNameCombo",
+                "displayField": "lastName",
+                "fieldLabel": "Cognome:",
+                "forceSelection": true,
+                "name": "lastName",
+                "queryMode": "local",
+                "store": "Operatori",
+                "typeAhead": true,
+                "value": [
+                    "{recordOperatore.lastName}"
+                ],
+                "valueField": "lastName"
+            },
+            "configAlternates": {
+                "allowBlank": "boolean",
+                "anyMatch": "boolean",
+                "displayField": "datafield",
+                "fieldLabel": "string",
+                "forceSelection": "boolean",
+                "name": "string",
+                "queryMode": "string",
+                "store": "store",
+                "typeAhead": "boolean",
+                "designer|displayName": "string",
+                "valueField": "datafield",
+                "value": "binding",
+                "autoLoadOnValue": "boolean"
+            },
+            "name": "MyComboBox2",
+            "designerId": "54675be6-92ba-41b0-8eb7-5334f8824797",
+            "cn": [
+                {
+                    "type": "Ext.view.BoundList",
+                    "reference": {
+                        "name": "listConfig",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "designer|displayName": "listLastNameCombo",
+                        "itemSelector": "div"
+                    },
+                    "configAlternates": {
+                        "itemSelector": "string",
+                        "designer|displayName": "string"
+                    },
+                    "name": "MyBoundList",
+                    "designerId": "5422a028-2047-4f7e-9e9f-cd2b0c7ce643",
+                    "cn": [
+                        {
+                            "type": "Ext.XTemplate",
+                            "reference": {
+                                "name": "itemTpl",
+                                "type": "object"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "designer|displayName": "itemTpl",
+                                "implHandler": [
+                                    "{lastName} {firstName} - ID:{idNumber}"
+                                ]
+                            },
+                            "configAlternates": {
+                                "designer|displayName": "string",
+                                "implHandler": "code"
+                            },
+                            "name": "itemTpl",
+                            "designerId": "d4d7f902-f432-4888-97f8-a1c2806e9ced"
+                        }
+                    ]
+                },
+                {
+                    "type": "viewcontrollereventbinding",
+                    "reference": {
+                        "name": "listeners",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "fn": "onOperatoreComboboxSelect",
+                        "implHandler": [
+                            "        const me=this;",
+                            "        const form=combo.up('form');",
+                            "        const viewModel= form.getViewModel();",
+                            "        const selectedRecord=viewModel.get('recordOperatore');",
+                            "        selectedRecord.set('firstName',record.get('firstName'));",
+                            "        selectedRecord.set('email',record.get('email'));",
+                            "        selectedRecord.set('phone',record.get('phone'));",
+                            "        selectedRecord.set('idNumber',record.get('idNumber'));"
+                        ],
+                        "name": "select",
+                        "scope": "me"
+                    },
+                    "configAlternates": {
+                        "fn": "string",
+                        "implHandler": "code",
+                        "name": "string",
+                        "scope": "string"
+                    },
+                    "name": "onOperatoreComboboxSelect",
+                    "designerId": "f7601835-5f8f-4e1a-81f7-a3e45bd5f221"
+                }
+            ]
+        },
+        {
+            "type": "Ext.form.field.Text",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fieldLabel": "Nome:",
+                "formBind": false,
+                "name": "firstName",
+                "readOnly": true,
+                "value": [
+                    "{recordOperatore.firstName}"
+                ]
+            },
+            "configAlternates": {
+                "fieldLabel": "string",
+                "name": "string",
+                "viewModel": "object",
+                "readOnly": "boolean",
+                "formBind": "boolean",
+                "twoWayBindable": "object",
+                "value": "binding"
+            },
+            "name": "MyTextField1",
+            "designerId": "97356ae3-b693-4619-ba94-84d8ba168480"
+        },
+        {
+            "type": "Ext.form.field.Text",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fieldLabel": "Telefono:",
+                "name": "phone",
+                "readOnly": true,
+                "value": [
+                    "{recordOperatore.phone}"
+                ]
+            },
+            "configAlternates": {
+                "fieldLabel": "string",
+                "name": "string",
+                "readOnly": "boolean",
+                "value": "binding"
+            },
+            "name": "MyTextField2",
+            "designerId": "bc33a50a-c7af-465a-b0e2-13c38e1b166f"
+        },
+        {
+            "type": "Ext.form.field.Text",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fieldLabel": "Email:",
+                "name": "email",
+                "readOnly": true,
+                "value": [
+                    "{recordOperatore.email}"
+                ]
+            },
+            "configAlternates": {
+                "fieldLabel": "string",
+                "name": "string",
+                "readOnly": "boolean",
+                "value": "binding"
+            },
+            "name": "MyTextField3",
+            "designerId": "80b0e428-3bba-4dd5-9d8e-e41c2dd7ac27"
+        },
+        {
+            "type": "Ext.form.field.Text",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fieldLabel": "Numero identificativo:",
+                "name": "idNumber",
+                "readOnly": true,
+                "value": [
+                    "{recordOperatore.idNumber}"
+                ]
+            },
+            "configAlternates": {
+                "fieldLabel": "string",
+                "name": "string",
+                "readOnly": "boolean",
+                "value": "binding"
+            },
+            "name": "MyTextField4",
+            "designerId": "decafdd3-ea48-4027-b59e-40ba084b0bff"
+        },
+        {
+            "type": "Ext.toolbar.Toolbar",
+            "reference": {
+                "name": "dockedItems",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "container|padding": "0 0 0 10",
+                "designer|displayName": "operatoreFormToolbar",
+                "designer|uiInterfaceName": "footer",
+                "dock": "bottom",
+                "ui": "footer"
+            },
+            "configAlternates": {
+                "container|padding": "auto",
+                "designer|displayName": "string",
+                "designer|uiInterfaceName": "string",
+                "dock": "string",
+                "ui": "string"
+            },
+            "name": "MyToolbar3",
+            "designerId": "deb73f4b-a642-41cd-be55-877450dad550",
+            "cn": [
+                {
+                    "type": "Ext.button.Button",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "layout|flex": null,
+                        "text": "Cancel"
+                    },
+                    "configAlternates": {
+                        "layout|flex": "number",
+                        "text": "string"
+                    },
+                    "name": "MyButton6",
+                    "designerId": "3c5cb637-11dd-4abf-97a3-1a9a457a9eb2",
+                    "cn": [
+                        {
+                            "type": "fixedfunction",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "designer|params": [
+                                    "button",
+                                    "e"
+                                ],
+                                "fn": "handler",
+                                "implHandler": [
+                                    "this.up('window').close();"
+                                ]
+                            },
+                            "configAlternates": {
+                                "designer|params": "typedarray",
+                                "fn": "string",
+                                "implHandler": "code"
+                            },
+                            "name": "handler",
+                            "designerId": "a10bf489-3c90-4b92-ad54-1f41ebd12cec"
+                        }
+                    ]
+                },
+                {
+                    "type": "Ext.toolbar.Fill",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "designer|displayName": "filler",
+                        "layout|flex": null
+                    },
+                    "configAlternates": {
+                        "designer|displayName": "string",
+                        "layout|flex": "number"
+                    },
+                    "name": "MyFill3",
+                    "designerId": "70941b83-8247-4558-bdea-9d36c75db637"
+                },
+                {
+                    "type": "Ext.button.Button",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "layout|flex": null,
+                        "text": "Save"
+                    },
+                    "configAlternates": {
+                        "layout|flex": "number",
+                        "text": "string"
+                    },
+                    "name": "MyButton7",
+                    "designerId": "8931be9c-5249-45e5-b912-792e3556e148",
+                    "cn": [
+                        {
+                            "type": "fixedfunction",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "designer|commentHeader": [
+                                    "const me=this;",
+                                    "console.log('mostrare store');"
+                                ],
+                                "designer|params": [
+                                    "button",
+                                    "e"
+                                ],
+                                "fn": "handler",
+                                "implHandler": [
+                                    "const form=button.up('form');",
+                                    "const viewModel=button.up('form').getViewModel();",
+                                    "const store=viewModel.get('storeOperatoriJoined');",
+                                    "const record=viewModel.get('recordOperatore');",
+                                    "const action=viewModel.get('action');",
+                                    "if(action==='ADD'){",
+                                    "       store.add(record);",
+                                    "}",
+                                    "store.sync();",
+                                    "store.reload();",
+                                    "button.up('window').close();"
+                                ]
+                            },
+                            "configAlternates": {
+                                "designer|commentHeader": "comment",
+                                "designer|params": "typedarray",
+                                "fn": "string",
+                                "implHandler": "code"
+                            },
+                            "name": "handler",
+                            "designerId": "1cf3d3ac-d162-4c92-acaa-f746006f637d"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "type": "processcfgfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "config"
+                ],
+                "fn": "processOperatoreOperatoreForm"
+            },
+            "configAlternates": {
+                "designer|params": "typedarray",
+                "fn": "string"
+            },
+            "name": "processOperatoreOperatoreForm",
+            "designerId": "a49650b6-b1d7-4e72-aba0-e0142956e99b"
+        }
+    ]
+}

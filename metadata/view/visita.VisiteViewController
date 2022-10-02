@@ -1,0 +1,47 @@
+{
+    "type": "Ext.app.ViewController",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userAlias": "visita.visite",
+        "designer|userClassName": "visita.VisiteViewController",
+        "listen": [
+            "{ component:{",
+            "    grid: {",
+            "        redirectToVisita: 'redirectToVisita'",
+            "    }",
+            "}}"
+        ]
+    },
+    "configAlternates": {
+        "designer|userAlias": "string",
+        "designer|userClassName": "string",
+        "listen": "object"
+    },
+    "designerId": "f1bab4b3-4560-441e-b0b6-d0d93cc48bc1",
+    "cn": [
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "redirectToVisita",
+                "implHandler": [
+                    "this.redirectTo('visita');"
+                ]
+            },
+            "configAlternates": {
+                "fn": "string",
+                "implHandler": "code"
+            },
+            "name": "redirectToVisita",
+            "designerId": "e4fe1070-df17-4b0d-a779-6520ef8640a3"
+        }
+    ]
+}

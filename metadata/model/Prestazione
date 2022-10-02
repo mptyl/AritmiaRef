@@ -1,0 +1,104 @@
+{
+    "type": "Ext.data.Model",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userClassName": "Prestazione",
+        "identifier": "sequential"
+    },
+    "configAlternates": {
+        "designer|userClassName": "string",
+        "identifier": "string"
+    },
+    "name": "MyModel",
+    "designerId": "33d42b0a-e136-44a1-9b06-dca6f9c0ee27",
+    "cn": [
+        {
+            "type": "Ext.data.field.Integer",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "id"
+            },
+            "configAlternates": {
+                "name": "string"
+            },
+            "name": "MyInteger7",
+            "designerId": "9e4610c0-59a0-4ab0-8dd9-dd94dd9436ad"
+        },
+        {
+            "type": "Ext.data.field.String",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "code"
+            },
+            "configAlternates": {
+                "name": "string"
+            },
+            "name": "MyString",
+            "designerId": "6bf83a5d-ece1-4748-b03d-7e9072a5d196"
+        },
+        {
+            "type": "Ext.data.field.String",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "description"
+            },
+            "configAlternates": {
+                "name": "string"
+            },
+            "name": "MyString1",
+            "designerId": "d25bd1ab-7b68-48d2-8c5c-112f41743ffd"
+        },
+        {
+            "type": "Ext.data.proxy.Rest",
+            "reference": {
+                "name": "proxy",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|displayName": "prestazioneProxy",
+                "url": "http://localhost:3000/prestazioni"
+            },
+            "configAlternates": {
+                "designer|displayName": "string",
+                "url": "string"
+            },
+            "name": "MyRestProxy4",
+            "designerId": "fd2ff0ea-79f2-4e39-8252-5a56cdad6b7a",
+            "cn": [
+                {
+                    "type": "Ext.data.reader.Json",
+                    "reference": {
+                        "name": "reader",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "designer|displayName": "prestazioneReader"
+                    },
+                    "configAlternates": {
+                        "designer|displayName": "string"
+                    },
+                    "name": "MyJsonReader6",
+                    "designerId": "28f6c6e0-01c4-4386-b6fa-9464ce5f6cff"
+                }
+            ]
+        }
+    ]
+}

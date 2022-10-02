@@ -1,0 +1,48 @@
+{
+    "type": "Ext.app.Application",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "controllers": [
+            "Navigation"
+        ],
+        "models": [
+            "Prestazione",
+            "Operatore",
+            "OperatoreJoined",
+            "PrestazioneJoined",
+            "Role",
+            "Visita"
+        ],
+        "name": "AritmiaRef",
+        "stores": [
+            "Prestazioni",
+            "Operatori",
+            "OperatoriJoined",
+            "PrestazioniJoined",
+            "Visite",
+            "Roles"
+        ],
+        "views": [
+            "MainView",
+            "prestazione.PrestazioneWindow",
+            "visita.Visita",
+            "visita.Visite",
+            "operatore.OperatoreWindow",
+            "operatore.OperatoreForm",
+            "prestazione.Prestazione"
+        ]
+    },
+    "configAlternates": {
+        "controllers": "typedarray",
+        "name": "string",
+        "views": "typedarray",
+        "models": "typedarray",
+        "stores": "typedarray"
+    },
+    "name": "Application",
+    "designerId": "application"
+}

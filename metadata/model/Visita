@@ -1,0 +1,132 @@
+{
+    "type": "Ext.data.Model",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userClassName": "Visita",
+        "identifier": "sequential"
+    },
+    "configAlternates": {
+        "designer|userClassName": "string",
+        "identifier": "string"
+    },
+    "name": "MyModel",
+    "designerId": "022ec52f-9628-4b5b-a0fe-759cc305388f",
+    "cn": [
+        {
+            "type": "Ext.data.field.Integer",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "id"
+            },
+            "configAlternates": {
+                "name": "string"
+            },
+            "name": "MyInteger1",
+            "designerId": "623aa381-d8d8-4261-bc9d-46a31564cb09"
+        },
+        {
+            "type": "Ext.data.field.Date",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "dataVisita"
+            },
+            "configAlternates": {
+                "name": "string"
+            },
+            "name": "MyDate",
+            "designerId": "61529001-28ac-4c2d-8256-1c46109ed965"
+        },
+        {
+            "type": "Ext.data.field.String",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "paziente"
+            },
+            "configAlternates": {
+                "name": "string"
+            },
+            "name": "MyString",
+            "designerId": "2707bfda-53a2-4105-93eb-9e7dc311c2cd"
+        },
+        {
+            "type": "Ext.data.field.Integer",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "eta"
+            },
+            "configAlternates": {
+                "name": "string"
+            },
+            "name": "MyInteger",
+            "designerId": "8d7b7164-6868-4405-9208-db23d7af7bde"
+        },
+        {
+            "type": "Ext.data.field.String",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "operatoreSanitario"
+            },
+            "configAlternates": {
+                "name": "string"
+            },
+            "name": "MyString1",
+            "designerId": "c50db00e-1a4d-4ead-ba4a-c23ba858f43c"
+        },
+        {
+            "type": "Ext.data.field.String",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "provenienza"
+            },
+            "configAlternates": {
+                "name": "string"
+            },
+            "name": "MyString4",
+            "designerId": "682a9ba9-7d01-4fbb-ae32-bf0df66f8ed9"
+        },
+        {
+            "type": "Ext.data.field.String",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "terapiaInAtto"
+            },
+            "configAlternates": {
+                "name": "string"
+            },
+            "name": "MyString24",
+            "designerId": "efc5a4c0-c431-4aa9-84bb-29a357b4c8b9"
+        }
+    ]
+}

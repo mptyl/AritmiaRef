@@ -1,0 +1,87 @@
+{
+    "name": "AritmiaRef",
+    "settings": {
+        "cmd": {
+            "license": "commercial",
+            "cmdVersion": "7.6.0.87",
+            "frameworkVersion": "7.6.0.41"
+        },
+        "canvasControls": {
+            "viewportSize": {
+                "name": "Auto Expand",
+                "builtIn": true,
+                "height": null,
+                "width": null
+            }
+        },
+        "urlPrefix": "http://localhost:49352/",
+        "exportPath": "",
+        "lockUrlPrefix": true,
+        "buildShouldOverwriteIndex": true,
+        "generateArchitectVersion": true,
+        "spacesToIndent": 4,
+        "lineEnding": "LF",
+        "genTimestamps": false,
+        "cacheBust": false,
+        "installStatus": "Not Installed",
+        "urlPrefixTemplate": "http://localhost:{port}/{path}",
+        "sdkPath": ""
+    },
+    "xdsVersion": "4.3.2",
+    "xdsBuild": 19,
+    "schemaVersion": 1,
+    "upgradeVersion": 310000000001,
+    "framework": "ext76",
+    "viewOrderMap": {
+        "view": [
+            "353f0c49-9162-4dc5-8e2d-ffb09f0d3a62",
+            "e06398df-21db-494a-8ccf-784239a17dcd",
+            "e0b7feb2-75c1-4538-ad8b-f4ba408c7b59",
+            "afafe75a-1067-49e1-9a97-061f484c791a",
+            "6c520144-8f5b-46d0-8090-6c1a20794126",
+            "abb4a906-9213-4937-b3a1-cd0f4671fd2c",
+            "33d2255c-b5e4-4bc2-8f4e-21f25edb63b6",
+            "5595caf8-565f-49f4-93fb-a77b7f30e934",
+            "0071306f-3121-40d0-b92e-8a9f4cf7ef1c",
+            "4921fecf-c136-41e9-9b41-b0cd3fc19da4",
+            "9322ab63-7ce2-4935-8a7e-623da634ba1b",
+            "f1bab4b3-4560-441e-b0b6-d0d93cc48bc1",
+            "33d1d3a3-4f0f-43b2-a12a-9dcaa544c92e",
+            "c511fcd3-3d16-46cf-8329-a3f74019c10f",
+            "19bb8339-9cc5-4bf4-a840-ad60a84eb4fc",
+            "09756dc6-64f8-4288-a459-50e0860af412",
+            "a45b1a93-f752-4fa8-abb7-9e71de231c24",
+            "7363d0b0-993c-4871-97fc-483c76d7d823",
+            "ba5e512b-55c7-4477-9a97-167d127d6f18",
+            "8410d184-9fe0-4767-8678-551cbfab613a",
+            "80f45138-3880-4d9d-8084-43ebdbffbbde"
+        ],
+        "store": [
+            "ce654586-ec05-4056-a00e-4a48f011cbe3",
+            "0578a8c5-4139-42c2-bdf3-2075ed43aa7b",
+            "30cbbfd2-fb09-462e-b58d-08d242421e5c",
+            "8a398348-2eab-4e26-b2db-eed597f3c00d",
+            "d91ee2bc-576b-49b1-95b2-8caa6739fc07",
+            "e264b462-ecce-4a12-acb5-d8dd1ee909a9"
+        ],
+        "controller": [
+            "02e19093-9c6b-4222-8b96-2632f82d7303"
+        ],
+        "model": [
+            "33d42b0a-e136-44a1-9b06-dca6f9c0ee27",
+            "d175561d-e828-4227-94af-5f38aefb7b8a",
+            "49858c84-c058-45d3-b118-60ffd6dbaa43",
+            "7cea5ed7-91b8-4f9e-96ce-f2a42bbde620",
+            "2c3b5cf0-23cf-4923-9ab1-cfcdfb801e5b",
+            "022ec52f-9628-4b5b-a0fe-759cc305388f"
+        ],
+        "resource": [
+            "b7293e0f-8e80-4826-8ac8-c22ce18e75df",
+            "efa3151d-f411-416b-a78d-276e3b22783a",
+            "3d10d034-00bb-4ac2-b233-bdb4a466e702"
+        ],
+        "app": [
+            "application"
+        ]
+    }
+}

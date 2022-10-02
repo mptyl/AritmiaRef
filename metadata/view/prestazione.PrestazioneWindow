@@ -1,0 +1,41 @@
+{
+    "type": "Ext.window.Window",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userAlias": "prestazione.prestazionewindow",
+        "designer|userClassName": "prestazione.PrestazioneWindow",
+        "height": 431,
+        "modal": true,
+        "title": "Prestazione",
+        "width": 800
+    },
+    "configAlternates": {
+        "designer|userAlias": "string",
+        "designer|userClassName": "string",
+        "height": "auto",
+        "modal": "boolean",
+        "title": "string",
+        "width": "auto"
+    },
+    "name": "MyWindow",
+    "designerId": "afafe75a-1067-49e1-9a97-061f484c791a",
+    "viewControllerInstanceId": "abb4a906-9213-4937-b3a1-cd0f4671fd2c",
+    "viewModelInstanceId": "6c520144-8f5b-46d0-8090-6c1a20794126",
+    "cn": [
+        {
+            "type": "linkedinstance",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "name": "prestazione.Prestazione",
+            "designerId": "bed5212a-3a96-4f98-be60-25d5cf518f16",
+            "masterInstanceId": "ba5e512b-55c7-4477-9a97-167d127d6f18"
+        }
+    ]
+}

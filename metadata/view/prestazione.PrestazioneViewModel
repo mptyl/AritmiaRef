@@ -1,0 +1,21 @@
+{
+    "type": "Ext.app.ViewModel",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "data": [
+            "{recordPrestazione: null, storePrestazioniJoined: null, action:null}"
+        ],
+        "designer|userAlias": "prestazione.prestazione",
+        "designer|userClassName": "prestazione.PrestazioneViewModel"
+    },
+    "configAlternates": {
+        "data": "object",
+        "designer|userAlias": "string",
+        "designer|userClassName": "string"
+    },
+    "designerId": "8410d184-9fe0-4767-8678-551cbfab613a"
+}

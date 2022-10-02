@@ -1,0 +1,21 @@
+{
+    "type": "jsonstore",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userClassName": "OperatoriJoined",
+        "model": "OperatoreJoined",
+        "storeId": "OperatoriJoined"
+    },
+    "configAlternates": {
+        "data": "array",
+        "designer|userClassName": "string",
+        "model": "model",
+        "storeId": "string"
+    },
+    "name": "MyJsonStore",
+    "designerId": "30cbbfd2-fb09-462e-b58d-08d242421e5c"
+}

@@ -1,0 +1,21 @@
+{
+    "type": "jsonstore",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userClassName": "PrestazioniJoined",
+        "model": "PrestazioneJoined",
+        "storeId": "PrestazioniJoined"
+    },
+    "configAlternates": {
+        "data": "array",
+        "designer|userClassName": "string",
+        "model": "model",
+        "storeId": "string"
+    },
+    "name": "MyJsonStore",
+    "designerId": "8a398348-2eab-4e26-b2db-eed597f3c00d"
+}

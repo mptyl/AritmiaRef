@@ -1,0 +1,263 @@
+{
+    "type": "Ext.form.Panel",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "bodyPadding": 10,
+        "designer|userAlias": "prestazione.prestazione",
+        "designer|userClassName": "prestazione.Prestazione",
+        "fieldDefaults": [
+            "{labelWidth:120,labelAlign:'right',selectOnFocus:true}"
+        ]
+    },
+    "configAlternates": {
+        "bodyPadding": "auto",
+        "designer|displayName": "string",
+        "fieldDefaults": "object",
+        "designer|userAlias": "string",
+        "designer|userClassName": "string"
+    },
+    "name": "MyForm5",
+    "designerId": "ba5e512b-55c7-4477-9a97-167d127d6f18",
+    "viewControllerInstanceId": "80f45138-3880-4d9d-8084-43ebdbffbbde",
+    "viewModelInstanceId": "8410d184-9fe0-4767-8678-551cbfab613a",
+    "cn": [
+        {
+            "type": "Ext.form.field.ComboBox",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "autoLoadOnValue": true,
+                "displayField": "code",
+                "fieldLabel": "Codice prestazione:",
+                "forceSelection": true,
+                "layout|anchor": "100%",
+                "name": "prestazioneFk",
+                "queryMode": "local",
+                "store": "Prestazioni",
+                "value": [
+                    "{recordPrestazione.id}"
+                ],
+                "valueField": "id"
+            },
+            "configAlternates": {
+                "fieldLabel": "string",
+                "layout|anchor": "string",
+                "name": "string",
+                "value": "binding",
+                "autoLoadOnValue": "boolean",
+                "displayField": "datafield",
+                "forceSelection": "boolean",
+                "queryMode": "string",
+                "store": "store",
+                "valueField": "datafield"
+            },
+            "name": "MyComboBox3",
+            "designerId": "932bffd1-476c-4109-9cfa-9a10392132cf",
+            "cn": [
+                {
+                    "type": "viewcontrollereventbinding",
+                    "reference": {
+                        "name": "listeners",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "fn": "onPrestazioneComboboxSelect",
+                        "implHandler": [
+                            "        const form=combo.up('form');",
+                            "        const viewModel= form.getViewModel();",
+                            "        const selectedRecord=viewModel.get('recordPrestazione');",
+                            "        selectedRecord.set('description',record.get('description'));",
+                            "        selectedRecord.set('prestazioneFk',record.get('id'));",
+                            "        selectedRecord.set('code',record.get('code'));",
+                            "        selectedRecord.set('description',record.get('description'));"
+                        ],
+                        "name": "select",
+                        "scope": "me"
+                    },
+                    "configAlternates": {
+                        "fn": "string",
+                        "implHandler": "code",
+                        "name": "string",
+                        "scope": "string"
+                    },
+                    "name": "onPrestazioneComboboxSelect",
+                    "designerId": "b670de54-471f-4fdb-aca9-7dc57c9097dc"
+                }
+            ]
+        },
+        {
+            "type": "Ext.form.field.TextArea",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fieldLabel": "Prestazione:",
+                "layout|anchor": "100%",
+                "minHeight": 300,
+                "name": "description",
+                "value": [
+                    "{recordPrestazione.description}"
+                ]
+            },
+            "configAlternates": {
+                "fieldLabel": "string",
+                "layout|anchor": "string",
+                "minHeight": "number",
+                "name": "string",
+                "value": "binding"
+            },
+            "name": "MyTextArea9",
+            "designerId": "6a86e889-b365-478d-ab41-fe24d9ad2e65"
+        },
+        {
+            "type": "Ext.toolbar.Toolbar",
+            "reference": {
+                "name": "dockedItems",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|displayName": "prestazioneFormToolbar",
+                "designer|uiInterfaceName": "footer",
+                "dock": "bottom",
+                "ui": "footer"
+            },
+            "configAlternates": {
+                "designer|displayName": "string",
+                "designer|uiInterfaceName": "string",
+                "dock": "string",
+                "ui": "string"
+            },
+            "name": "MyToolbar2",
+            "designerId": "e73ad672-40c8-4892-83bd-ec9bb12bfa38",
+            "cn": [
+                {
+                    "type": "Ext.button.Button",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "layout|flex": null,
+                        "text": "Cancel"
+                    },
+                    "configAlternates": {
+                        "layout|flex": "number",
+                        "text": "string"
+                    },
+                    "name": "MyButton3",
+                    "designerId": "082a0eec-8734-416a-ae5e-e7f97b5e582e",
+                    "cn": [
+                        {
+                            "type": "fixedfunction",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "designer|params": [
+                                    "button",
+                                    "e"
+                                ],
+                                "fn": "handler",
+                                "implHandler": [
+                                    "this.up('window').close();"
+                                ]
+                            },
+                            "configAlternates": {
+                                "designer|params": "typedarray",
+                                "fn": "string",
+                                "implHandler": "code"
+                            },
+                            "name": "handler",
+                            "designerId": "5af236f4-7ecb-45bb-bcb8-1b584d9d309d"
+                        }
+                    ]
+                },
+                {
+                    "type": "Ext.toolbar.Fill",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "designer|displayName": "filler",
+                        "layout|flex": null
+                    },
+                    "configAlternates": {
+                        "designer|displayName": "string",
+                        "layout|flex": "number"
+                    },
+                    "name": "MyFill2",
+                    "designerId": "e2c257a9-edd7-446a-aebe-6286d85e2b49"
+                },
+                {
+                    "type": "Ext.button.Button",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "layout|flex": null,
+                        "text": "Salva"
+                    },
+                    "configAlternates": {
+                        "layout|flex": "number",
+                        "text": "string"
+                    },
+                    "name": "MyButton5",
+                    "designerId": "1ae84b61-deab-44af-9dc5-a8676b10e1de",
+                    "cn": [
+                        {
+                            "type": "viewcontrollereventbinding",
+                            "reference": {
+                                "name": "listeners",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "fn": "onSaveButtonClick",
+                                "implHandler": [
+                                    "const form=button.up('form');",
+                                    "const viewModel=button.up('form').getViewModel();",
+                                    "const store=viewModel.get('storePrestazioniJoined');",
+                                    "const record=viewModel.get('recordPrestazione');",
+                                    "const action=viewModel.get('action');",
+                                    "if(action=='ADD')",
+                                    "    store.add(record);",
+                                    "store.sync();",
+                                    "store.reload();",
+                                    "button.up('window').close();"
+                                ],
+                                "name": "click",
+                                "scope": "me"
+                            },
+                            "configAlternates": {
+                                "fn": "string",
+                                "implHandler": "code",
+                                "name": "string",
+                                "scope": "string"
+                            },
+                            "name": "onSaveButtonClick",
+                            "designerId": "17734faf-2861-4aff-9d70-e548343f6949"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

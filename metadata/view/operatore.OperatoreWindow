@@ -1,0 +1,47 @@
+{
+    "type": "Ext.window.Window",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userAlias": "operatore.operatorewindow",
+        "designer|userClassName": "operatore.OperatoreWindow",
+        "height": 277,
+        "modal": true,
+        "title": "Operatore Sanitario",
+        "width": 800
+    },
+    "configAlternates": {
+        "designer|userAlias": "string",
+        "designer|userClassName": "string",
+        "height": "auto",
+        "modal": "boolean",
+        "title": "string",
+        "width": "auto"
+    },
+    "name": "MyWindow",
+    "designerId": "33d1d3a3-4f0f-43b2-a12a-9dcaa544c92e",
+    "viewControllerInstanceId": "19bb8339-9cc5-4bf4-a840-ad60a84eb4fc",
+    "viewModelInstanceId": "c511fcd3-3d16-46cf-8329-a3f74019c10f",
+    "cn": [
+        {
+            "type": "linkedinstance",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "modal": false
+            },
+            "configAlternates": {
+                "modal": "boolean"
+            },
+            "name": "operatore.operatoreform",
+            "designerId": "75d598f0-1b35-4190-9dc1-9b9c2b0ed5b0",
+            "masterInstanceId": "09756dc6-64f8-4288-a459-50e0860af412"
+        }
+    ]
+}

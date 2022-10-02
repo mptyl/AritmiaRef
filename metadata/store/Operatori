@@ -1,0 +1,21 @@
+{
+    "type": "jsonstore",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userClassName": "Operatori",
+        "model": "Operatore",
+        "storeId": "Operatori"
+    },
+    "configAlternates": {
+        "data": "array",
+        "designer|userClassName": "string",
+        "model": "model",
+        "storeId": "string"
+    },
+    "name": "MyJsonStore",
+    "designerId": "0578a8c5-4139-42c2-bdf3-2075ed43aa7b"
+}

@@ -1,0 +1,320 @@
+{
+    "type": "Ext.container.Viewport",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|initialView": true,
+        "designer|userAlias": "mainview",
+        "designer|userClassName": "MainView",
+        "itemId": "mainView",
+        "layout": "border"
+    },
+    "configAlternates": {
+        "designer|initialView": "boolean",
+        "designer|userAlias": "string",
+        "designer|userClassName": "string",
+        "itemId": "string",
+        "layout": "string"
+    },
+    "designerId": "353f0c49-9162-4dc5-8e2d-ffb09f0d3a62",
+    "viewControllerInstanceId": "e0b7feb2-75c1-4538-ad8b-f4ba408c7b59",
+    "viewModelInstanceId": "e06398df-21db-494a-8ccf-784239a17dcd",
+    "cn": [
+        {
+            "type": "Ext.panel.Panel",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "itemId": "menuPanel",
+                "layout|region": "west",
+                "layout|split": true,
+                "title": "Menu",
+                "width": 150
+            },
+            "configAlternates": {
+                "itemId": "string",
+                "layout|region": "string",
+                "layout|split": "boolean",
+                "title": "string",
+                "width": "auto"
+            },
+            "name": "MyPanel1",
+            "designerId": "70e4bdc2-8c21-4da3-b357-bdac73847e65",
+            "cn": [
+                {
+                    "type": "Ext.menu.Menu",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "floating": false,
+                        "itemId": "menu",
+                        "width": null
+                    },
+                    "configAlternates": {
+                        "floating": "boolean",
+                        "itemId": "string",
+                        "width": "auto"
+                    },
+                    "name": "MyMenu",
+                    "designerId": "25abbee3-e977-4e92-bc3a-73fcf2aea764",
+                    "cn": [
+                        {
+                            "type": "Ext.menu.Item",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "focusable": true,
+                                "href": null,
+                                "itemId": "home",
+                                "text": "Home"
+                            },
+                            "configAlternates": {
+                                "focusable": "boolean",
+                                "href": "string",
+                                "itemId": "string",
+                                "text": "string"
+                            },
+                            "name": "MyMenuItem",
+                            "designerId": "2d21cd52-2bd4-4f26-99f8-ecb1b8453ece"
+                        },
+                        {
+                            "type": "Ext.menu.Item",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "designer|displayName": "pazienti",
+                                "focusable": true,
+                                "href": null,
+                                "itemId": "pazienti",
+                                "text": "Pazienti"
+                            },
+                            "configAlternates": {
+                                "focusable": "boolean",
+                                "href": "string",
+                                "itemId": "string",
+                                "text": "string",
+                                "designer|displayName": "string"
+                            },
+                            "name": "MyMenuItem2",
+                            "designerId": "9f67ea74-e63c-4b04-b4c2-4130f7cbd1f8"
+                        },
+                        {
+                            "type": "Ext.menu.Item",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "focusable": true,
+                                "itemId": "visite",
+                                "text": "Visite"
+                            },
+                            "configAlternates": {
+                                "focusable": "boolean",
+                                "itemId": "string",
+                                "text": "string"
+                            },
+                            "name": "MyMenuItem1",
+                            "designerId": "6d73f67d-5268-4d80-b2fe-e81866f1c808"
+                        },
+                        {
+                            "type": "Ext.menu.Separator",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "text": "Menu Item"
+                            },
+                            "configAlternates": {
+                                "text": "string"
+                            },
+                            "name": "MySeparator1",
+                            "designerId": "5e6a6e1d-c262-421f-871b-173ee8131541"
+                        },
+                        {
+                            "type": "Ext.menu.Item",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "focusable": true,
+                                "itemId": "visita",
+                                "text": "Visita"
+                            },
+                            "configAlternates": {
+                                "focusable": "boolean",
+                                "itemId": "string",
+                                "text": "string"
+                            },
+                            "name": "MyMenuItem12",
+                            "designerId": "66d7995c-694c-4d3e-ad94-d263d2900d69"
+                        },
+                        {
+                            "type": "basiceventbinding",
+                            "reference": {
+                                "name": "listeners",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "fn": "onMenuClick",
+                                "implHandler": [
+                                    "location.hash = item.itemId;"
+                                ],
+                                "name": "click",
+                                "scope": "me"
+                            },
+                            "configAlternates": {
+                                "fn": "string",
+                                "implHandler": "code",
+                                "name": "string",
+                                "scope": "string"
+                            },
+                            "name": "onMenuClick",
+                            "designerId": "6aabf84c-692c-4a9f-9b11-0d46214a63b5"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "type": "Ext.panel.Panel",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "itemId": "contentPanel",
+                "layout": "card",
+                "layout|region": "center",
+                "title": null
+            },
+            "configAlternates": {
+                "itemId": "string",
+                "layout": "string",
+                "layout|region": "string",
+                "title": "string"
+            },
+            "name": "MyPanel2",
+            "designerId": "c98c4f91-6f66-4054-8e31-2ccc2ab4f975",
+            "cn": [
+                {
+                    "type": "Ext.panel.Panel",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "container|align": "center",
+                        "itemId": "homePanel",
+                        "layout": "vbox",
+                        "title": "AritmiaRef",
+                        "titleAlign": "center",
+                        "width": null
+                    },
+                    "configAlternates": {
+                        "container|align": "string",
+                        "container|pack": "string",
+                        "itemId": "string",
+                        "layout": "string",
+                        "title": "string",
+                        "width": "auto",
+                        "titleAlign": "string"
+                    },
+                    "name": "MyPanel3",
+                    "designerId": "6e0310e2-3829-40e2-acea-c3d80afea341",
+                    "cn": [
+                        {
+                            "type": "Ext.Img",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "layout|flex": 1,
+                                "maxHeight": 600,
+                                "src": "http://localhost:3000/images/sandonato.jpg"
+                            },
+                            "configAlternates": {
+                                "layout|flex": "number",
+                                "maxHeight": "number",
+                                "src": "uri"
+                            },
+                            "name": "MyImg",
+                            "designerId": "86ee50e8-b241-430b-b350-7abc595d00dd"
+                        }
+                    ]
+                },
+                {
+                    "type": "Ext.panel.Panel",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "container|align": "center",
+                        "container|pack": "center",
+                        "itemId": "pazientiPanel",
+                        "layout": "vbox",
+                        "title": "Paziente"
+                    },
+                    "configAlternates": {
+                        "container|align": "string",
+                        "container|pack": "string",
+                        "itemId": "string",
+                        "layout": "string",
+                        "title": "string"
+                    },
+                    "name": "MyPanel4",
+                    "designerId": "daf95a82-9e4f-4afd-b806-c2cc1b902fad"
+                },
+                {
+                    "type": "linkedinstance",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "name": "visita.visite",
+                    "designerId": "35e48fa7-cf8f-4df3-acb8-d8c480abfcf2",
+                    "masterInstanceId": "4921fecf-c136-41e9-9b41-b0cd3fc19da4"
+                },
+                {
+                    "type": "linkedinstance",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "name": "visita.visita",
+                    "designerId": "f3062b54-ac49-4d8f-9a55-828b1010dc19",
+                    "masterInstanceId": "33d2255c-b5e4-4bc2-8f4e-21f25edb63b6"
+                }
+            ]
+        }
+    ]
+}
