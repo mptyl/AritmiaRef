@@ -17,41 +17,299 @@ Ext.define('AritmiaRef.model.Visita', {
     extend: 'Ext.data.Model',
 
     requires: [
-        'Ext.data.field.Integer',
+        'Ext.data.field.String',
         'Ext.data.field.Date',
-        'Ext.data.field.String'
+        'Ext.data.field.Boolean',
+        'Ext.data.field.Integer',
+        'Ext.data.proxy.Rest',
+        'Ext.data.reader.Json',
+        'Ext.data.writer.Json',
+        'Ext.data.identifier.Uuid'
     ],
-
-    identifier: 'sequential',
 
     fields: [
         {
-            type: 'int',
+            type: 'string',
             name: 'id'
         },
         {
             type: 'date',
-            name: 'dataVisita'
+            name: 'dataVisita',
+            dateFormat: 'Y-m-d'
         },
         {
-            type: 'string',
-            name: 'paziente'
+            type: 'boolean',
+            defaultValue: false,
+            name: 'visitaPappone'
         },
         {
             type: 'int',
-            name: 'eta'
-        },
-        {
-            type: 'string',
-            name: 'operatoreSanitario'
+            name: 'provenienzaFk'
         },
         {
             type: 'string',
             name: 'provenienza'
         },
         {
+            type: 'boolean',
+            name: 'palermo'
+        },
+        {
+            type: 'string',
+            name: 'ecoCardiografia'
+        },
+        {
+            type: 'string',
+            name: 'ecg'
+        },
+        {
+            type: 'boolean',
+            name: 'stampaAppuntamento'
+        },
+        {
+            type: 'int',
+            name: 'pazienteFk'
+        },
+        {
+            type: 'string',
+            name: 'paziente'
+        },
+        {
+            type: 'string',
+            name: 'terapiaInCorso'
+        },
+        {
+            type: 'int',
+            name: 'eta'
+        },
+        {
+            type: 'int',
+            name: 'operatoreSanitarioFk'
+        },
+        {
+            type: 'string',
+            name: 'operatoreSanitario'
+        },
+        {
+            type: 'date',
+            name: 'dataEsami',
+            dateFormat: 'Y-m-d'
+        },
+        {
+            type: 'int',
+            name: 'glicemia'
+        },
+        {
             type: 'string',
             name: 'terapiaInAtto'
+        },
+        {
+            type: 'int',
+            name: 'azotemia'
+        },
+        {
+            type: 'int',
+            name: 'creatinina'
+        },
+        {
+            type: 'int',
+            name: 'acidoUrico'
+        },
+        {
+            type: 'int',
+            name: 'transaminasiGO'
+        },
+        {
+            type: 'int',
+            name: 'transaminasiGP'
+        },
+        {
+            type: 'int',
+            name: 'fosfatasiAlcalica'
+        },
+        {
+            type: 'int',
+            name: 'ggt'
+        },
+        {
+            type: 'int',
+            name: 'cpk'
+        },
+        {
+            type: 'int',
+            name: 'cpkmB'
+        },
+        {
+            type: 'int',
+            name: 'ldh'
+        },
+        {
+            type: 'int',
+            name: 'bilirubinaTotale'
+        },
+        {
+            type: 'int',
+            name: 'bilirubinaDiretta'
+        },
+        {
+            type: 'int',
+            name: 'colesteroloTotale'
+        },
+        {
+            type: 'int',
+            name: 'colesteroloHDL'
+        },
+        {
+            type: 'int',
+            name: 'colesteroloLDL'
+        },
+        {
+            type: 'int',
+            name: 'trigliceridi'
+        },
+        {
+            type: 'int',
+            name: 'potassio'
+        },
+        {
+            type: 'int',
+            name: 'magnesio'
+        },
+        {
+            type: 'int',
+            name: 'pt'
+        },
+        {
+            type: 'int',
+            name: 'ves'
+        },
+        {
+            type: 'int',
+            name: 'hbsAg'
+        },
+        {
+            type: 'int',
+            name: 'ft3'
+        },
+        {
+            type: 'int',
+            name: 'ft4'
+        },
+        {
+            type: 'int',
+            name: 'cloro'
+        },
+        {
+            type: 'int',
+            name: 'elettroforesiProteica'
+        },
+        {
+            type: 'int',
+            name: 'ptt'
+        },
+        {
+            type: 'int',
+            name: 'vdrl'
+        },
+        {
+            type: 'int',
+            name: 'hvc'
+        },
+        {
+            type: 'int',
+            name: 'tsh'
+        },
+        {
+            type: 'int',
+            name: 'sodio'
+        },
+        {
+            type: 'int',
+            name: 'calcio'
+        },
+        {
+            type: 'int',
+            name: 'emocromo'
+        },
+        {
+            type: 'int',
+            name: 'fibrinogeno'
+        },
+        {
+            type: 'int',
+            name: 'esameUrine'
+        },
+        {
+            type: 'string',
+            name: 'altriEsamiEmatochimici'
+        },
+        {
+            type: 'int',
+            name: 'frequenzaBasale'
+        },
+        {
+            type: 'int',
+            name: 'paBasaleSistolica'
+        },
+        {
+            type: 'int',
+            name: 'paBasaleDiastolica'
+        },
+        {
+            type: 'int',
+            name: 'peso'
+        },
+        {
+            type: 'int',
+            name: 'altezza'
+        },
+        {
+            type: 'int',
+            name: 'superficieCorporea'
+        },
+        {
+            type: 'string',
+            name: 'esameObiettivo'
+        },
+        {
+            type: 'string',
+            name: 'giudizioClinico'
+        },
+        {
+            type: 'string',
+            name: 'terapiaConsigliata'
+        },
+        {
+            type: 'string',
+            name: 'relazioneProceduraPappone'
+        },
+        {
+            type: 'string',
+            name: 'conclusioniVisitaPappone'
+        },
+        {
+            type: 'string',
+            name: 'testoVisitaPappone'
+        },
+        {
+            type: 'string',
+            name: 'MyString39'
         }
-    ]
+    ],
+
+    proxy: {
+        type: 'rest',
+        url: 'http://localhost:3000/visite',
+        reader: {
+            type: 'json'
+        },
+        writer: {
+            type: 'json',
+            writeAllFields: true
+        }
+    },
+
+    identifier: {
+        type: 'uuid'
+    }
 });

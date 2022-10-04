@@ -15,6 +15,11 @@
 
 Ext.define('AritmiaRef.view.visita.VisitaViewModel', {
     extend: 'Ext.app.ViewModel',
-    alias: 'viewmodel.visita.visita'
+    alias: 'viewmodel.visita.visita',
+
+    data: {
+        visitaRecord: null,
+        visitaGrid: null
+    }
 
 });

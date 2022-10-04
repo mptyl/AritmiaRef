@@ -33,8 +33,9 @@ Ext.define('AritmiaRef.view.prestazione.PrestazioneViewController', {
         const store=viewModel.get('storePrestazioniJoined');
         const record=viewModel.get('recordPrestazione');
         const action=viewModel.get('action');
-        if(action=='ADD')
-        store.add(record);
+        if(action=='ADD'){
+            store.add(record);
+        }
         store.sync();
         store.reload();
         button.up('window').close();

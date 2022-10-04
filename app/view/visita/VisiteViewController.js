@@ -19,7 +19,7 @@ Ext.define('AritmiaRef.view.visita.VisiteViewController', {
 
     listen: {
         component: {
-            grid: {
+            '*': {
                 redirectToVisita: 'redirectToVisita'
             }
         }
@@ -29,8 +29,68 @@ Ext.define('AritmiaRef.view.visita.VisiteViewController', {
         this.redirectTo('visita');
     },
 
-    onButtonClick: function(button, e, eOpts) {
+    removeRecord: function(grid, store) {
+        const selectedRows=grid.getSelectionModel().getSelection();
+        if(selectedRows.length){
+            store.remove(selectedRows);
+        }
+        store.sync({
+            callback: function(){
+                store.reload();
+            }
+        });
+    },
+
+    onAddVisitaButtonClick: function(button, e, eOpts) {
+        const me=this;
+        const record=new AritmiaRef.model.Visita();
+
+        const visitaForm= Ext.ComponentQuery.query('#visitaPanel')[0];
+        const viewModel=visitaForm.getViewModel();
+        const grid=me.lookupReference('visiteGrid');
+        record.set('dataVisita', new Date());
+
+        visitaForm.getViewModel().set('visitaRecord',record);
+        visitaForm.getViewModel().set('visitaGrid',grid);
+
+        this.redirectTo('visita');
+    },
+
+    onEliminaFiltriButtonClick: function(button, e, eOpts) {
         this.lookupReference('visiteGrid').filters.clearFilters();
+
+    },
+
+    onRemoveButtonClick: function(button, e, eOpts) {
+        const me=this;
+        var grid = button.up('grid');
+        var store = grid.getStore();
+        Ext.Msg.show({
+            title: 'Conferma cancellazione',
+            message: 'Confermi la cancellazione?',
+            buttons: Ext.Msg.YESNO,
+            icon: Ext.Msg.QUESTION,
+            fn: function (btn) {
+                if (btn === 'yes') {
+                    me.removeRecord(grid, store);
+                }
+            }
+        });
+    },
+
+    onGridpanelViewReady: function(tablepanel, eOpts) {
+
+        this.lookupReference('visiteGrid').getStore().reload();
+    },
+
+    onGridpanelRowDblClick: function(tableview, record, element, rowIndex, e, eOpts) {
+        const me=this;
+        const visitaForm= Ext.ComponentQuery.query('#visitaPanel')[0];
+        const viewModel=visitaForm.getViewModel();
+        const grid=me.lookupReference('visiteGrid');
+        viewModel.set('visitaRecord',record);
+        viewModel.set('visitaGrid',grid);
+        me.redirectToVisita();
 
     }
 

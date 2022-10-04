@@ -71,6 +71,22 @@
             },
             "codeClass": null,
             "userConfig": {
+                "name": "fullName"
+            },
+            "configAlternates": {
+                "name": "string"
+            },
+            "name": "MyString37",
+            "designerId": "139172ff-08bc-4abf-a851-acfb4f2a4191"
+        },
+        {
+            "type": "Ext.data.field.String",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
                 "name": "phone"
             },
             "configAlternates": {

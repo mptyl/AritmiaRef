@@ -16,10 +16,10 @@
     "configAlternates": {
         "container|align": "string",
         "itemId": "string",
-        "layout": "string",
         "title": "string",
         "designer|userAlias": "string",
-        "designer|userClassName": "string"
+        "designer|userClassName": "string",
+        "layout": "string"
     },
     "name": "MyPanel11",
     "designerId": "33d2255c-b5e4-4bc2-8f4e-21f25edb63b6",
@@ -27,26 +27,333 @@
     "viewModelInstanceId": "5595caf8-565f-49f4-93fb-a77b7f30e934",
     "cn": [
         {
-            "type": "Ext.panel.Panel",
+            "type": "Ext.form.Panel",
             "reference": {
                 "name": "items",
                 "type": "array"
             },
             "codeClass": null,
             "userConfig": {
-                "container|align": "stretch",
-                "designer|displayName": "panelPaziente",
-                "layout": "vbox",
-                "layout|flex": 3
+                "bodyPadding": 10,
+                "designer|displayName": "datiPazientePanel",
+                "fieldDefaults": [
+                    "                                        {labelWidth: 160,",
+                    "                                        labelAlign: 'right',",
+                    "                                        selectOnFocus: true}"
+                ],
+                "flex": 1,
+                "layout|flex": null
             },
             "configAlternates": {
+                "bodyPadding": "auto",
                 "designer|displayName": "string",
-                "layout|flex": "number",
-                "container|align": "string",
-                "layout": "string"
+                "fieldDefaults": "object",
+                "flex": "number",
+                "layout|flex": "number"
             },
-            "name": "MyPanel",
-            "designerId": "81441327-f9e4-4cd7-80d2-c56ef0dc81e6"
+            "name": "MyForm5",
+            "designerId": "1feb22b2-37ca-493f-830b-0c876292d070",
+            "cn": [
+                {
+                    "type": "Ext.form.FieldSet",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "container|align": "stretch",
+                        "container|padding": "0 0 10 0",
+                        "layout": "vbox",
+                        "title": "Paziente e medico"
+                    },
+                    "configAlternates": {
+                        "container|align": "string",
+                        "container|padding": "auto",
+                        "layout": "string",
+                        "title": "string"
+                    },
+                    "name": "MyFieldSet5",
+                    "designerId": "c7498ddd-5c78-4ac4-8a60-345fc9398608",
+                    "cn": [
+                        {
+                            "type": "Ext.container.Container",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "container|align": "stretch",
+                                "designer|displayName": "pazienteContainer",
+                                "layout": "hbox",
+                                "layout|flex": 1
+                            },
+                            "configAlternates": {
+                                "container|align": "string",
+                                "designer|displayName": "string",
+                                "layout": "string",
+                                "layout|flex": "number"
+                            },
+                            "name": "MyContainer3",
+                            "designerId": "fa7ee794-59df-4bc6-ad79-536e98dccddb",
+                            "cn": [
+                                {
+                                    "type": "Ext.form.field.ComboBox",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "allowBlank": false,
+                                        "autoLoadOnValue": true,
+                                        "displayField": "fullName",
+                                        "fieldLabel": "Paziente",
+                                        "forceSelection": true,
+                                        "layout|flex": 3,
+                                        "name": "pazienteFk",
+                                        "queryMode": "local",
+                                        "store": "Pazienti",
+                                        "typeAhead": true,
+                                        "value": [
+                                            "{visitaRecord.pazienteFk}"
+                                        ],
+                                        "valueField": "id"
+                                    },
+                                    "configAlternates": {
+                                        "value": "binding",
+                                        "allowBlank": "boolean",
+                                        "autoLoadOnValue": "boolean",
+                                        "displayField": "datafield",
+                                        "fieldLabel": "string",
+                                        "forceSelection": "boolean",
+                                        "layout|flex": "number",
+                                        "name": "string",
+                                        "queryMode": "string",
+                                        "store": "store",
+                                        "typeAhead": "boolean",
+                                        "valueField": "datafield"
+                                    },
+                                    "name": "MyComboBox4",
+                                    "designerId": "11e80cff-5963-4ead-a200-e0117f57cbf2",
+                                    "cn": [
+                                        {
+                                            "type": "viewcontrollereventbinding",
+                                            "reference": {
+                                                "name": "listeners",
+                                                "type": "array"
+                                            },
+                                            "codeClass": null,
+                                            "userConfig": {
+                                                "fn": "onPazienteComboboSelect",
+                                                "implHandler": [
+                                                    "const me=this;",
+                                                    "const viewModel=me.getViewModel();",
+                                                    "const visitaRecord=viewModel.get('visitaRecord');",
+                                                    "visitaRecord.set('eta',record.get('eta'));",
+                                                    "visitaRecord.set('paziente',record.get('fullName'));"
+                                                ],
+                                                "name": "select",
+                                                "scope": "me"
+                                            },
+                                            "configAlternates": {
+                                                "fn": "string",
+                                                "implHandler": "code",
+                                                "name": "string",
+                                                "scope": "string"
+                                            },
+                                            "name": "onPazienteComboboSelect",
+                                            "designerId": "95d1772b-4900-4c07-b879-28d15978fb9c"
+                                        },
+                                        {
+                                            "type": "Ext.view.BoundList",
+                                            "reference": {
+                                                "name": "listConfig",
+                                                "type": "object"
+                                            },
+                                            "codeClass": null,
+                                            "userConfig": {
+                                                "itemSelector": "div"
+                                            },
+                                            "configAlternates": {
+                                                "itemSelector": "string"
+                                            },
+                                            "name": "MyBoundList1",
+                                            "designerId": "4da6c2f8-101a-450c-9a49-84cbdbe2e49b",
+                                            "cn": [
+                                                {
+                                                    "type": "Ext.XTemplate",
+                                                    "reference": {
+                                                        "name": "itemTpl",
+                                                        "type": "object"
+                                                    },
+                                                    "codeClass": null,
+                                                    "userConfig": {
+                                                        "designer|displayName": "itemTpl",
+                                                        "implHandler": [
+                                                            "{lastName} {firstName}"
+                                                        ]
+                                                    },
+                                                    "configAlternates": {
+                                                        "designer|displayName": "string",
+                                                        "implHandler": "code"
+                                                    },
+                                                    "name": "itemTpl",
+                                                    "designerId": "66b9c788-5cec-42e8-82c0-df0ab20e2451"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "Ext.form.field.Date",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "fieldLabel": "Data visita:",
+                                        "format": "d/m/Y",
+                                        "layout|flex": 1,
+                                        "value": [
+                                            "{visitaRecord.dataVisita}"
+                                        ]
+                                    },
+                                    "configAlternates": {
+                                        "value": "binding",
+                                        "fieldLabel": "string",
+                                        "format": "string",
+                                        "layout|flex": "number"
+                                    },
+                                    "name": "MyDateField2",
+                                    "designerId": "b3c4c61e-02b3-496c-b11d-9f67525aece5"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "Ext.container.Container",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "container|align": "stretch",
+                                "designer|displayName": "medicoContainer",
+                                "layout": "hbox",
+                                "layout|flex": 1
+                            },
+                            "configAlternates": {
+                                "container|align": "string",
+                                "designer|displayName": "string",
+                                "layout": "string",
+                                "layout|flex": "number"
+                            },
+                            "name": "MyContainer2",
+                            "designerId": "f191ed3c-b978-4e5f-a380-3602fbea951e",
+                            "cn": [
+                                {
+                                    "type": "Ext.form.field.ComboBox",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "allowBlank": false,
+                                        "autoLoadOnValue": true,
+                                        "autoSelect": false,
+                                        "autoSelectLast": false,
+                                        "displayField": "fullName",
+                                        "fieldLabel": "Medico di riferimento:",
+                                        "layout|flex": 3,
+                                        "name": "operatoreFk",
+                                        "queryMode": "local",
+                                        "store": "Operatori",
+                                        "typeAhead": true,
+                                        "value": [
+                                            "{visitaRecord.operatoreFk}"
+                                        ],
+                                        "valueField": "id"
+                                    },
+                                    "configAlternates": {
+                                        "value": "binding",
+                                        "allowBlank": "boolean",
+                                        "autoLoadOnValue": "boolean",
+                                        "autoSelect": "boolean",
+                                        "autoSelectLast": "boolean",
+                                        "displayField": "datafield",
+                                        "fieldLabel": "string",
+                                        "layout|flex": "number",
+                                        "name": "string",
+                                        "queryMode": "string",
+                                        "store": "store",
+                                        "typeAhead": "boolean",
+                                        "valueField": "datafield"
+                                    },
+                                    "name": "MyComboBox5",
+                                    "designerId": "3e26a7ba-f9c8-4e55-9a38-4375ec21e136",
+                                    "cn": [
+                                        {
+                                            "type": "viewcontrollereventbinding",
+                                            "reference": {
+                                                "name": "listeners",
+                                                "type": "array"
+                                            },
+                                            "codeClass": null,
+                                            "userConfig": {
+                                                "fn": "onOperatoreComboboxSelect",
+                                                "implHandler": [
+                                                    "        const me=this;",
+                                                    "        const viewModel=me.getViewModel();",
+                                                    "        const visitaRecord=viewModel.get('visitaRecord');",
+                                                    "        visitaRecord.set('operatoreSanitario',record.get('fullName'));"
+                                                ],
+                                                "name": "select",
+                                                "scope": "me"
+                                            },
+                                            "configAlternates": {
+                                                "fn": "string",
+                                                "implHandler": "code",
+                                                "name": "string",
+                                                "scope": "string"
+                                            },
+                                            "name": "onOperatoreComboboxSelect",
+                                            "designerId": "3b788e97-6005-4811-b76c-936ac20dc813"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "Ext.form.field.Number",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "fieldLabel": "Età",
+                                        "flex": 1,
+                                        "layout|flex": 1,
+                                        "value": [
+                                            "{visitaRecord.eta}"
+                                        ]
+                                    },
+                                    "configAlternates": {
+                                        "value": "binding",
+                                        "fieldLabel": "string",
+                                        "flex": "number",
+                                        "layout|flex": "number"
+                                    },
+                                    "name": "MyNumberField41",
+                                    "designerId": "2b54d8bc-377d-4f02-9088-68f34da27629"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
         },
         {
             "type": "Ext.container.Container",
@@ -58,14 +365,16 @@
             "userConfig": {
                 "container|align": "stretch",
                 "designer|displayName": "containerAnagrafico",
+                "flex": 5,
                 "layout": "hbox",
-                "layout|flex": 20
+                "layout|flex": null
             },
             "configAlternates": {
                 "container|align": "string",
                 "designer|displayName": "string",
                 "layout": "string",
-                "layout|flex": "number"
+                "layout|flex": "number",
+                "flex": "number"
             },
             "name": "MyContainer",
             "designerId": "590d1768-eeb8-4347-aa15-5fad97211709",
@@ -165,11 +474,17 @@
                                                     "codeClass": null,
                                                     "userConfig": {
                                                         "fieldLabel": "Data visita:",
-                                                        "layout|anchor": "100%"
+                                                        "format": "d/m/Y",
+                                                        "layout|anchor": "100%",
+                                                        "value": [
+                                                            "{visitaRecord.dataVisita}"
+                                                        ]
                                                     },
                                                     "configAlternates": {
                                                         "fieldLabel": "string",
-                                                        "layout|anchor": "string"
+                                                        "layout|anchor": "string",
+                                                        "value": "binding",
+                                                        "format": "string"
                                                     },
                                                     "name": "MyDateField",
                                                     "designerId": "f181658a-d869-4f12-90a4-9323d126fc85"
@@ -183,11 +498,15 @@
                                                     "codeClass": null,
                                                     "userConfig": {
                                                         "fieldLabel": "Visita prof. Pappone:",
-                                                        "layout|anchor": "100%"
+                                                        "layout|anchor": "100%",
+                                                        "value": [
+                                                            "{visitaRecord.visitaPappone}"
+                                                        ]
                                                     },
                                                     "configAlternates": {
                                                         "fieldLabel": "string",
-                                                        "layout|anchor": "string"
+                                                        "layout|anchor": "string",
+                                                        "value": "binding"
                                                     },
                                                     "name": "MyCheckbox",
                                                     "designerId": "54654740-d142-4485-baff-3cb4b20a9bd7"
@@ -200,19 +519,82 @@
                                                     },
                                                     "codeClass": null,
                                                     "userConfig": {
+                                                        "displayField": "descrizione",
                                                         "fieldLabel": "Provenienza:",
                                                         "layout|anchor": "100%",
-                                                        "store": [
-                                                            "['Pronto soccorso', 'Cardiochirurgia', 'Aritmologia', 'Altro reparto']"
+                                                        "name": "provenienzaFk",
+                                                        "queryMode": "local",
+                                                        "store": "Provenienze",
+                                                        "typeAhead": true,
+                                                        "value": [
+                                                            "{visitaRecord.provevienzaFk}"
+                                                        ],
+                                                        "valueField": "id"
+                                                    },
+                                                    "configAlternates": {
+                                                        "fieldLabel": "string",
+                                                        "layout|anchor": "string",
+                                                        "value": "binding",
+                                                        "displayField": "datafield",
+                                                        "name": "string",
+                                                        "queryMode": "string",
+                                                        "store": "store",
+                                                        "typeAhead": "boolean",
+                                                        "valueField": "datafield"
+                                                    },
+                                                    "name": "MyComboBox",
+                                                    "designerId": "4357756b-17bd-4b4d-bc0c-048cd9e6bf67",
+                                                    "cn": [
+                                                        {
+                                                            "type": "viewcontrollereventbinding",
+                                                            "reference": {
+                                                                "name": "listeners",
+                                                                "type": "array"
+                                                            },
+                                                            "codeClass": null,
+                                                            "userConfig": {
+                                                                "fn": "onProvenienzaComboboxSelect",
+                                                                "implHandler": [
+                                                                    "        const me=this;",
+                                                                    "        const viewModel=me.getViewModel();",
+                                                                    "        const visitaRecord=viewModel.get('visitaRecord');",
+                                                                    "        visitaRecord.set('provenienza',record.get('descrizione'));"
+                                                                ],
+                                                                "name": "select",
+                                                                "scope": "me"
+                                                            },
+                                                            "configAlternates": {
+                                                                "fn": "string",
+                                                                "implHandler": "code",
+                                                                "name": "string",
+                                                                "scope": "string"
+                                                            },
+                                                            "name": "onProvenienzaComboboxSelect",
+                                                            "designerId": "25afe8ae-16b7-4047-ac00-7e3dab14e5a7"
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "type": "Ext.form.field.Text",
+                                                    "reference": {
+                                                        "name": "items",
+                                                        "type": "array"
+                                                    },
+                                                    "codeClass": null,
+                                                    "userConfig": {
+                                                        "fieldLabel": "Terapia in corso",
+                                                        "layout|anchor": "100%",
+                                                        "value": [
+                                                            "{visitaRecord.terapiaInCorso}"
                                                         ]
                                                     },
                                                     "configAlternates": {
-                                                        "store": "array",
+                                                        "value": "binding",
                                                         "fieldLabel": "string",
                                                         "layout|anchor": "string"
                                                     },
-                                                    "name": "MyComboBox",
-                                                    "designerId": "4357756b-17bd-4b4d-bc0c-048cd9e6bf67"
+                                                    "name": "MyTextField",
+                                                    "designerId": "8184a67e-77e0-42b9-b676-219bc5c60187"
                                                 },
                                                 {
                                                     "type": "Ext.form.field.Checkbox",
@@ -223,14 +605,66 @@
                                                     "codeClass": null,
                                                     "userConfig": {
                                                         "fieldLabel": "Palermo:",
-                                                        "layout|anchor": "100%"
+                                                        "layout|anchor": "100%",
+                                                        "value": [
+                                                            "{visitaRecord.palermo}"
+                                                        ]
                                                     },
                                                     "configAlternates": {
                                                         "fieldLabel": "string",
-                                                        "layout|anchor": "string"
+                                                        "layout|anchor": "string",
+                                                        "value": "binding"
                                                     },
                                                     "name": "MyCheckbox1",
                                                     "designerId": "cfb6ba44-16cf-4807-a7b7-c2c9224cb23c"
+                                                },
+                                                {
+                                                    "type": "Ext.toolbar.Toolbar",
+                                                    "reference": {
+                                                        "name": "items",
+                                                        "type": "array"
+                                                    },
+                                                    "codeClass": null,
+                                                    "name": "MyToolbar5",
+                                                    "designerId": "e682f09a-8b0e-4adc-b47f-59f9e8914034",
+                                                    "cn": [
+                                                        {
+                                                            "type": "Ext.toolbar.Fill",
+                                                            "reference": {
+                                                                "name": "items",
+                                                                "type": "array"
+                                                            },
+                                                            "codeClass": null,
+                                                            "userConfig": {
+                                                                "designer|displayName": "filler",
+                                                                "layout|flex": null
+                                                            },
+                                                            "configAlternates": {
+                                                                "designer|displayName": "string",
+                                                                "layout|flex": "number"
+                                                            },
+                                                            "name": "MyFill5",
+                                                            "designerId": "342d5aed-a483-4ad1-8632-3c2ba1302fce"
+                                                        },
+                                                        {
+                                                            "type": "Ext.button.Button",
+                                                            "reference": {
+                                                                "name": "items",
+                                                                "type": "array"
+                                                            },
+                                                            "codeClass": null,
+                                                            "userConfig": {
+                                                                "layout|flex": null,
+                                                                "text": "Testi standard"
+                                                            },
+                                                            "configAlternates": {
+                                                                "layout|flex": "number",
+                                                                "text": "string"
+                                                            },
+                                                            "name": "MyButton12",
+                                                            "designerId": "e0148ef8-e9bc-4311-8ca6-a84964422800"
+                                                        }
+                                                    ]
                                                 },
                                                 {
                                                     "type": "Ext.form.field.TextArea",
@@ -242,15 +676,65 @@
                                                     "userConfig": {
                                                         "fieldLabel": "Ecocardiografia:",
                                                         "layout|anchor": "100%",
-                                                        "minHeight": 120
+                                                        "minHeight": 120,
+                                                        "value": [
+                                                            "{visitaRecord.ecoCardiografia}"
+                                                        ]
                                                     },
                                                     "configAlternates": {
                                                         "fieldLabel": "string",
                                                         "layout|anchor": "string",
-                                                        "minHeight": "number"
+                                                        "minHeight": "number",
+                                                        "value": "binding"
                                                     },
                                                     "name": "MyTextArea",
                                                     "designerId": "9c909f11-95ba-4300-93f0-ed8100bd138a"
+                                                },
+                                                {
+                                                    "type": "Ext.toolbar.Toolbar",
+                                                    "reference": {
+                                                        "name": "items",
+                                                        "type": "array"
+                                                    },
+                                                    "codeClass": null,
+                                                    "name": "MyToolbar6",
+                                                    "designerId": "a9dc8537-4001-48aa-a65a-8d139e876e50",
+                                                    "cn": [
+                                                        {
+                                                            "type": "Ext.toolbar.Fill",
+                                                            "reference": {
+                                                                "name": "items",
+                                                                "type": "array"
+                                                            },
+                                                            "codeClass": null,
+                                                            "userConfig": {
+                                                                "layout|flex": null
+                                                            },
+                                                            "configAlternates": {
+                                                                "layout|flex": "number"
+                                                            },
+                                                            "name": "MyFill6",
+                                                            "designerId": "1cad5b92-5b05-498c-a3bc-d52825d20782"
+                                                        },
+                                                        {
+                                                            "type": "Ext.button.Button",
+                                                            "reference": {
+                                                                "name": "items",
+                                                                "type": "array"
+                                                            },
+                                                            "codeClass": null,
+                                                            "userConfig": {
+                                                                "layout|flex": null,
+                                                                "text": "Testi standard"
+                                                            },
+                                                            "configAlternates": {
+                                                                "layout|flex": "number",
+                                                                "text": "string"
+                                                            },
+                                                            "name": "MyButton13",
+                                                            "designerId": "184b3ed4-865d-43b0-83dd-c8f665063879"
+                                                        }
+                                                    ]
                                                 },
                                                 {
                                                     "type": "Ext.form.field.TextArea",
@@ -262,12 +746,16 @@
                                                     "userConfig": {
                                                         "fieldLabel": "ECG:",
                                                         "layout|anchor": "100%",
-                                                        "minHeight": 120
+                                                        "minHeight": 120,
+                                                        "value": [
+                                                            "{visitaRecord.ecg}"
+                                                        ]
                                                     },
                                                     "configAlternates": {
                                                         "fieldLabel": "string",
                                                         "layout|anchor": "string",
-                                                        "minHeight": "number"
+                                                        "minHeight": "number",
+                                                        "value": "binding"
                                                     },
                                                     "name": "MyTextArea1",
                                                     "designerId": "62836624-dfb1-432c-a406-5f500fa78912"
@@ -281,11 +769,15 @@
                                                     "codeClass": null,
                                                     "userConfig": {
                                                         "fieldLabel": "Stampa l'appuntamento",
-                                                        "layout|anchor": "100%"
+                                                        "layout|anchor": "100%",
+                                                        "value": [
+                                                            "{visitaRecord.stampaAppuntamento}"
+                                                        ]
                                                     },
                                                     "configAlternates": {
                                                         "fieldLabel": "string",
-                                                        "layout|anchor": "string"
+                                                        "layout|anchor": "string",
+                                                        "value": "binding"
                                                     },
                                                     "name": "MyCheckbox2",
                                                     "designerId": "d14ae5fd-0281-4086-b545-cadc8a2dbd8b"
@@ -373,11 +865,13 @@
                                                     "codeClass": null,
                                                     "userConfig": {
                                                         "container|columns": 3,
+                                                        "designer|displayName": "containerEsamiEmatochimici",
                                                         "layout": "table"
                                                     },
                                                     "configAlternates": {
                                                         "container|columns": "number",
-                                                        "layout": "string"
+                                                        "layout": "string",
+                                                        "designer|displayName": "string"
                                                     },
                                                     "name": "MyContainer1",
                                                     "designerId": "6afb589b-d5dc-421a-81b0-7396539070c8",
@@ -391,11 +885,15 @@
                                                             "codeClass": null,
                                                             "userConfig": {
                                                                 "fieldLabel": "Data esami:",
+                                                                "value": [
+                                                                    "{visitaRecord.dataEsami}"
+                                                                ],
                                                                 "width": "100%"
                                                             },
                                                             "configAlternates": {
                                                                 "fieldLabel": "string",
-                                                                "width": "auto"
+                                                                "width": "auto",
+                                                                "value": "binding"
                                                             },
                                                             "name": "MyDateField1",
                                                             "designerId": "81f50788-72ab-4f87-9151-30cb920c623b"
@@ -409,11 +907,15 @@
                                                             "codeClass": null,
                                                             "userConfig": {
                                                                 "fieldLabel": "Glicemia:",
+                                                                "value": [
+                                                                    "{visitaRecord.glicemia}"
+                                                                ],
                                                                 "width": "100%"
                                                             },
                                                             "configAlternates": {
                                                                 "fieldLabel": "string",
-                                                                "width": "auto"
+                                                                "width": "auto",
+                                                                "value": "binding"
                                                             },
                                                             "name": "MyNumberField",
                                                             "designerId": "0ade0898-c84e-4f8e-8f53-159367bcba82"
@@ -427,11 +929,15 @@
                                                             "codeClass": null,
                                                             "userConfig": {
                                                                 "fieldLabel": "Azotemia:",
+                                                                "value": [
+                                                                    "{visitaRecord.azotemia}"
+                                                                ],
                                                                 "width": "100%"
                                                             },
                                                             "configAlternates": {
                                                                 "fieldLabel": "string",
-                                                                "width": "auto"
+                                                                "width": "auto",
+                                                                "value": "binding"
                                                             },
                                                             "name": "MyNumberField2",
                                                             "designerId": "70268ef1-eb98-4ffd-a369-f8571f33382d"
@@ -445,11 +951,15 @@
                                                             "codeClass": null,
                                                             "userConfig": {
                                                                 "fieldLabel": "Creatinina:",
+                                                                "value": [
+                                                                    "{visitaRecord.creatinina}"
+                                                                ],
                                                                 "width": "100%"
                                                             },
                                                             "configAlternates": {
                                                                 "fieldLabel": "string",
-                                                                "width": "auto"
+                                                                "width": "auto",
+                                                                "value": "binding"
                                                             },
                                                             "name": "MyNumberField3",
                                                             "designerId": "3b44f181-0a6c-4d83-9f62-75c0dded06a6"
@@ -463,11 +973,15 @@
                                                             "codeClass": null,
                                                             "userConfig": {
                                                                 "fieldLabel": "Acido urico:",
+                                                                "value": [
+                                                                    "{visitaRecord.acidoUrico}"
+                                                                ],
                                                                 "width": "100%"
                                                             },
                                                             "configAlternates": {
                                                                 "fieldLabel": "string",
-                                                                "width": "auto"
+                                                                "width": "auto",
+                                                                "value": "binding"
                                                             },
                                                             "name": "MyNumberField4",
                                                             "designerId": "8129fc01-96da-4386-9cd3-b4c247cf9342"
@@ -481,11 +995,15 @@
                                                             "codeClass": null,
                                                             "userConfig": {
                                                                 "fieldLabel": "Transaminasi GO:",
+                                                                "value": [
+                                                                    "{visitaRecord.transaminasiGO}"
+                                                                ],
                                                                 "width": "100%"
                                                             },
                                                             "configAlternates": {
                                                                 "fieldLabel": "string",
-                                                                "width": "auto"
+                                                                "width": "auto",
+                                                                "value": "binding"
                                                             },
                                                             "name": "MyNumberField5",
                                                             "designerId": "a40b95bc-51e0-42f5-8c21-181460c9ce60"
@@ -499,11 +1017,15 @@
                                                             "codeClass": null,
                                                             "userConfig": {
                                                                 "fieldLabel": "Transaminasi GP:",
+                                                                "value": [
+                                                                    "{visitaRecord.transaminasiGP}"
+                                                                ],
                                                                 "width": "100%"
                                                             },
                                                             "configAlternates": {
                                                                 "fieldLabel": "string",
-                                                                "width": "auto"
+                                                                "width": "auto",
+                                                                "value": "binding"
                                                             },
                                                             "name": "MyNumberField6",
                                                             "designerId": "6c1fcc6e-9265-4b58-9b4b-ca7db8e90c77"
@@ -517,11 +1039,15 @@
                                                             "codeClass": null,
                                                             "userConfig": {
                                                                 "fieldLabel": "Fosfatasi alcalica:",
+                                                                "value": [
+                                                                    "{visitaRecord.fosfatasiAlcalica}"
+                                                                ],
                                                                 "width": "100%"
                                                             },
                                                             "configAlternates": {
                                                                 "fieldLabel": "string",
-                                                                "width": "auto"
+                                                                "width": "auto",
+                                                                "value": "binding"
                                                             },
                                                             "name": "MyNumberField7",
                                                             "designerId": "fa5df599-93ac-4056-9cf4-42767bdfa5a9"
@@ -535,11 +1061,15 @@
                                                             "codeClass": null,
                                                             "userConfig": {
                                                                 "fieldLabel": "GGT:",
+                                                                "value": [
+                                                                    "{visitaRecord.ggt}"
+                                                                ],
                                                                 "width": "100%"
                                                             },
                                                             "configAlternates": {
                                                                 "fieldLabel": "string",
-                                                                "width": "auto"
+                                                                "width": "auto",
+                                                                "value": "binding"
                                                             },
                                                             "name": "MyNumberField1",
                                                             "designerId": "10e624f6-b342-42b1-92ff-710b1d321fa5"
@@ -553,11 +1083,15 @@
                                                             "codeClass": null,
                                                             "userConfig": {
                                                                 "fieldLabel": "CPK:",
+                                                                "value": [
+                                                                    "{visitaRecord.cpk}"
+                                                                ],
                                                                 "width": "100%"
                                                             },
                                                             "configAlternates": {
                                                                 "fieldLabel": "string",
-                                                                "width": "auto"
+                                                                "width": "auto",
+                                                                "value": "binding"
                                                             },
                                                             "name": "MyNumberField9",
                                                             "designerId": "c32293ea-5f5d-452d-99fd-f64fe936783a"
@@ -571,11 +1105,15 @@
                                                             "codeClass": null,
                                                             "userConfig": {
                                                                 "fieldLabel": "CPK -mB:",
+                                                                "value": [
+                                                                    "{visitaRecord.cpkmB}"
+                                                                ],
                                                                 "width": "100%"
                                                             },
                                                             "configAlternates": {
                                                                 "fieldLabel": "string",
-                                                                "width": "auto"
+                                                                "width": "auto",
+                                                                "value": "binding"
                                                             },
                                                             "name": "MyNumberField10",
                                                             "designerId": "90de9451-977c-4bb0-ba90-eed733bf4ad1"
@@ -589,11 +1127,15 @@
                                                             "codeClass": null,
                                                             "userConfig": {
                                                                 "fieldLabel": "LDH:",
+                                                                "value": [
+                                                                    "{visitaRecord.ldh}"
+                                                                ],
                                                                 "width": "100%"
                                                             },
                                                             "configAlternates": {
                                                                 "fieldLabel": "string",
-                                                                "width": "auto"
+                                                                "width": "auto",
+                                                                "value": "binding"
                                                             },
                                                             "name": "MyNumberField8",
                                                             "designerId": "1ccf4083-a89f-4ca2-88e5-8fbc9a699563"
@@ -607,11 +1149,15 @@
                                                             "codeClass": null,
                                                             "userConfig": {
                                                                 "fieldLabel": "Bilirubina totale:",
+                                                                "value": [
+                                                                    "{visitaRecord.bilirubinaTotale}"
+                                                                ],
                                                                 "width": "100%"
                                                             },
                                                             "configAlternates": {
                                                                 "fieldLabel": "string",
-                                                                "width": "auto"
+                                                                "width": "auto",
+                                                                "value": "binding"
                                                             },
                                                             "name": "MyNumberField11",
                                                             "designerId": "fdbec705-874c-4959-95e6-de1751b56938"
@@ -625,11 +1171,15 @@
                                                             "codeClass": null,
                                                             "userConfig": {
                                                                 "fieldLabel": "Bilirubina diretta:",
+                                                                "value": [
+                                                                    "{visitaRecord.bilirubinaDiretta}"
+                                                                ],
                                                                 "width": "100%"
                                                             },
                                                             "configAlternates": {
                                                                 "fieldLabel": "string",
-                                                                "width": "auto"
+                                                                "width": "auto",
+                                                                "value": "binding"
                                                             },
                                                             "name": "MyNumberField12",
                                                             "designerId": "4a6380e6-e2d5-48e1-acae-1572da5abdf0"
@@ -643,11 +1193,15 @@
                                                             "codeClass": null,
                                                             "userConfig": {
                                                                 "fieldLabel": "Colesterolo totale:",
+                                                                "value": [
+                                                                    "{visitaRecord.colesteroloTotale}"
+                                                                ],
                                                                 "width": "100%"
                                                             },
                                                             "configAlternates": {
                                                                 "fieldLabel": "string",
-                                                                "width": "auto"
+                                                                "width": "auto",
+                                                                "value": "binding"
                                                             },
                                                             "name": "MyNumberField13",
                                                             "designerId": "0fdf0250-4360-4f7f-a8d7-ce2b8bd7bc3e"
@@ -661,11 +1215,15 @@
                                                             "codeClass": null,
                                                             "userConfig": {
                                                                 "fieldLabel": "Colesterolo HDL",
+                                                                "value": [
+                                                                    "{visitaRecord.colesteroloHDL}"
+                                                                ],
                                                                 "width": "100%"
                                                             },
                                                             "configAlternates": {
                                                                 "fieldLabel": "string",
-                                                                "width": "auto"
+                                                                "width": "auto",
+                                                                "value": "binding"
                                                             },
                                                             "name": "MyNumberField14",
                                                             "designerId": "26245bab-39d8-4bb3-be54-94d01aa0524b"
@@ -679,11 +1237,15 @@
                                                             "codeClass": null,
                                                             "userConfig": {
                                                                 "fieldLabel": "Colesterolo LDL:",
+                                                                "value": [
+                                                                    "{visitaRecord.colesteroloLDL}"
+                                                                ],
                                                                 "width": "100%"
                                                             },
                                                             "configAlternates": {
                                                                 "fieldLabel": "string",
-                                                                "width": "auto"
+                                                                "width": "auto",
+                                                                "value": "binding"
                                                             },
                                                             "name": "MyNumberField15",
                                                             "designerId": "0fc176c6-4eb5-448f-a883-99121cf48cd9"
@@ -697,11 +1259,15 @@
                                                             "codeClass": null,
                                                             "userConfig": {
                                                                 "fieldLabel": "Trigliceridi:",
+                                                                "value": [
+                                                                    "{visitaRecord.trigliceridi}"
+                                                                ],
                                                                 "width": "100%"
                                                             },
                                                             "configAlternates": {
                                                                 "fieldLabel": "string",
-                                                                "width": "auto"
+                                                                "width": "auto",
+                                                                "value": "binding"
                                                             },
                                                             "name": "MyNumberField16",
                                                             "designerId": "0bc9b736-1187-4b3a-8058-a82ac89cd121"
@@ -715,11 +1281,15 @@
                                                             "codeClass": null,
                                                             "userConfig": {
                                                                 "fieldLabel": "Potassio:",
+                                                                "value": [
+                                                                    "{visitaRecord.potassio}"
+                                                                ],
                                                                 "width": "100%"
                                                             },
                                                             "configAlternates": {
                                                                 "fieldLabel": "string",
-                                                                "width": "auto"
+                                                                "width": "auto",
+                                                                "value": "binding"
                                                             },
                                                             "name": "MyNumberField17",
                                                             "designerId": "3617fb6e-ff5d-40a2-a64d-47183b419008"
@@ -733,11 +1303,15 @@
                                                             "codeClass": null,
                                                             "userConfig": {
                                                                 "fieldLabel": "Magnesio:",
+                                                                "value": [
+                                                                    "{visitaRecord.magnesio}"
+                                                                ],
                                                                 "width": "100%"
                                                             },
                                                             "configAlternates": {
                                                                 "fieldLabel": "string",
-                                                                "width": "auto"
+                                                                "width": "auto",
+                                                                "value": "binding"
                                                             },
                                                             "name": "MyNumberField21",
                                                             "designerId": "6a213087-9ed5-47ff-b290-4e868292707d"
@@ -751,11 +1325,15 @@
                                                             "codeClass": null,
                                                             "userConfig": {
                                                                 "fieldLabel": "P.T.:",
+                                                                "value": [
+                                                                    "{visitaRecord.pt}"
+                                                                ],
                                                                 "width": "100%"
                                                             },
                                                             "configAlternates": {
                                                                 "fieldLabel": "string",
-                                                                "width": "auto"
+                                                                "width": "auto",
+                                                                "value": "binding"
                                                             },
                                                             "name": "MyNumberField18",
                                                             "designerId": "9ae76c41-9f9a-4929-847e-b73306f0712b"
@@ -769,11 +1347,15 @@
                                                             "codeClass": null,
                                                             "userConfig": {
                                                                 "fieldLabel": "VES:",
+                                                                "value": [
+                                                                    "{visitaRecord.ves}"
+                                                                ],
                                                                 "width": "100%"
                                                             },
                                                             "configAlternates": {
                                                                 "fieldLabel": "string",
-                                                                "width": "auto"
+                                                                "width": "auto",
+                                                                "value": "binding"
                                                             },
                                                             "name": "MyNumberField20",
                                                             "designerId": "9b60daf7-5074-4a00-9f10-00c735e0cdef"
@@ -787,11 +1369,15 @@
                                                             "codeClass": null,
                                                             "userConfig": {
                                                                 "fieldLabel": "HbsAg:",
+                                                                "value": [
+                                                                    "{visitaRecord.hbsAg}"
+                                                                ],
                                                                 "width": "100%"
                                                             },
                                                             "configAlternates": {
                                                                 "fieldLabel": "string",
-                                                                "width": "auto"
+                                                                "width": "auto",
+                                                                "value": "binding"
                                                             },
                                                             "name": "MyNumberField19",
                                                             "designerId": "05b77775-7fb8-4d23-9b37-036c3b4f85b5"
@@ -805,11 +1391,15 @@
                                                             "codeClass": null,
                                                             "userConfig": {
                                                                 "fieldLabel": "FT3:",
+                                                                "value": [
+                                                                    "{visitaRecord.ft3}"
+                                                                ],
                                                                 "width": "100%"
                                                             },
                                                             "configAlternates": {
                                                                 "fieldLabel": "string",
-                                                                "width": "auto"
+                                                                "width": "auto",
+                                                                "value": "binding"
                                                             },
                                                             "name": "MyNumberField22",
                                                             "designerId": "107cb8cd-5c2a-451c-8306-af54e8ae8d20"
@@ -823,11 +1413,15 @@
                                                             "codeClass": null,
                                                             "userConfig": {
                                                                 "fieldLabel": "FT4:",
+                                                                "value": [
+                                                                    "{visitaRecord.ft4}"
+                                                                ],
                                                                 "width": "100%"
                                                             },
                                                             "configAlternates": {
                                                                 "fieldLabel": "string",
-                                                                "width": "auto"
+                                                                "width": "auto",
+                                                                "value": "binding"
                                                             },
                                                             "name": "MyNumberField23",
                                                             "designerId": "85329b7e-9a9a-4769-a42f-f45e43c65192"
@@ -841,11 +1435,15 @@
                                                             "codeClass": null,
                                                             "userConfig": {
                                                                 "fieldLabel": "Cloro:",
+                                                                "value": [
+                                                                    "{visitaRecord.cloro}"
+                                                                ],
                                                                 "width": "100%"
                                                             },
                                                             "configAlternates": {
                                                                 "fieldLabel": "string",
-                                                                "width": "auto"
+                                                                "width": "auto",
+                                                                "value": "binding"
                                                             },
                                                             "name": "MyNumberField24",
                                                             "designerId": "7275a3cb-0f94-48f3-8eff-1b321f250c14"
@@ -859,11 +1457,15 @@
                                                             "codeClass": null,
                                                             "userConfig": {
                                                                 "fieldLabel": "Elettroforesi proteica:",
-                                                                "width": 100
+                                                                "value": [
+                                                                    "{visitaRecord.elettroforesiProteica}"
+                                                                ],
+                                                                "width": "100%"
                                                             },
                                                             "configAlternates": {
                                                                 "fieldLabel": "string",
-                                                                "width": "auto"
+                                                                "width": "auto",
+                                                                "value": "binding"
                                                             },
                                                             "name": "MyNumberField25",
                                                             "designerId": "83526bc7-7fa4-4852-a0c2-c38046460610"
@@ -877,11 +1479,15 @@
                                                             "codeClass": null,
                                                             "userConfig": {
                                                                 "fieldLabel": "P.T.T.:",
+                                                                "value": [
+                                                                    "{visitaRecord.ptt}"
+                                                                ],
                                                                 "width": "100%"
                                                             },
                                                             "configAlternates": {
                                                                 "fieldLabel": "string",
-                                                                "width": "auto"
+                                                                "width": "auto",
+                                                                "value": "binding"
                                                             },
                                                             "name": "MyNumberField26",
                                                             "designerId": "bdcd8fa2-942b-4938-b0ef-b00b3cce2008"
@@ -895,11 +1501,15 @@
                                                             "codeClass": null,
                                                             "userConfig": {
                                                                 "fieldLabel": "VDRL:",
+                                                                "value": [
+                                                                    "{visitaRecord.vdrl}"
+                                                                ],
                                                                 "width": "100%"
                                                             },
                                                             "configAlternates": {
                                                                 "fieldLabel": "string",
-                                                                "width": "auto"
+                                                                "width": "auto",
+                                                                "value": "binding"
                                                             },
                                                             "name": "MyNumberField27",
                                                             "designerId": "a741b660-3c01-4ac9-ab60-8bc14ae58a0b"
@@ -913,11 +1523,15 @@
                                                             "codeClass": null,
                                                             "userConfig": {
                                                                 "fieldLabel": "HVC:",
+                                                                "value": [
+                                                                    "{visitaRecord.hvc}"
+                                                                ],
                                                                 "width": "100%"
                                                             },
                                                             "configAlternates": {
                                                                 "fieldLabel": "string",
-                                                                "width": "auto"
+                                                                "width": "auto",
+                                                                "value": "binding"
                                                             },
                                                             "name": "MyNumberField28",
                                                             "designerId": "19a5bfed-63d0-44c9-a53f-9c8059f67b4a"
@@ -931,11 +1545,15 @@
                                                             "codeClass": null,
                                                             "userConfig": {
                                                                 "fieldLabel": "TSH:",
+                                                                "value": [
+                                                                    "{visitaRecord.tsh}"
+                                                                ],
                                                                 "width": "100%"
                                                             },
                                                             "configAlternates": {
                                                                 "fieldLabel": "string",
-                                                                "width": "auto"
+                                                                "width": "auto",
+                                                                "value": "binding"
                                                             },
                                                             "name": "MyNumberField29",
                                                             "designerId": "c04d7413-ecc4-43a5-8ba6-1b9250ae52c5"
@@ -949,11 +1567,15 @@
                                                             "codeClass": null,
                                                             "userConfig": {
                                                                 "fieldLabel": "Sodio:",
+                                                                "value": [
+                                                                    "{visitaRecord.sodio}"
+                                                                ],
                                                                 "width": "100%"
                                                             },
                                                             "configAlternates": {
                                                                 "fieldLabel": "string",
-                                                                "width": "auto"
+                                                                "width": "auto",
+                                                                "value": "binding"
                                                             },
                                                             "name": "MyNumberField30",
                                                             "designerId": "3dbff915-fb06-4ccb-9698-ac2cbf646fb2"
@@ -967,11 +1589,15 @@
                                                             "codeClass": null,
                                                             "userConfig": {
                                                                 "fieldLabel": "Calcio:",
+                                                                "value": [
+                                                                    "{visitaRecord.calcio}"
+                                                                ],
                                                                 "width": "100%"
                                                             },
                                                             "configAlternates": {
                                                                 "fieldLabel": "string",
-                                                                "width": "auto"
+                                                                "width": "auto",
+                                                                "value": "binding"
                                                             },
                                                             "name": "MyNumberField31",
                                                             "designerId": "bd52309a-b23a-4a48-a9ea-bdcd0c271347"
@@ -985,11 +1611,15 @@
                                                             "codeClass": null,
                                                             "userConfig": {
                                                                 "fieldLabel": "Emocromo:",
+                                                                "value": [
+                                                                    "{visitaRecord.emocromo}"
+                                                                ],
                                                                 "width": "100%"
                                                             },
                                                             "configAlternates": {
                                                                 "fieldLabel": "string",
-                                                                "width": "auto"
+                                                                "width": "auto",
+                                                                "value": "binding"
                                                             },
                                                             "name": "MyNumberField32",
                                                             "designerId": "49c54a21-b148-4dbd-99f7-4ce22ad7238f"
@@ -1003,11 +1633,15 @@
                                                             "codeClass": null,
                                                             "userConfig": {
                                                                 "fieldLabel": "Fibrinogeno:",
+                                                                "value": [
+                                                                    "{visitaRecord.fibrinogeno}"
+                                                                ],
                                                                 "width": "100%"
                                                             },
                                                             "configAlternates": {
                                                                 "fieldLabel": "string",
-                                                                "width": "auto"
+                                                                "width": "auto",
+                                                                "value": "binding"
                                                             },
                                                             "name": "MyNumberField33",
                                                             "designerId": "864f1b67-425b-46eb-b3a8-a5d90e9fdcc0"
@@ -1021,14 +1655,70 @@
                                                             "codeClass": null,
                                                             "userConfig": {
                                                                 "fieldLabel": "Esame urine:",
+                                                                "value": [
+                                                                    "{visitaRecord.esameUrine}"
+                                                                ],
                                                                 "width": "100%"
                                                             },
                                                             "configAlternates": {
                                                                 "fieldLabel": "string",
-                                                                "width": "auto"
+                                                                "width": "auto",
+                                                                "value": "binding"
                                                             },
                                                             "name": "MyNumberField34",
                                                             "designerId": "fdad2714-e3a7-49bc-aaa2-59e1deabdd3e"
+                                                        },
+                                                        {
+                                                            "type": "Ext.toolbar.Toolbar",
+                                                            "reference": {
+                                                                "name": "items",
+                                                                "type": "array"
+                                                            },
+                                                            "codeClass": null,
+                                                            "userConfig": {
+                                                                "layout|colspan": 3
+                                                            },
+                                                            "configAlternates": {
+                                                                "layout|colspan": "number"
+                                                            },
+                                                            "name": "MyToolbar7",
+                                                            "designerId": "a75c2f71-b35f-4d7d-90f8-ec7d7c85377f",
+                                                            "cn": [
+                                                                {
+                                                                    "type": "Ext.toolbar.Fill",
+                                                                    "reference": {
+                                                                        "name": "items",
+                                                                        "type": "array"
+                                                                    },
+                                                                    "codeClass": null,
+                                                                    "userConfig": {
+                                                                        "layout|flex": null
+                                                                    },
+                                                                    "configAlternates": {
+                                                                        "layout|flex": "number"
+                                                                    },
+                                                                    "name": "MyFill7",
+                                                                    "designerId": "78e274c1-f0b0-459e-bb42-8c45804d0e26"
+                                                                },
+                                                                {
+                                                                    "type": "Ext.button.Button",
+                                                                    "reference": {
+                                                                        "name": "items",
+                                                                        "type": "array"
+                                                                    },
+                                                                    "codeClass": null,
+                                                                    "userConfig": {
+                                                                        "layout|flex": null,
+                                                                        "text": "Testi standard"
+                                                                    },
+                                                                    "configAlternates": {
+                                                                        "layout|flex": "number",
+                                                                        "text": "string"
+                                                                    },
+                                                                    "name": "MyButton14",
+                                                                    "designerId": "eb8a6388-3b4c-42f8-a10c-7505aed611e1"
+                                                                }
+                                                            ]
                                                         },
                                                         {
                                                             "type": "Ext.form.field.TextArea",
@@ -1041,7 +1731,10 @@
                                                                 "anchor": "100%",
                                                                 "fieldLabel": "Altri esami ematochimici:",
                                                                 "layout|colspan": 3,
-                                                                "minHeight": 120,
+                                                                "minHeight": 90,
+                                                                "value": [
+                                                                    "{visitaRecord.altriEsamiEmatochimici}"
+                                                                ],
                                                                 "width": "100%"
                                                             },
                                                             "configAlternates": {
@@ -1049,7 +1742,8 @@
                                                                 "fieldLabel": "string",
                                                                 "layout|colspan": "number",
                                                                 "minHeight": "number",
-                                                                "width": "auto"
+                                                                "width": "auto",
+                                                                "value": "binding"
                                                             },
                                                             "name": "MyTextArea2",
                                                             "designerId": "58b1b57e-8cd2-4aad-bf45-0bae15a863bd"
@@ -1139,11 +1833,15 @@
                                                     "codeClass": null,
                                                     "userConfig": {
                                                         "fieldLabel": "Frequenza basale:",
-                                                        "layout|anchor": "100%"
+                                                        "layout|anchor": "100%",
+                                                        "value": [
+                                                            "{visitaRecord.frequenzaBasale}"
+                                                        ]
                                                     },
                                                     "configAlternates": {
                                                         "fieldLabel": "string",
-                                                        "layout|anchor": "string"
+                                                        "layout|anchor": "string",
+                                                        "value": "binding"
                                                     },
                                                     "name": "MyNumberField35",
                                                     "designerId": "63929311-f24d-42fb-bcbe-9e286f56c345"
@@ -1157,11 +1855,15 @@
                                                     "codeClass": null,
                                                     "userConfig": {
                                                         "fieldLabel": "P.A. basale sistolica:",
-                                                        "layout|anchor": "100%"
+                                                        "layout|anchor": "100%",
+                                                        "value": [
+                                                            "{visitaRecord.paBasaleSistolica}"
+                                                        ]
                                                     },
                                                     "configAlternates": {
                                                         "fieldLabel": "string",
-                                                        "layout|anchor": "string"
+                                                        "layout|anchor": "string",
+                                                        "value": "binding"
                                                     },
                                                     "name": "MyNumberField36",
                                                     "designerId": "6cf85da4-f4e8-4dab-bdba-9af666b59c54"
@@ -1175,11 +1877,15 @@
                                                     "codeClass": null,
                                                     "userConfig": {
                                                         "fieldLabel": "P.A. basale diastolica:",
-                                                        "layout|anchor": "100%"
+                                                        "layout|anchor": "100%",
+                                                        "value": [
+                                                            "{visitaRecord.paBasaleDiastolica}"
+                                                        ]
                                                     },
                                                     "configAlternates": {
                                                         "fieldLabel": "string",
-                                                        "layout|anchor": "string"
+                                                        "layout|anchor": "string",
+                                                        "value": "binding"
                                                     },
                                                     "name": "MyNumberField37",
                                                     "designerId": "8ed8fb7c-e262-4c7e-b58c-c6c6b9a18268"
@@ -1193,11 +1899,15 @@
                                                     "codeClass": null,
                                                     "userConfig": {
                                                         "fieldLabel": "Peso:",
-                                                        "layout|anchor": "100%"
+                                                        "layout|anchor": "100%",
+                                                        "value": [
+                                                            "{visitaRecord.peso}"
+                                                        ]
                                                     },
                                                     "configAlternates": {
                                                         "fieldLabel": "string",
-                                                        "layout|anchor": "string"
+                                                        "layout|anchor": "string",
+                                                        "value": "binding"
                                                     },
                                                     "name": "MyNumberField39",
                                                     "designerId": "c9a4e257-b404-4b07-bbe4-a62ab8c6ca01"
@@ -1211,11 +1921,15 @@
                                                     "codeClass": null,
                                                     "userConfig": {
                                                         "fieldLabel": "Altezza",
-                                                        "layout|anchor": "100%"
+                                                        "layout|anchor": "100%",
+                                                        "value": [
+                                                            "{visitaRecord.altezza}"
+                                                        ]
                                                     },
                                                     "configAlternates": {
                                                         "fieldLabel": "string",
-                                                        "layout|anchor": "string"
+                                                        "layout|anchor": "string",
+                                                        "value": "binding"
                                                     },
                                                     "name": "MyNumberField40",
                                                     "designerId": "43a625b9-36b8-4f5f-8a19-278b1f87e2af"
@@ -1230,12 +1944,16 @@
                                                     "userConfig": {
                                                         "fieldLabel": "Superfice corporea",
                                                         "layout|anchor": "100%",
-                                                        "readOnly": true
+                                                        "readOnly": true,
+                                                        "value": [
+                                                            "{visitaRecord.superficieCorporea}"
+                                                        ]
                                                     },
                                                     "configAlternates": {
                                                         "fieldLabel": "string",
                                                         "layout|anchor": "string",
-                                                        "readOnly": "boolean"
+                                                        "readOnly": "boolean",
+                                                        "value": "binding"
                                                     },
                                                     "name": "MyNumberField38",
                                                     "designerId": "6842d0c4-b3e0-426f-93d9-22e508213adc"
@@ -1315,6 +2033,52 @@
                                             "designerId": "eabe2707-6773-46e2-aac9-df335113c1ed",
                                             "cn": [
                                                 {
+                                                    "type": "Ext.toolbar.Toolbar",
+                                                    "reference": {
+                                                        "name": "items",
+                                                        "type": "array"
+                                                    },
+                                                    "codeClass": null,
+                                                    "name": "MyToolbar8",
+                                                    "designerId": "99e587a6-f416-4790-a50b-ded09f78027b",
+                                                    "cn": [
+                                                        {
+                                                            "type": "Ext.toolbar.Fill",
+                                                            "reference": {
+                                                                "name": "items",
+                                                                "type": "array"
+                                                            },
+                                                            "codeClass": null,
+                                                            "userConfig": {
+                                                                "layout|flex": null
+                                                            },
+                                                            "configAlternates": {
+                                                                "layout|flex": "number"
+                                                            },
+                                                            "name": "MyFill7",
+                                                            "designerId": "56d4c9c2-798b-4a2e-b0b9-50c88f73fbfb"
+                                                        },
+                                                        {
+                                                            "type": "Ext.button.Button",
+                                                            "reference": {
+                                                                "name": "items",
+                                                                "type": "array"
+                                                            },
+                                                            "codeClass": null,
+                                                            "userConfig": {
+                                                                "layout|flex": null,
+                                                                "text": "Testi standard"
+                                                            },
+                                                            "configAlternates": {
+                                                                "layout|flex": "number",
+                                                                "text": "string"
+                                                            },
+                                                            "name": "MyButton14",
+                                                            "designerId": "1d7a1bbe-bb95-4c90-918a-a89632ea2828"
+                                                        }
+                                                    ]
+                                                },
+                                                {
                                                     "type": "Ext.form.field.TextArea",
                                                     "reference": {
                                                         "name": "items",
@@ -1324,15 +2088,65 @@
                                                     "userConfig": {
                                                         "fieldLabel": "Esame Obiettivo:",
                                                         "layout|anchor": "100%",
-                                                        "minHeight": 120
+                                                        "minHeight": 100,
+                                                        "value": [
+                                                            "{visitaRecord.esameObiettivo}"
+                                                        ]
                                                     },
                                                     "configAlternates": {
                                                         "fieldLabel": "string",
                                                         "layout|anchor": "string",
-                                                        "minHeight": "number"
+                                                        "minHeight": "number",
+                                                        "value": "binding"
                                                     },
                                                     "name": "MyTextArea3",
                                                     "designerId": "6e61b8d9-3e5e-46dd-bc22-e145264f6aae"
+                                                },
+                                                {
+                                                    "type": "Ext.toolbar.Toolbar",
+                                                    "reference": {
+                                                        "name": "items",
+                                                        "type": "array"
+                                                    },
+                                                    "codeClass": null,
+                                                    "name": "MyToolbar10",
+                                                    "designerId": "17a2838e-939d-4395-87de-3e891646d961",
+                                                    "cn": [
+                                                        {
+                                                            "type": "Ext.toolbar.Fill",
+                                                            "reference": {
+                                                                "name": "items",
+                                                                "type": "array"
+                                                            },
+                                                            "codeClass": null,
+                                                            "userConfig": {
+                                                                "layout|flex": null
+                                                            },
+                                                            "configAlternates": {
+                                                                "layout|flex": "number"
+                                                            },
+                                                            "name": "MyFill7",
+                                                            "designerId": "c29d3c8a-51e1-4e80-bdcf-65c45788d8b0"
+                                                        },
+                                                        {
+                                                            "type": "Ext.button.Button",
+                                                            "reference": {
+                                                                "name": "items",
+                                                                "type": "array"
+                                                            },
+                                                            "codeClass": null,
+                                                            "userConfig": {
+                                                                "layout|flex": null,
+                                                                "text": "Testi standard"
+                                                            },
+                                                            "configAlternates": {
+                                                                "layout|flex": "number",
+                                                                "text": "string"
+                                                            },
+                                                            "name": "MyButton14",
+                                                            "designerId": "6209e128-7845-4c28-a51d-c061c75a91aa"
+                                                        }
+                                                    ]
                                                 },
                                                 {
                                                     "type": "Ext.form.field.TextArea",
@@ -1344,15 +2158,65 @@
                                                     "userConfig": {
                                                         "fieldLabel": "Giudizio clinico:",
                                                         "layout|anchor": "100%",
-                                                        "minHeight": 120
+                                                        "minHeight": 100,
+                                                        "value": [
+                                                            "{visitaRecord.giudizioClinico}"
+                                                        ]
                                                     },
                                                     "configAlternates": {
                                                         "fieldLabel": "string",
                                                         "layout|anchor": "string",
-                                                        "minHeight": "number"
+                                                        "minHeight": "number",
+                                                        "value": "binding"
                                                     },
                                                     "name": "MyTextArea4",
                                                     "designerId": "90a3810a-4292-4b8b-ac8a-58320a904110"
+                                                },
+                                                {
+                                                    "type": "Ext.toolbar.Toolbar",
+                                                    "reference": {
+                                                        "name": "items",
+                                                        "type": "array"
+                                                    },
+                                                    "codeClass": null,
+                                                    "name": "MyToolbar9",
+                                                    "designerId": "6786d896-e166-4965-9782-5425ddb19c84",
+                                                    "cn": [
+                                                        {
+                                                            "type": "Ext.toolbar.Fill",
+                                                            "reference": {
+                                                                "name": "items",
+                                                                "type": "array"
+                                                            },
+                                                            "codeClass": null,
+                                                            "userConfig": {
+                                                                "layout|flex": null
+                                                            },
+                                                            "configAlternates": {
+                                                                "layout|flex": "number"
+                                                            },
+                                                            "name": "MyFill7",
+                                                            "designerId": "be3d39fc-b8bd-4b26-914b-ff4ec1bc72d9"
+                                                        },
+                                                        {
+                                                            "type": "Ext.button.Button",
+                                                            "reference": {
+                                                                "name": "items",
+                                                                "type": "array"
+                                                            },
+                                                            "codeClass": null,
+                                                            "userConfig": {
+                                                                "layout|flex": null,
+                                                                "text": "Testi standard"
+                                                            },
+                                                            "configAlternates": {
+                                                                "layout|flex": "number",
+                                                                "text": "string"
+                                                            },
+                                                            "name": "MyButton14",
+                                                            "designerId": "d6386cdc-aa45-482c-9e73-2e1a124af80d"
+                                                        }
+                                                    ]
                                                 },
                                                 {
                                                     "type": "Ext.form.field.TextArea",
@@ -1364,12 +2228,16 @@
                                                     "userConfig": {
                                                         "fieldLabel": "Terapia consigliata:",
                                                         "layout|anchor": "100%",
-                                                        "minHeight": 120
+                                                        "minHeight": 100,
+                                                        "value": [
+                                                            "{visitaRecord.terapiaConsigliata}"
+                                                        ]
                                                     },
                                                     "configAlternates": {
                                                         "fieldLabel": "string",
                                                         "layout|anchor": "string",
-                                                        "minHeight": "number"
+                                                        "minHeight": "number",
+                                                        "value": "binding"
                                                     },
                                                     "name": "MyTextArea5",
                                                     "designerId": "333c302c-60e2-4ea6-b8b2-ffe1838a2f16"
@@ -1391,7 +2259,8 @@
                                 "title": "Visita prof. Pappone"
                             },
                             "configAlternates": {
-                                "title": "string"
+                                "title": "string",
+                                "hidden": "binding"
                             },
                             "name": "MyPanel7",
                             "designerId": "35857c99-2046-4537-8c81-0359fa7ead89",
@@ -1403,6 +2272,14 @@
                                         "type": "object"
                                     },
                                     "codeClass": null,
+                                    "userConfig": {
+                                        "hidden": [
+                                            "{!visitaRecord.visitaPappone}"
+                                        ]
+                                    },
+                                    "configAlternates": {
+                                        "hidden": "binding"
+                                    },
                                     "name": "TabConfig2",
                                     "designerId": "d485a92a-7418-4e3e-b347-de7bb1bf9b88"
                                 },
@@ -1447,6 +2324,52 @@
                                             "designerId": "ebc325b8-85fe-42a9-9ccd-8a9d4678d6a4",
                                             "cn": [
                                                 {
+                                                    "type": "Ext.toolbar.Toolbar",
+                                                    "reference": {
+                                                        "name": "items",
+                                                        "type": "array"
+                                                    },
+                                                    "codeClass": null,
+                                                    "name": "MyToolbar11",
+                                                    "designerId": "6726bb7e-260a-43ea-9730-71d84c533a6d",
+                                                    "cn": [
+                                                        {
+                                                            "type": "Ext.toolbar.Fill",
+                                                            "reference": {
+                                                                "name": "items",
+                                                                "type": "array"
+                                                            },
+                                                            "codeClass": null,
+                                                            "userConfig": {
+                                                                "layout|flex": null
+                                                            },
+                                                            "configAlternates": {
+                                                                "layout|flex": "number"
+                                                            },
+                                                            "name": "MyFill7",
+                                                            "designerId": "cfcb630c-b77f-4b64-abda-318f251c53f6"
+                                                        },
+                                                        {
+                                                            "type": "Ext.button.Button",
+                                                            "reference": {
+                                                                "name": "items",
+                                                                "type": "array"
+                                                            },
+                                                            "codeClass": null,
+                                                            "userConfig": {
+                                                                "layout|flex": null,
+                                                                "text": "Testi standard"
+                                                            },
+                                                            "configAlternates": {
+                                                                "layout|flex": "number",
+                                                                "text": "string"
+                                                            },
+                                                            "name": "MyButton14",
+                                                            "designerId": "7f66597e-818e-468e-a173-761ef0e39cd3"
+                                                        }
+                                                    ]
+                                                },
+                                                {
                                                     "type": "Ext.form.field.TextArea",
                                                     "reference": {
                                                         "name": "items",
@@ -1456,15 +2379,65 @@
                                                     "userConfig": {
                                                         "fieldLabel": "Relazione procedura:",
                                                         "layout|anchor": "100%",
-                                                        "minHeight": 120
+                                                        "minHeight": 100,
+                                                        "value": [
+                                                            "{visitaRecord.relazioneProceduraPappone}"
+                                                        ]
                                                     },
                                                     "configAlternates": {
                                                         "fieldLabel": "string",
                                                         "layout|anchor": "string",
-                                                        "minHeight": "number"
+                                                        "minHeight": "number",
+                                                        "value": "binding"
                                                     },
                                                     "name": "MyTextArea6",
                                                     "designerId": "89d4e10d-d64a-48e7-b48c-376bea5a0439"
+                                                },
+                                                {
+                                                    "type": "Ext.toolbar.Toolbar",
+                                                    "reference": {
+                                                        "name": "items",
+                                                        "type": "array"
+                                                    },
+                                                    "codeClass": null,
+                                                    "name": "MyToolbar12",
+                                                    "designerId": "c2b8536e-0057-4a4e-8a50-78adf8d4d08a",
+                                                    "cn": [
+                                                        {
+                                                            "type": "Ext.toolbar.Fill",
+                                                            "reference": {
+                                                                "name": "items",
+                                                                "type": "array"
+                                                            },
+                                                            "codeClass": null,
+                                                            "userConfig": {
+                                                                "layout|flex": null
+                                                            },
+                                                            "configAlternates": {
+                                                                "layout|flex": "number"
+                                                            },
+                                                            "name": "MyFill7",
+                                                            "designerId": "6d83f634-9dd1-4a5c-9eab-3772aed74e8f"
+                                                        },
+                                                        {
+                                                            "type": "Ext.button.Button",
+                                                            "reference": {
+                                                                "name": "items",
+                                                                "type": "array"
+                                                            },
+                                                            "codeClass": null,
+                                                            "userConfig": {
+                                                                "layout|flex": null,
+                                                                "text": "Testi standard"
+                                                            },
+                                                            "configAlternates": {
+                                                                "layout|flex": "number",
+                                                                "text": "string"
+                                                            },
+                                                            "name": "MyButton14",
+                                                            "designerId": "5058df6b-0820-4023-a9cf-61127fb2d8a7"
+                                                        }
+                                                    ]
                                                 },
                                                 {
                                                     "type": "Ext.form.field.TextArea",
@@ -1476,15 +2449,65 @@
                                                     "userConfig": {
                                                         "fieldLabel": "Conclusioni:",
                                                         "layout|anchor": "100%",
-                                                        "minHeight": 120
+                                                        "minHeight": 100,
+                                                        "value": [
+                                                            "{visitaRecord.conclusioniVisitaPappone}"
+                                                        ]
                                                     },
                                                     "configAlternates": {
                                                         "fieldLabel": "string",
                                                         "layout|anchor": "string",
-                                                        "minHeight": "number"
+                                                        "minHeight": "number",
+                                                        "value": "binding"
                                                     },
                                                     "name": "MyTextArea7",
                                                     "designerId": "23da014f-075c-4f8b-aa4f-ceceb38b5c19"
+                                                },
+                                                {
+                                                    "type": "Ext.toolbar.Toolbar",
+                                                    "reference": {
+                                                        "name": "items",
+                                                        "type": "array"
+                                                    },
+                                                    "codeClass": null,
+                                                    "name": "MyToolbar13",
+                                                    "designerId": "06660f53-4918-4f6e-b65a-6003efe28daa",
+                                                    "cn": [
+                                                        {
+                                                            "type": "Ext.toolbar.Fill",
+                                                            "reference": {
+                                                                "name": "items",
+                                                                "type": "array"
+                                                            },
+                                                            "codeClass": null,
+                                                            "userConfig": {
+                                                                "layout|flex": null
+                                                            },
+                                                            "configAlternates": {
+                                                                "layout|flex": "number"
+                                                            },
+                                                            "name": "MyFill7",
+                                                            "designerId": "200c09e5-c3df-4a0a-95bd-8436ee267295"
+                                                        },
+                                                        {
+                                                            "type": "Ext.button.Button",
+                                                            "reference": {
+                                                                "name": "items",
+                                                                "type": "array"
+                                                            },
+                                                            "codeClass": null,
+                                                            "userConfig": {
+                                                                "layout|flex": null,
+                                                                "text": "Testi standard"
+                                                            },
+                                                            "configAlternates": {
+                                                                "layout|flex": "number",
+                                                                "text": "string"
+                                                            },
+                                                            "name": "MyButton14",
+                                                            "designerId": "6dd86443-00e6-4748-ba61-f351405dc364"
+                                                        }
+                                                    ]
                                                 },
                                                 {
                                                     "type": "Ext.form.field.TextArea",
@@ -1496,12 +2519,16 @@
                                                     "userConfig": {
                                                         "fieldLabel": "Visita:",
                                                         "layout|anchor": "100%",
-                                                        "minHeight": 120
+                                                        "minHeight": 100,
+                                                        "value": [
+                                                            "{visitaRecord.testoVisitaPappone}"
+                                                        ]
                                                     },
                                                     "configAlternates": {
                                                         "fieldLabel": "string",
                                                         "layout|anchor": "string",
-                                                        "minHeight": "number"
+                                                        "minHeight": "number",
+                                                        "value": "binding"
                                                     },
                                                     "name": "MyTextArea8",
                                                     "designerId": "71c4abda-6c15-4845-9945-189b9a890402"
@@ -1509,6 +2536,166 @@
                                             ]
                                         }
                                     ]
+                                }
+                            ]
+                        },
+                        {
+                            "type": "Ext.toolbar.Toolbar",
+                            "reference": {
+                                "name": "dockedItems",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "designer|displayName": "visitaToolbar",
+                                "designer|uiInterfaceName": "footer",
+                                "dock": "bottom",
+                                "ui": "footer"
+                            },
+                            "configAlternates": {
+                                "designer|displayName": "string",
+                                "designer|uiInterfaceName": "string",
+                                "dock": "string",
+                                "ui": "string"
+                            },
+                            "name": "MyToolbar4",
+                            "designerId": "f5f7fd08-c80f-4d68-9c9a-88ab2a6b303c",
+                            "cn": [
+                                {
+                                    "type": "Ext.button.Button",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "layout|flex": null,
+                                        "text": "Esci"
+                                    },
+                                    "configAlternates": {
+                                        "layout|flex": "number",
+                                        "text": "string"
+                                    },
+                                    "name": "MyButton9",
+                                    "designerId": "50148044-3f70-4fd3-8525-d95a99287629",
+                                    "cn": [
+                                        {
+                                            "type": "viewcontrollereventbinding",
+                                            "reference": {
+                                                "name": "listeners",
+                                                "type": "array"
+                                            },
+                                            "codeClass": null,
+                                            "userConfig": {
+                                                "fn": "onEsciButtonClick",
+                                                "implHandler": [
+                                                    "location.hash='home';"
+                                                ],
+                                                "name": "click",
+                                                "scope": "me"
+                                            },
+                                            "configAlternates": {
+                                                "fn": "string",
+                                                "implHandler": "code",
+                                                "name": "string",
+                                                "scope": "string"
+                                            },
+                                            "name": "onEsciButtonClick",
+                                            "designerId": "f40c0253-a7b7-480b-b79e-38a1ef41f64f"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "Ext.toolbar.Fill",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "designer|displayName": "filler",
+                                        "layout|flex": null
+                                    },
+                                    "configAlternates": {
+                                        "designer|displayName": "string",
+                                        "layout|flex": "number"
+                                    },
+                                    "name": "MyFill4",
+                                    "designerId": "335f3d77-c123-46fb-ba41-06a6428b343c"
+                                },
+                                {
+                                    "type": "Ext.button.Button",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "layout|flex": null,
+                                        "text": "Salva e torna ala lista"
+                                    },
+                                    "configAlternates": {
+                                        "layout|flex": "number",
+                                        "text": "string"
+                                    },
+                                    "name": "MyButton10",
+                                    "designerId": "13dde501-df05-4905-8315-3c8055afffb0",
+                                    "cn": [
+                                        {
+                                            "type": "viewcontrollereventbinding",
+                                            "reference": {
+                                                "name": "listeners",
+                                                "type": "array"
+                                            },
+                                            "codeClass": null,
+                                            "userConfig": {
+                                                "fn": "onSalvaEdEsciButtonClick",
+                                                "implHandler": [
+                                                    "const me=this;",
+                                                    "const viewModel=me.getViewModel();",
+                                                    "const record=viewModel.get('visitaRecord');",
+                                                    "const grid=viewModel.get('visitaGrid');",
+                                                    "const store=grid.getStore();",
+                                                    "record.save({",
+                                                    "    callback: store.reload({",
+                                                    "        callback:function(){",
+                                                    "            location.hash='visite';",
+                                                    "        }",
+                                                    "    })",
+                                                    "});",
+                                                    ""
+                                                ],
+                                                "name": "click",
+                                                "scope": "me"
+                                            },
+                                            "configAlternates": {
+                                                "fn": "string",
+                                                "implHandler": "code",
+                                                "name": "string",
+                                                "scope": "string"
+                                            },
+                                            "name": "onSalvaEdEsciButtonClick",
+                                            "designerId": "1f39827d-cc70-43c0-977e-c5619af102da"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "Ext.button.Button",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "layout|flex": null,
+                                        "text": "Salva e procedi"
+                                    },
+                                    "configAlternates": {
+                                        "layout|flex": "number",
+                                        "text": "string"
+                                    },
+                                    "name": "MyButton11",
+                                    "designerId": "5ec00ad6-fc6b-4ddf-b603-9632fb65d174"
                                 }
                             ]
                         }
@@ -1522,12 +2709,14 @@
                     },
                     "codeClass": null,
                     "userConfig": {
+                        "border": true,
                         "layout|flex": 1,
                         "title": "Riferimenti"
                     },
                     "configAlternates": {
                         "layout|flex": "number",
-                        "title": "string"
+                        "title": "string",
+                        "border": "boolean"
                     },
                     "name": "MyPanel12",
                     "designerId": "c23b3f63-06d6-4c6f-8a53-675ed21ef4fb",
@@ -1544,7 +2733,7 @@
                                 "designer|displayName": "referenceMenu",
                                 "flex": 1,
                                 "floating": false,
-                                "margin": "40 10 10 10",
+                                "margin": "",
                                 "width": "100%"
                             },
                             "configAlternates": {
@@ -1735,7 +2924,9 @@
                 "activeTab": 0,
                 "bodyPadding": "0 0 10 0",
                 "designer|displayName": "tabGrids",
-                "layout|flex": 10,
+                "flex": 2,
+                "height": 100,
+                "layout|flex": null,
                 "minTabWidth": 200
             },
             "configAlternates": {
@@ -1743,7 +2934,9 @@
                 "designer|displayName": "string",
                 "layout|flex": "number",
                 "bodyPadding": "auto",
-                "minTabWidth": "number"
+                "minTabWidth": "number",
+                "flex": "number",
+                "height": "auto"
             },
             "name": "MyTabPanel1",
             "designerId": "ef8e6643-9644-496d-ab22-423b47072187",

@@ -22,6 +22,7 @@ Ext.define('AritmiaRef.view.visita.Visite', {
         'AritmiaRef.view.visita.VisiteViewController',
         'Ext.grid.Panel',
         'Ext.view.Table',
+        'Ext.grid.column.RowNumberer',
         'Ext.grid.column.Date',
         'Ext.grid.filters.filter.Date',
         'Ext.grid.filters.filter.String',
@@ -32,7 +33,8 @@ Ext.define('AritmiaRef.view.visita.Visite', {
         'Ext.toolbar.Toolbar',
         'Ext.button.Button',
         'Ext.toolbar.Fill',
-        'Ext.grid.filters.Filters'
+        'Ext.grid.filters.Filters',
+        'Ext.selection.CheckboxModel'
     ],
 
     controller: 'visita.visite',
@@ -47,13 +49,18 @@ Ext.define('AritmiaRef.view.visita.Visite', {
             reference: 'visiteGrid',
             title: 'Visite',
             titleAlign: 'center',
+            autoLoad: true,
             store: 'Visite',
             columns: [
+                {
+                    xtype: 'rownumberer'
+                },
                 {
                     xtype: 'datecolumn',
                     flex: 2,
                     dataIndex: 'dataVisita',
                     text: 'Data',
+                    format: 'd/m/Y',
                     filter: {
                         type: 'date'
                     }
@@ -99,7 +106,7 @@ Ext.define('AritmiaRef.view.visita.Visite', {
                 {
                     xtype: 'gridcolumn',
                     flex: 5,
-                    dataIndex: 'terapiaInAtto',
+                    dataIndex: 'terapiaInCorso',
                     text: 'Terapia in atto',
                     filter: {
                         type: 'list'
@@ -112,7 +119,13 @@ Ext.define('AritmiaRef.view.visita.Visite', {
                     items: [
                         {
                             handler: function(view, rowIndex, colIndex, item, e, record, row) {
-                                view.up('grid').fireEvent('redirectToVisita');
+                                const me=this;
+                                const visitaForm= Ext.ComponentQuery.query('#visitaPanel')[0];
+                                const viewModel=visitaForm.getViewModel();
+                                const grid=me.up('grid');
+                                viewModel.set('visitaRecord',record);
+                                viewModel.set('visitaGrid',grid);
+                                this.fireEvent('redirectToVisita');
                             },
                             iconCls: 'x-fa fa-pen'
                         }
@@ -128,7 +141,10 @@ Ext.define('AritmiaRef.view.visita.Visite', {
                         {
                             xtype: 'button',
                             iconCls: 'x-fa fa-plus',
-                            text: 'Crea nuova visita'
+                            text: 'Crea nuova visita',
+                            listeners: {
+                                click: 'onAddVisitaButtonClick'
+                            }
                         },
                         {
                             xtype: 'tbfill'
@@ -137,13 +153,20 @@ Ext.define('AritmiaRef.view.visita.Visite', {
                             xtype: 'button',
                             text: 'Elimina tutti i filtri',
                             listeners: {
-                                click: 'onButtonClick'
+                                click: 'onEliminaFiltriButtonClick'
                             }
                         },
                         {
                             xtype: 'button',
                             iconCls: 'fa-light fa-file-excel',
                             text: 'Scarica in Excel'
+                        },
+                        {
+                            xtype: 'button',
+                            text: 'Elimina visite selezionate',
+                            listeners: {
+                                click: 'onRemoveButtonClick'
+                            }
                         }
                     ]
                 }
@@ -152,7 +175,14 @@ Ext.define('AritmiaRef.view.visita.Visite', {
                 {
                     ptype: 'gridfilters'
                 }
-            ]
+            ],
+            listeners: {
+                viewready: 'onGridpanelViewReady',
+                rowdblclick: 'onGridpanelRowDblClick'
+            },
+            selModel: {
+                selType: 'checkboxmodel'
+            }
         }
     ]
 

@@ -25,6 +25,7 @@ Ext.define('AritmiaRef.store.OperatoriJoined', {
         cfg = cfg || {};
         me.callParent([Ext.apply({
             storeId: 'OperatoriJoined',
+            autoLoad: true,
             model: 'AritmiaRef.model.OperatoreJoined'
         }, cfg)]);
     }

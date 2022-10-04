@@ -6,8 +6,7 @@
     },
     "codeClass": null,
     "userConfig": {
-        "designer|userClassName": "OperatoreJoined",
-        "identifier": "sequential"
+        "designer|userClassName": "OperatoreJoined"
     },
     "configAlternates": {
         "designer|userClassName": "string",
@@ -17,7 +16,7 @@
     "designerId": "49858c84-c058-45d3-b118-60ffd6dbaa43",
     "cn": [
         {
-            "type": "Ext.data.field.Integer",
+            "type": "Ext.data.field.String",
             "reference": {
                 "name": "fields",
                 "type": "array"
@@ -29,8 +28,8 @@
             "configAlternates": {
                 "name": "string"
             },
-            "name": "MyInteger4",
-            "designerId": "9a3a8b19-ba38-4a3b-a0e0-4a7b1675da45"
+            "name": "MyString35",
+            "designerId": "7c5f8295-187f-48bc-9db0-e690d23c065e"
         },
         {
             "type": "Ext.data.field.String",
@@ -245,6 +244,16 @@
                     "designerId": "80e19920-692f-4e8b-bcd8-d160eb9e6cda"
                 }
             ]
+        },
+        {
+            "type": "Ext.data.identifier.Uuid",
+            "reference": {
+                "name": "identifier",
+                "type": "object"
+            },
+            "codeClass": null,
+            "name": "MyUuid1",
+            "designerId": "21c68e87-2dcb-43fd-ad84-592187abbbb4"
         }
     ]
 }

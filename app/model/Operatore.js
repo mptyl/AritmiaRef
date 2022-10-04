@@ -39,6 +39,10 @@ Ext.define('AritmiaRef.model.Operatore', {
         },
         {
             type: 'string',
+            name: 'fullName'
+        },
+        {
+            type: 'string',
             name: 'phone'
         },
         {

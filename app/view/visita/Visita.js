@@ -20,23 +20,25 @@ Ext.define('AritmiaRef.view.visita.Visita', {
     requires: [
         'AritmiaRef.view.visita.VisitaViewModel',
         'AritmiaRef.view.visita.VisitaViewController',
-        'Ext.tab.Panel',
-        'Ext.tab.Tab',
         'Ext.form.Panel',
         'Ext.form.FieldSet',
-        'Ext.form.field.Date',
-        'Ext.form.field.Checkbox',
         'Ext.form.field.ComboBox',
-        'Ext.form.field.TextArea',
+        'Ext.view.BoundList',
+        'Ext.XTemplate',
+        'Ext.form.field.Date',
         'Ext.form.field.Number',
+        'Ext.tab.Panel',
+        'Ext.tab.Tab',
+        'Ext.form.field.Checkbox',
+        'Ext.toolbar.Toolbar',
+        'Ext.toolbar.Fill',
+        'Ext.form.field.TextArea',
         'Ext.menu.Menu',
         'Ext.menu.Separator',
         'Ext.grid.Panel',
         'Ext.grid.column.RowNumberer',
         'Ext.grid.column.Action',
         'Ext.view.Table',
-        'Ext.toolbar.Toolbar',
-        'Ext.toolbar.Fill',
         'Ext.selection.CheckboxModel'
     ],
 
@@ -53,16 +55,117 @@ Ext.define('AritmiaRef.view.visita.Visita', {
     },
     items: [
         {
-            xtype: 'panel',
-            flex: 3,
-            layout: {
-                type: 'vbox',
-                align: 'stretch'
-            }
+            xtype: 'form',
+            flex: 1,
+            bodyPadding: 10,
+            fieldDefaults: {
+                labelWidth: 160,
+                labelAlign: 'right',
+                selectOnFocus: true
+            },
+            items: [
+                {
+                    xtype: 'fieldset',
+                    title: 'Paziente e medico',
+                    layout: {
+                        type: 'vbox',
+                        align: 'stretch',
+                        padding: '0 0 10 0'
+                    },
+                    items: [
+                        {
+                            xtype: 'container',
+                            flex: 1,
+                            layout: {
+                                type: 'hbox',
+                                align: 'stretch'
+                            },
+                            items: [
+                                {
+                                    xtype: 'combobox',
+                                    flex: 3,
+                                    fieldLabel: 'Paziente',
+                                    name: 'pazienteFk',
+                                    allowBlank: false,
+                                    autoLoadOnValue: true,
+                                    displayField: 'fullName',
+                                    forceSelection: true,
+                                    queryMode: 'local',
+                                    store: 'Pazienti',
+                                    typeAhead: true,
+                                    valueField: 'id',
+                                    bind: {
+                                        value: '{visitaRecord.pazienteFk}'
+                                    },
+                                    listeners: {
+                                        select: 'onPazienteComboboSelect'
+                                    },
+                                    listConfig: {
+                                        xtype: 'boundlist',
+                                        itemSelector: 'div',
+                                        itemTpl: [
+                                            '{lastName} {firstName}'
+                                        ]
+                                    }
+                                },
+                                {
+                                    xtype: 'datefield',
+                                    flex: 1,
+                                    fieldLabel: 'Data visita:',
+                                    format: 'd/m/Y',
+                                    bind: {
+                                        value: '{visitaRecord.dataVisita}'
+                                    }
+                                }
+                            ]
+                        },
+                        {
+                            xtype: 'container',
+                            flex: 1,
+                            layout: {
+                                type: 'hbox',
+                                align: 'stretch'
+                            },
+                            items: [
+                                {
+                                    xtype: 'combobox',
+                                    flex: 3,
+                                    fieldLabel: 'Medico di riferimento:',
+                                    name: 'operatoreFk',
+                                    allowBlank: false,
+                                    autoLoadOnValue: true,
+                                    autoSelect: false,
+                                    autoSelectLast: false,
+                                    displayField: 'fullName',
+                                    queryMode: 'local',
+                                    store: 'Operatori',
+                                    typeAhead: true,
+                                    valueField: 'id',
+                                    bind: {
+                                        value: '{visitaRecord.operatoreFk}'
+                                    },
+                                    listeners: {
+                                        select: 'onOperatoreComboboxSelect'
+                                    }
+                                },
+                                {
+                                    xtype: 'numberfield',
+                                    flex: 1,
+                                    flex: 1,
+                                    fieldLabel: 'Età',
+                                    bind: {
+                                        value: '{visitaRecord.eta}'
+                                    }
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
         },
         {
             xtype: 'container',
-            flex: 20,
+            flex: 5,
             layout: {
                 type: 'hbox',
                 align: 'stretch'
@@ -94,45 +197,102 @@ Ext.define('AritmiaRef.view.visita.Visita', {
                                                 {
                                                     xtype: 'datefield',
                                                     anchor: '100%',
-                                                    fieldLabel: 'Data visita:'
+                                                    fieldLabel: 'Data visita:',
+                                                    format: 'd/m/Y',
+                                                    bind: {
+                                                        value: '{visitaRecord.dataVisita}'
+                                                    }
                                                 },
                                                 {
                                                     xtype: 'checkboxfield',
                                                     anchor: '100%',
-                                                    fieldLabel: 'Visita prof. Pappone:'
+                                                    fieldLabel: 'Visita prof. Pappone:',
+                                                    bind: {
+                                                        value: '{visitaRecord.visitaPappone}'
+                                                    }
                                                 },
                                                 {
                                                     xtype: 'combobox',
                                                     anchor: '100%',
                                                     fieldLabel: 'Provenienza:',
-                                                    store: [
-                                                        'Pronto soccorso',
-                                                        'Cardiochirurgia',
-                                                        'Aritmologia',
-                                                        'Altro reparto'
+                                                    name: 'provenienzaFk',
+                                                    displayField: 'descrizione',
+                                                    queryMode: 'local',
+                                                    store: 'Provenienze',
+                                                    typeAhead: true,
+                                                    valueField: 'id',
+                                                    bind: {
+                                                        value: '{visitaRecord.provevienzaFk}'
+                                                    },
+                                                    listeners: {
+                                                        select: 'onProvenienzaComboboxSelect'
+                                                    }
+                                                },
+                                                {
+                                                    xtype: 'textfield',
+                                                    anchor: '100%',
+                                                    fieldLabel: 'Terapia in corso',
+                                                    bind: {
+                                                        value: '{visitaRecord.terapiaInCorso}'
+                                                    }
+                                                },
+                                                {
+                                                    xtype: 'checkboxfield',
+                                                    anchor: '100%',
+                                                    fieldLabel: 'Palermo:',
+                                                    bind: {
+                                                        value: '{visitaRecord.palermo}'
+                                                    }
+                                                },
+                                                {
+                                                    xtype: 'toolbar',
+                                                    items: [
+                                                        {
+                                                            xtype: 'tbfill'
+                                                        },
+                                                        {
+                                                            xtype: 'button',
+                                                            text: 'Testi standard'
+                                                        }
                                                     ]
                                                 },
                                                 {
-                                                    xtype: 'checkboxfield',
+                                                    xtype: 'textareafield',
                                                     anchor: '100%',
-                                                    fieldLabel: 'Palermo:'
+                                                    minHeight: 120,
+                                                    fieldLabel: 'Ecocardiografia:',
+                                                    bind: {
+                                                        value: '{visitaRecord.ecoCardiografia}'
+                                                    }
+                                                },
+                                                {
+                                                    xtype: 'toolbar',
+                                                    items: [
+                                                        {
+                                                            xtype: 'tbfill'
+                                                        },
+                                                        {
+                                                            xtype: 'button',
+                                                            text: 'Testi standard'
+                                                        }
+                                                    ]
                                                 },
                                                 {
                                                     xtype: 'textareafield',
                                                     anchor: '100%',
                                                     minHeight: 120,
-                                                    fieldLabel: 'Ecocardiografia:'
-                                                },
-                                                {
-                                                    xtype: 'textareafield',
-                                                    anchor: '100%',
-                                                    minHeight: 120,
-                                                    fieldLabel: 'ECG:'
+                                                    fieldLabel: 'ECG:',
+                                                    bind: {
+                                                        value: '{visitaRecord.ecg}'
+                                                    }
                                                 },
                                                 {
                                                     xtype: 'checkboxfield',
                                                     anchor: '100%',
-                                                    fieldLabel: 'Stampa l\'appuntamento'
+                                                    fieldLabel: 'Stampa l\'appuntamento',
+                                                    bind: {
+                                                        value: '{visitaRecord.stampaAppuntamento}'
+                                                    }
                                                 }
                                             ]
                                         }
@@ -168,190 +328,314 @@ Ext.define('AritmiaRef.view.visita.Visita', {
                                                         {
                                                             xtype: 'datefield',
                                                             width: '100%',
-                                                            fieldLabel: 'Data esami:'
+                                                            fieldLabel: 'Data esami:',
+                                                            bind: {
+                                                                value: '{visitaRecord.dataEsami}'
+                                                            }
                                                         },
                                                         {
                                                             xtype: 'numberfield',
                                                             width: '100%',
-                                                            fieldLabel: 'Glicemia:'
+                                                            fieldLabel: 'Glicemia:',
+                                                            bind: {
+                                                                value: '{visitaRecord.glicemia}'
+                                                            }
                                                         },
                                                         {
                                                             xtype: 'numberfield',
                                                             width: '100%',
-                                                            fieldLabel: 'Azotemia:'
+                                                            fieldLabel: 'Azotemia:',
+                                                            bind: {
+                                                                value: '{visitaRecord.azotemia}'
+                                                            }
                                                         },
                                                         {
                                                             xtype: 'numberfield',
                                                             width: '100%',
-                                                            fieldLabel: 'Creatinina:'
+                                                            fieldLabel: 'Creatinina:',
+                                                            bind: {
+                                                                value: '{visitaRecord.creatinina}'
+                                                            }
                                                         },
                                                         {
                                                             xtype: 'numberfield',
                                                             width: '100%',
-                                                            fieldLabel: 'Acido urico:'
+                                                            fieldLabel: 'Acido urico:',
+                                                            bind: {
+                                                                value: '{visitaRecord.acidoUrico}'
+                                                            }
                                                         },
                                                         {
                                                             xtype: 'numberfield',
                                                             width: '100%',
-                                                            fieldLabel: 'Transaminasi GO:'
+                                                            fieldLabel: 'Transaminasi GO:',
+                                                            bind: {
+                                                                value: '{visitaRecord.transaminasiGO}'
+                                                            }
                                                         },
                                                         {
                                                             xtype: 'numberfield',
                                                             width: '100%',
-                                                            fieldLabel: 'Transaminasi GP:'
+                                                            fieldLabel: 'Transaminasi GP:',
+                                                            bind: {
+                                                                value: '{visitaRecord.transaminasiGP}'
+                                                            }
                                                         },
                                                         {
                                                             xtype: 'numberfield',
                                                             width: '100%',
-                                                            fieldLabel: 'Fosfatasi alcalica:'
+                                                            fieldLabel: 'Fosfatasi alcalica:',
+                                                            bind: {
+                                                                value: '{visitaRecord.fosfatasiAlcalica}'
+                                                            }
                                                         },
                                                         {
                                                             xtype: 'numberfield',
                                                             width: '100%',
-                                                            fieldLabel: 'GGT:'
+                                                            fieldLabel: 'GGT:',
+                                                            bind: {
+                                                                value: '{visitaRecord.ggt}'
+                                                            }
                                                         },
                                                         {
                                                             xtype: 'numberfield',
                                                             width: '100%',
-                                                            fieldLabel: 'CPK:'
+                                                            fieldLabel: 'CPK:',
+                                                            bind: {
+                                                                value: '{visitaRecord.cpk}'
+                                                            }
                                                         },
                                                         {
                                                             xtype: 'numberfield',
                                                             width: '100%',
-                                                            fieldLabel: 'CPK -mB:'
+                                                            fieldLabel: 'CPK -mB:',
+                                                            bind: {
+                                                                value: '{visitaRecord.cpkmB}'
+                                                            }
                                                         },
                                                         {
                                                             xtype: 'numberfield',
                                                             width: '100%',
-                                                            fieldLabel: 'LDH:'
+                                                            fieldLabel: 'LDH:',
+                                                            bind: {
+                                                                value: '{visitaRecord.ldh}'
+                                                            }
                                                         },
                                                         {
                                                             xtype: 'numberfield',
                                                             width: '100%',
-                                                            fieldLabel: 'Bilirubina totale:'
+                                                            fieldLabel: 'Bilirubina totale:',
+                                                            bind: {
+                                                                value: '{visitaRecord.bilirubinaTotale}'
+                                                            }
                                                         },
                                                         {
                                                             xtype: 'numberfield',
                                                             width: '100%',
-                                                            fieldLabel: 'Bilirubina diretta:'
+                                                            fieldLabel: 'Bilirubina diretta:',
+                                                            bind: {
+                                                                value: '{visitaRecord.bilirubinaDiretta}'
+                                                            }
                                                         },
                                                         {
                                                             xtype: 'numberfield',
                                                             width: '100%',
-                                                            fieldLabel: 'Colesterolo totale:'
+                                                            fieldLabel: 'Colesterolo totale:',
+                                                            bind: {
+                                                                value: '{visitaRecord.colesteroloTotale}'
+                                                            }
                                                         },
                                                         {
                                                             xtype: 'numberfield',
                                                             width: '100%',
-                                                            fieldLabel: 'Colesterolo HDL'
+                                                            fieldLabel: 'Colesterolo HDL',
+                                                            bind: {
+                                                                value: '{visitaRecord.colesteroloHDL}'
+                                                            }
                                                         },
                                                         {
                                                             xtype: 'numberfield',
                                                             width: '100%',
-                                                            fieldLabel: 'Colesterolo LDL:'
+                                                            fieldLabel: 'Colesterolo LDL:',
+                                                            bind: {
+                                                                value: '{visitaRecord.colesteroloLDL}'
+                                                            }
                                                         },
                                                         {
                                                             xtype: 'numberfield',
                                                             width: '100%',
-                                                            fieldLabel: 'Trigliceridi:'
+                                                            fieldLabel: 'Trigliceridi:',
+                                                            bind: {
+                                                                value: '{visitaRecord.trigliceridi}'
+                                                            }
                                                         },
                                                         {
                                                             xtype: 'numberfield',
                                                             width: '100%',
-                                                            fieldLabel: 'Potassio:'
+                                                            fieldLabel: 'Potassio:',
+                                                            bind: {
+                                                                value: '{visitaRecord.potassio}'
+                                                            }
                                                         },
                                                         {
                                                             xtype: 'numberfield',
                                                             width: '100%',
-                                                            fieldLabel: 'Magnesio:'
+                                                            fieldLabel: 'Magnesio:',
+                                                            bind: {
+                                                                value: '{visitaRecord.magnesio}'
+                                                            }
                                                         },
                                                         {
                                                             xtype: 'numberfield',
                                                             width: '100%',
-                                                            fieldLabel: 'P.T.:'
+                                                            fieldLabel: 'P.T.:',
+                                                            bind: {
+                                                                value: '{visitaRecord.pt}'
+                                                            }
                                                         },
                                                         {
                                                             xtype: 'numberfield',
                                                             width: '100%',
-                                                            fieldLabel: 'VES:'
+                                                            fieldLabel: 'VES:',
+                                                            bind: {
+                                                                value: '{visitaRecord.ves}'
+                                                            }
                                                         },
                                                         {
                                                             xtype: 'numberfield',
                                                             width: '100%',
-                                                            fieldLabel: 'HbsAg:'
+                                                            fieldLabel: 'HbsAg:',
+                                                            bind: {
+                                                                value: '{visitaRecord.hbsAg}'
+                                                            }
                                                         },
                                                         {
                                                             xtype: 'numberfield',
                                                             width: '100%',
-                                                            fieldLabel: 'FT3:'
+                                                            fieldLabel: 'FT3:',
+                                                            bind: {
+                                                                value: '{visitaRecord.ft3}'
+                                                            }
                                                         },
                                                         {
                                                             xtype: 'numberfield',
                                                             width: '100%',
-                                                            fieldLabel: 'FT4:'
+                                                            fieldLabel: 'FT4:',
+                                                            bind: {
+                                                                value: '{visitaRecord.ft4}'
+                                                            }
                                                         },
                                                         {
                                                             xtype: 'numberfield',
                                                             width: '100%',
-                                                            fieldLabel: 'Cloro:'
-                                                        },
-                                                        {
-                                                            xtype: 'numberfield',
-                                                            width: 100,
-                                                            fieldLabel: 'Elettroforesi proteica:'
-                                                        },
-                                                        {
-                                                            xtype: 'numberfield',
-                                                            width: '100%',
-                                                            fieldLabel: 'P.T.T.:'
+                                                            fieldLabel: 'Cloro:',
+                                                            bind: {
+                                                                value: '{visitaRecord.cloro}'
+                                                            }
                                                         },
                                                         {
                                                             xtype: 'numberfield',
                                                             width: '100%',
-                                                            fieldLabel: 'VDRL:'
+                                                            fieldLabel: 'Elettroforesi proteica:',
+                                                            bind: {
+                                                                value: '{visitaRecord.elettroforesiProteica}'
+                                                            }
                                                         },
                                                         {
                                                             xtype: 'numberfield',
                                                             width: '100%',
-                                                            fieldLabel: 'HVC:'
+                                                            fieldLabel: 'P.T.T.:',
+                                                            bind: {
+                                                                value: '{visitaRecord.ptt}'
+                                                            }
                                                         },
                                                         {
                                                             xtype: 'numberfield',
                                                             width: '100%',
-                                                            fieldLabel: 'TSH:'
+                                                            fieldLabel: 'VDRL:',
+                                                            bind: {
+                                                                value: '{visitaRecord.vdrl}'
+                                                            }
                                                         },
                                                         {
                                                             xtype: 'numberfield',
                                                             width: '100%',
-                                                            fieldLabel: 'Sodio:'
+                                                            fieldLabel: 'HVC:',
+                                                            bind: {
+                                                                value: '{visitaRecord.hvc}'
+                                                            }
                                                         },
                                                         {
                                                             xtype: 'numberfield',
                                                             width: '100%',
-                                                            fieldLabel: 'Calcio:'
+                                                            fieldLabel: 'TSH:',
+                                                            bind: {
+                                                                value: '{visitaRecord.tsh}'
+                                                            }
                                                         },
                                                         {
                                                             xtype: 'numberfield',
                                                             width: '100%',
-                                                            fieldLabel: 'Emocromo:'
+                                                            fieldLabel: 'Sodio:',
+                                                            bind: {
+                                                                value: '{visitaRecord.sodio}'
+                                                            }
                                                         },
                                                         {
                                                             xtype: 'numberfield',
                                                             width: '100%',
-                                                            fieldLabel: 'Fibrinogeno:'
+                                                            fieldLabel: 'Calcio:',
+                                                            bind: {
+                                                                value: '{visitaRecord.calcio}'
+                                                            }
                                                         },
                                                         {
                                                             xtype: 'numberfield',
                                                             width: '100%',
-                                                            fieldLabel: 'Esame urine:'
+                                                            fieldLabel: 'Emocromo:',
+                                                            bind: {
+                                                                value: '{visitaRecord.emocromo}'
+                                                            }
+                                                        },
+                                                        {
+                                                            xtype: 'numberfield',
+                                                            width: '100%',
+                                                            fieldLabel: 'Fibrinogeno:',
+                                                            bind: {
+                                                                value: '{visitaRecord.fibrinogeno}'
+                                                            }
+                                                        },
+                                                        {
+                                                            xtype: 'numberfield',
+                                                            width: '100%',
+                                                            fieldLabel: 'Esame urine:',
+                                                            bind: {
+                                                                value: '{visitaRecord.esameUrine}'
+                                                            }
+                                                        },
+                                                        {
+                                                            xtype: 'toolbar',
+                                                            colspan: 3,
+                                                            items: [
+                                                                {
+                                                                    xtype: 'tbfill'
+                                                                },
+                                                                {
+                                                                    xtype: 'button',
+                                                                    text: 'Testi standard'
+                                                                }
+                                                            ]
                                                         },
                                                         {
                                                             xtype: 'textareafield',
                                                             colspan: 3,
                                                             anchor: '100%',
-                                                            minHeight: 120,
+                                                            minHeight: 90,
                                                             width: '100%',
-                                                            fieldLabel: 'Altri esami ematochimici:'
+                                                            fieldLabel: 'Altri esami ematochimici:',
+                                                            bind: {
+                                                                value: '{visitaRecord.altriEsamiEmatochimici}'
+                                                            }
                                                         }
                                                     ]
                                                 }
@@ -382,33 +666,51 @@ Ext.define('AritmiaRef.view.visita.Visita', {
                                                 {
                                                     xtype: 'numberfield',
                                                     anchor: '100%',
-                                                    fieldLabel: 'Frequenza basale:'
+                                                    fieldLabel: 'Frequenza basale:',
+                                                    bind: {
+                                                        value: '{visitaRecord.frequenzaBasale}'
+                                                    }
                                                 },
                                                 {
                                                     xtype: 'numberfield',
                                                     anchor: '100%',
-                                                    fieldLabel: 'P.A. basale sistolica:'
+                                                    fieldLabel: 'P.A. basale sistolica:',
+                                                    bind: {
+                                                        value: '{visitaRecord.paBasaleSistolica}'
+                                                    }
                                                 },
                                                 {
                                                     xtype: 'numberfield',
                                                     anchor: '100%',
-                                                    fieldLabel: 'P.A. basale diastolica:'
+                                                    fieldLabel: 'P.A. basale diastolica:',
+                                                    bind: {
+                                                        value: '{visitaRecord.paBasaleDiastolica}'
+                                                    }
                                                 },
                                                 {
                                                     xtype: 'numberfield',
                                                     anchor: '100%',
-                                                    fieldLabel: 'Peso:'
+                                                    fieldLabel: 'Peso:',
+                                                    bind: {
+                                                        value: '{visitaRecord.peso}'
+                                                    }
                                                 },
                                                 {
                                                     xtype: 'numberfield',
                                                     anchor: '100%',
-                                                    fieldLabel: 'Altezza'
+                                                    fieldLabel: 'Altezza',
+                                                    bind: {
+                                                        value: '{visitaRecord.altezza}'
+                                                    }
                                                 },
                                                 {
                                                     xtype: 'numberfield',
                                                     anchor: '100%',
                                                     fieldLabel: 'Superfice corporea',
-                                                    readOnly: true
+                                                    readOnly: true,
+                                                    bind: {
+                                                        value: '{visitaRecord.superficieCorporea}'
+                                                    }
                                                 }
                                             ]
                                         }
@@ -435,22 +737,67 @@ Ext.define('AritmiaRef.view.visita.Visita', {
                                             title: 'Conclusioni',
                                             items: [
                                                 {
-                                                    xtype: 'textareafield',
-                                                    anchor: '100%',
-                                                    minHeight: 120,
-                                                    fieldLabel: 'Esame Obiettivo:'
+                                                    xtype: 'toolbar',
+                                                    items: [
+                                                        {
+                                                            xtype: 'tbfill'
+                                                        },
+                                                        {
+                                                            xtype: 'button',
+                                                            text: 'Testi standard'
+                                                        }
+                                                    ]
                                                 },
                                                 {
                                                     xtype: 'textareafield',
                                                     anchor: '100%',
-                                                    minHeight: 120,
-                                                    fieldLabel: 'Giudizio clinico:'
+                                                    minHeight: 100,
+                                                    fieldLabel: 'Esame Obiettivo:',
+                                                    bind: {
+                                                        value: '{visitaRecord.esameObiettivo}'
+                                                    }
+                                                },
+                                                {
+                                                    xtype: 'toolbar',
+                                                    items: [
+                                                        {
+                                                            xtype: 'tbfill'
+                                                        },
+                                                        {
+                                                            xtype: 'button',
+                                                            text: 'Testi standard'
+                                                        }
+                                                    ]
                                                 },
                                                 {
                                                     xtype: 'textareafield',
                                                     anchor: '100%',
-                                                    minHeight: 120,
-                                                    fieldLabel: 'Terapia consigliata:'
+                                                    minHeight: 100,
+                                                    fieldLabel: 'Giudizio clinico:',
+                                                    bind: {
+                                                        value: '{visitaRecord.giudizioClinico}'
+                                                    }
+                                                },
+                                                {
+                                                    xtype: 'toolbar',
+                                                    items: [
+                                                        {
+                                                            xtype: 'tbfill'
+                                                        },
+                                                        {
+                                                            xtype: 'button',
+                                                            text: 'Testi standard'
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    xtype: 'textareafield',
+                                                    anchor: '100%',
+                                                    minHeight: 100,
+                                                    fieldLabel: 'Terapia consigliata:',
+                                                    bind: {
+                                                        value: '{visitaRecord.terapiaConsigliata}'
+                                                    }
                                                 }
                                             ]
                                         }
@@ -461,6 +808,12 @@ Ext.define('AritmiaRef.view.visita.Visita', {
                         {
                             xtype: 'panel',
                             title: 'Visita prof. Pappone',
+                            tabConfig: {
+                                xtype: 'tab',
+                                bind: {
+                                    hidden: '{!visitaRecord.visitaPappone}'
+                                }
+                            },
                             items: [
                                 {
                                     xtype: 'form',
@@ -477,26 +830,101 @@ Ext.define('AritmiaRef.view.visita.Visita', {
                                             title: 'Visita prof. Pappone',
                                             items: [
                                                 {
-                                                    xtype: 'textareafield',
-                                                    anchor: '100%',
-                                                    minHeight: 120,
-                                                    fieldLabel: 'Relazione procedura:'
+                                                    xtype: 'toolbar',
+                                                    items: [
+                                                        {
+                                                            xtype: 'tbfill'
+                                                        },
+                                                        {
+                                                            xtype: 'button',
+                                                            text: 'Testi standard'
+                                                        }
+                                                    ]
                                                 },
                                                 {
                                                     xtype: 'textareafield',
                                                     anchor: '100%',
-                                                    minHeight: 120,
-                                                    fieldLabel: 'Conclusioni:'
+                                                    minHeight: 100,
+                                                    fieldLabel: 'Relazione procedura:',
+                                                    bind: {
+                                                        value: '{visitaRecord.relazioneProceduraPappone}'
+                                                    }
+                                                },
+                                                {
+                                                    xtype: 'toolbar',
+                                                    items: [
+                                                        {
+                                                            xtype: 'tbfill'
+                                                        },
+                                                        {
+                                                            xtype: 'button',
+                                                            text: 'Testi standard'
+                                                        }
+                                                    ]
                                                 },
                                                 {
                                                     xtype: 'textareafield',
                                                     anchor: '100%',
-                                                    minHeight: 120,
-                                                    fieldLabel: 'Visita:'
+                                                    minHeight: 100,
+                                                    fieldLabel: 'Conclusioni:',
+                                                    bind: {
+                                                        value: '{visitaRecord.conclusioniVisitaPappone}'
+                                                    }
+                                                },
+                                                {
+                                                    xtype: 'toolbar',
+                                                    items: [
+                                                        {
+                                                            xtype: 'tbfill'
+                                                        },
+                                                        {
+                                                            xtype: 'button',
+                                                            text: 'Testi standard'
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    xtype: 'textareafield',
+                                                    anchor: '100%',
+                                                    minHeight: 100,
+                                                    fieldLabel: 'Visita:',
+                                                    bind: {
+                                                        value: '{visitaRecord.testoVisitaPappone}'
+                                                    }
                                                 }
                                             ]
                                         }
                                     ]
+                                }
+                            ]
+                        }
+                    ],
+                    dockedItems: [
+                        {
+                            xtype: 'toolbar',
+                            dock: 'bottom',
+                            ui: 'footer',
+                            items: [
+                                {
+                                    xtype: 'button',
+                                    text: 'Esci',
+                                    listeners: {
+                                        click: 'onEsciButtonClick'
+                                    }
+                                },
+                                {
+                                    xtype: 'tbfill'
+                                },
+                                {
+                                    xtype: 'button',
+                                    text: 'Salva e torna ala lista',
+                                    listeners: {
+                                        click: 'onSalvaEdEsciButtonClick'
+                                    }
+                                },
+                                {
+                                    xtype: 'button',
+                                    text: 'Salva e procedi'
                                 }
                             ]
                         }
@@ -505,13 +933,14 @@ Ext.define('AritmiaRef.view.visita.Visita', {
                 {
                     xtype: 'panel',
                     flex: 1,
+                    border: true,
                     title: 'Riferimenti',
                     items: [
                         {
                             xtype: 'menu',
                             flex: 1,
                             floating: false,
-                            margin: '40 10 10 10',
+                            margin: '',
                             width: '100%',
                             bodyPadding: '20 5 5 5',
                             items: [
@@ -563,7 +992,8 @@ Ext.define('AritmiaRef.view.visita.Visita', {
         },
         {
             xtype: 'tabpanel',
-            flex: 10,
+            flex: 2,
+            height: 100,
             bodyPadding: '0 0 10 0',
             activeTab: 0,
             minTabWidth: 200,

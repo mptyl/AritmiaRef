@@ -26,7 +26,9 @@ Ext.application({
         'OperatoreJoined',
         'PrestazioneJoined',
         'Role',
-        'Visita'
+        'Visita',
+        'Provenienza',
+        'Paziente'
     ],
     stores: [
         'Prestazioni',
@@ -34,7 +36,9 @@ Ext.application({
         'OperatoriJoined',
         'PrestazioniJoined',
         'Visite',
-        'Roles'
+        'Roles',
+        'Provenienze',
+        'Pazienti'
     ],
     views: [
         'MainView',

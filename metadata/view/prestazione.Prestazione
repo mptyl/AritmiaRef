@@ -243,8 +243,9 @@
                                     "const store=viewModel.get('storePrestazioniJoined');",
                                     "const record=viewModel.get('recordPrestazione');",
                                     "const action=viewModel.get('action');",
-                                    "if(action=='ADD')",
+                                    "if(action=='ADD'){",
                                     "    store.add(record);",
+                                    "}",
                                     "store.sync();",
                                     "store.reload();",
                                     "button.up('window').close();"

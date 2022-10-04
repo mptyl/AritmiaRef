@@ -10,7 +10,7 @@
         "designer|userClassName": "visita.VisiteViewController",
         "listen": [
             "{ component:{",
-            "    grid: {",
+            "    '*': {",
             "        redirectToVisita: 'redirectToVisita'",
             "    }",
             "}}"
@@ -42,6 +42,39 @@
             },
             "name": "redirectToVisita",
             "designerId": "e4fe1070-df17-4b0d-a779-6520ef8640a3"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "grid",
+                    "store"
+                ],
+                "fn": "removeRecord",
+                "implHandler": [
+                    "const selectedRows=grid.getSelectionModel().getSelection();",
+                    "if(selectedRows.length){",
+                    "    store.remove(selectedRows);",
+                    "}",
+                    "store.sync({",
+                    "    callback: function(){",
+                    "        store.reload();",
+                    "    }",
+                    "});"
+                ]
+            },
+            "configAlternates": {
+                "designer|params": "typedarray",
+                "fn": "string",
+                "implHandler": "code"
+            },
+            "name": "removeRecord",
+            "designerId": "ed08a4d8-b797-4ad2-b6d4-5157b8680cb9"
         }
     ]
 }

@@ -17,6 +17,48 @@ Ext.define('AritmiaRef.view.visita.VisitaViewController', {
     extend: 'Ext.app.ViewController',
     alias: 'controller.visita.visita',
 
+    onPazienteComboboSelect: function(combo, record, eOpts) {
+        const me=this;
+        const viewModel=me.getViewModel();
+        const visitaRecord=viewModel.get('visitaRecord');
+        visitaRecord.set('eta',record.get('eta'));
+        visitaRecord.set('paziente',record.get('fullName'));
+    },
+
+    onOperatoreComboboxSelect: function(combo, record, eOpts) {
+        const me=this;
+        const viewModel=me.getViewModel();
+        const visitaRecord=viewModel.get('visitaRecord');
+        visitaRecord.set('operatoreSanitario',record.get('fullName'));
+    },
+
+    onProvenienzaComboboxSelect: function(combo, record, eOpts) {
+        const me=this;
+        const viewModel=me.getViewModel();
+        const visitaRecord=viewModel.get('visitaRecord');
+        visitaRecord.set('provenienza',record.get('descrizione'));
+    },
+
+    onEsciButtonClick: function(button, e, eOpts) {
+        location.hash='home';
+    },
+
+    onSalvaEdEsciButtonClick: function(button, e, eOpts) {
+        const me=this;
+        const viewModel=me.getViewModel();
+        const record=viewModel.get('visitaRecord');
+        const grid=viewModel.get('visitaGrid');
+        const store=grid.getStore();
+        record.save({
+            callback: store.reload({
+                callback:function(){
+                    location.hash='visite';
+                }
+            })
+        });
+
+    },
+
     onAddOperatoreButtonClick: function(button, e, eOpts) {
 
         const me=this;

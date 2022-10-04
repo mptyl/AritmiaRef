@@ -6,12 +6,16 @@
     },
     "codeClass": null,
     "userConfig": {
+        "data": [
+            "{visitaRecord:null}"
+        ],
         "designer|userAlias": "visita.visite",
         "designer|userClassName": "visita.VisiteViewModel"
     },
     "configAlternates": {
         "designer|userAlias": "string",
-        "designer|userClassName": "string"
+        "designer|userClassName": "string",
+        "data": "object"
     },
     "designerId": "9322ab63-7ce2-4935-8a7e-623da634ba1b"
 }

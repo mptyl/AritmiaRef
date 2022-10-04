@@ -6,6 +6,7 @@
     },
     "codeClass": null,
     "userConfig": {
+        "autoLoad": true,
         "designer|userClassName": "Operatori",
         "model": "Operatore",
         "storeId": "Operatori"
@@ -14,7 +15,8 @@
         "data": "array",
         "designer|userClassName": "string",
         "model": "model",
-        "storeId": "string"
+        "storeId": "string",
+        "autoLoad": "boolean"
     },
     "name": "MyJsonStore",
     "designerId": "0578a8c5-4139-42c2-bdf3-2075ed43aa7b"

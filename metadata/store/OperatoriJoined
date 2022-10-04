@@ -6,6 +6,7 @@
     },
     "codeClass": null,
     "userConfig": {
+        "autoLoad": true,
         "designer|userClassName": "OperatoriJoined",
         "model": "OperatoreJoined",
         "storeId": "OperatoriJoined"
@@ -14,7 +15,8 @@
         "data": "array",
         "designer|userClassName": "string",
         "model": "model",
-        "storeId": "string"
+        "storeId": "string",
+        "autoLoad": "boolean"
     },
     "name": "MyJsonStore",
     "designerId": "30cbbfd2-fb09-462e-b58d-08d242421e5c"

@@ -29,6 +29,7 @@
             },
             "codeClass": null,
             "userConfig": {
+                "autoLoad": true,
                 "reference": "visiteGrid",
                 "store": "Visite",
                 "title": "Visite",
@@ -41,7 +42,8 @@
                 "store": "store",
                 "title": "string",
                 "reference": "string",
-                "titleAlign": "string"
+                "titleAlign": "string",
+                "autoLoad": "boolean"
             },
             "name": "MyGridPanel2",
             "designerId": "3a5ed04d-701c-4348-81cb-31cee26a7183",
@@ -63,6 +65,22 @@
                     "designerId": "b34cc2f7-0117-4690-8d7f-d5e070dc89d3"
                 },
                 {
+                    "type": "Ext.grid.column.RowNumberer",
+                    "reference": {
+                        "name": "columns",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "designer|displayName": "numberer"
+                    },
+                    "configAlternates": {
+                        "designer|displayName": "string"
+                    },
+                    "name": "MyRowNumberer2",
+                    "designerId": "a42716e0-c58b-4c90-bab5-c38f1786a829"
+                },
+                {
                     "type": "Ext.grid.column.Date",
                     "reference": {
                         "name": "columns",
@@ -72,12 +90,14 @@
                     "userConfig": {
                         "dataIndex": "dataVisita",
                         "flex": 2,
+                        "format": "d/m/Y",
                         "text": "Data"
                     },
                     "configAlternates": {
                         "dataIndex": "datafield",
                         "flex": "number",
-                        "text": "string"
+                        "text": "string",
+                        "format": "string"
                     },
                     "name": "MyDateColumn1",
                     "designerId": "1ad0887e-0838-475c-8f5f-f2a0e7beeed0",
@@ -234,7 +254,7 @@
                     },
                     "codeClass": null,
                     "userConfig": {
-                        "dataIndex": "terapiaInAtto",
+                        "dataIndex": "terapiaInCorso",
                         "flex": 5,
                         "text": "Terapia in atto"
                     },
@@ -311,7 +331,13 @@
                                         ],
                                         "fn": "handler",
                                         "implHandler": [
-                                            "view.up('grid').fireEvent('redirectToVisita');"
+                                            "const me=this;",
+                                            "const visitaForm= Ext.ComponentQuery.query('#visitaPanel')[0];",
+                                            "const viewModel=visitaForm.getViewModel();",
+                                            "const grid=me.up('grid');",
+                                            "viewModel.set('visitaRecord',record);",
+                                            "viewModel.set('visitaGrid',grid);",
+                                            "this.fireEvent('redirectToVisita');"
                                         ]
                                     },
                                     "configAlternates": {
@@ -366,7 +392,44 @@
                                 "text": "string"
                             },
                             "name": "MyButton3",
-                            "designerId": "3f887d2e-8bed-461a-b3c8-aaff1dd5275f"
+                            "designerId": "3f887d2e-8bed-461a-b3c8-aaff1dd5275f",
+                            "cn": [
+                                {
+                                    "type": "viewcontrollereventbinding",
+                                    "reference": {
+                                        "name": "listeners",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "fn": "onAddVisitaButtonClick",
+                                        "implHandler": [
+                                            "const me=this;",
+                                            "const record=new AritmiaRef.model.Visita();",
+                                            "",
+                                            "const visitaForm= Ext.ComponentQuery.query('#visitaPanel')[0];",
+                                            "const viewModel=visitaForm.getViewModel();",
+                                            "const grid=me.lookupReference('visiteGrid');",
+                                            "record.set('dataVisita', new Date());",
+                                            "",
+                                            "visitaForm.getViewModel().set('visitaRecord',record);",
+                                            "visitaForm.getViewModel().set('visitaGrid',grid);",
+                                            "",
+                                            "this.redirectTo('visita');"
+                                        ],
+                                        "name": "click",
+                                        "scope": "me"
+                                    },
+                                    "configAlternates": {
+                                        "fn": "string",
+                                        "implHandler": "code",
+                                        "name": "string",
+                                        "scope": "string"
+                                    },
+                                    "name": "onAddVisitaButtonClick",
+                                    "designerId": "9771ff13-fc5b-45f8-8ce2-112d14b49e9d"
+                                }
+                            ]
                         },
                         {
                             "type": "Ext.toolbar.Fill",
@@ -410,7 +473,7 @@
                                     },
                                     "codeClass": null,
                                     "userConfig": {
-                                        "fn": "onButtonClick",
+                                        "fn": "onEliminaFiltriButtonClick",
                                         "implHandler": [
                                             "this.lookupReference('visiteGrid').filters.clearFilters();",
                                             ""
@@ -424,7 +487,7 @@
                                         "name": "string",
                                         "scope": "string"
                                     },
-                                    "name": "onButtonClick",
+                                    "name": "onEliminaFiltriButtonClick",
                                     "designerId": "496ce8b1-4da6-41bb-806c-ac5380449299"
                                 }
                             ]
@@ -448,6 +511,63 @@
                             },
                             "name": "MyButton5",
                             "designerId": "21c3a204-2e69-4646-8977-a8a90948f562"
+                        },
+                        {
+                            "type": "Ext.button.Button",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "layout|flex": null,
+                                "text": "Elimina visite selezionate"
+                            },
+                            "configAlternates": {
+                                "layout|flex": "number",
+                                "text": "string"
+                            },
+                            "name": "MyButton15",
+                            "designerId": "3ad49239-0ece-4e0b-a6d5-6c4909750f51",
+                            "cn": [
+                                {
+                                    "type": "viewcontrollereventbinding",
+                                    "reference": {
+                                        "name": "listeners",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "fn": "onRemoveButtonClick",
+                                        "implHandler": [
+                                            "const me=this;",
+                                            "var grid = button.up('grid');",
+                                            "var store = grid.getStore();",
+                                            "Ext.Msg.show({",
+                                            "    title: 'Conferma cancellazione',",
+                                            "    message: 'Confermi la cancellazione?',",
+                                            "    buttons: Ext.Msg.YESNO,",
+                                            "    icon: Ext.Msg.QUESTION,",
+                                            "    fn: function (btn) {",
+                                            "        if (btn === 'yes') {",
+                                            "            me.removeRecord(grid, store);",
+                                            "        }",
+                                            "    }",
+                                            "});"
+                                        ],
+                                        "name": "click",
+                                        "scope": "me"
+                                    },
+                                    "configAlternates": {
+                                        "fn": "string",
+                                        "implHandler": "code",
+                                        "name": "string",
+                                        "scope": "string"
+                                    },
+                                    "name": "onRemoveButtonClick",
+                                    "designerId": "5a763c0c-bda3-437b-8a61-bacc52c30271"
+                                }
+                            ]
                         }
                     ]
                 },
@@ -466,6 +586,78 @@
                     },
                     "name": "MyGridFiltersPlugin",
                     "designerId": "dd41046f-62d9-4deb-8c0e-254e17d4d5ac"
+                },
+                {
+                    "type": "viewcontrollereventbinding",
+                    "reference": {
+                        "name": "listeners",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "fn": "onGridpanelViewReady",
+                        "implHandler": [
+                            "",
+                            "this.lookupReference('visiteGrid').getStore().reload();"
+                        ],
+                        "name": "viewready",
+                        "scope": "me"
+                    },
+                    "configAlternates": {
+                        "fn": "string",
+                        "implHandler": "code",
+                        "name": "string",
+                        "scope": "string"
+                    },
+                    "name": "onGridpanelViewReady",
+                    "designerId": "2cfbac2c-0498-4014-8530-ef708b4bffc7"
+                },
+                {
+                    "type": "Ext.selection.CheckboxModel",
+                    "reference": {
+                        "name": "selModel",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "designer|displayName": "selectionModel"
+                    },
+                    "configAlternates": {
+                        "designer|displayName": "string"
+                    },
+                    "name": "MyCheckboxSelectionModel2",
+                    "designerId": "5a2668d3-096c-4794-9e74-d43202d44a08"
+                },
+                {
+                    "type": "viewcontrollereventbinding",
+                    "reference": {
+                        "name": "listeners",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "fn": "onGridpanelRowDblClick",
+                        "implHandler": [
+                            "const me=this;",
+                            "const visitaForm= Ext.ComponentQuery.query('#visitaPanel')[0];",
+                            "const viewModel=visitaForm.getViewModel();",
+                            "const grid=me.lookupReference('visiteGrid');",
+                            "viewModel.set('visitaRecord',record);",
+                            "viewModel.set('visitaGrid',grid);",
+                            "me.redirectToVisita();",
+                            ""
+                        ],
+                        "name": "rowdblclick",
+                        "scope": "me"
+                    },
+                    "configAlternates": {
+                        "fn": "string",
+                        "implHandler": "code",
+                        "name": "string",
+                        "scope": "string"
+                    },
+                    "name": "onGridpanelRowDblClick",
+                    "designerId": "3eab5a50-d128-4a39-890d-f969960b8159"
                 }
             ]
         }
