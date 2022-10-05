@@ -14,7 +14,7 @@
                 "width": null
             }
         },
-        "urlPrefix": "http://localhost:50445/",
+        "urlPrefix": "http://localhost:52817/",
         "exportPath": "/Users/marcopancotti/jsonServer/public",
         "lockUrlPrefix": true,
         "buildShouldOverwriteIndex": true,
