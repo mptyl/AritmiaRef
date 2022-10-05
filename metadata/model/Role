@@ -54,7 +54,7 @@
             },
             "codeClass": null,
             "userConfig": {
-                "url": "http://localhost:3000/roles"
+                "url": "/roles"
             },
             "configAlternates": {
                 "url": "string"

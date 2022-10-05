@@ -49,9 +49,9 @@ Ext.define('AritmiaRef.view.visita.VisiteViewController', {
         const viewModel=visitaForm.getViewModel();
         const grid=me.lookupReference('visiteGrid');
         record.set('dataVisita', new Date());
-
-        visitaForm.getViewModel().set('visitaRecord',record);
-        visitaForm.getViewModel().set('visitaGrid',grid);
+        viewModel.set('visitaRecord',record);
+        viewModel.set('visitaGrid',grid);
+        this.fireEvent('resetActiveTabs');
 
         this.redirectTo('visita');
     },
@@ -90,6 +90,7 @@ Ext.define('AritmiaRef.view.visita.VisiteViewController', {
         const grid=me.lookupReference('visiteGrid');
         viewModel.set('visitaRecord',record);
         viewModel.set('visitaGrid',grid);
+        visitaForm.fireEvent('resetActiveTabs');
         me.redirectToVisita();
 
     }

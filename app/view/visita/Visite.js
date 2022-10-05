@@ -125,7 +125,10 @@ Ext.define('AritmiaRef.view.visita.Visite', {
                                 const grid=me.up('grid');
                                 viewModel.set('visitaRecord',record);
                                 viewModel.set('visitaGrid',grid);
+
+                                visitaForm.fireEvent('resetActiveTabs');
                                 this.fireEvent('redirectToVisita');
+
                             },
                             iconCls: 'x-fa fa-pen'
                         }

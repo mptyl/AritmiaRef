@@ -17,6 +17,30 @@ Ext.define('AritmiaRef.view.visita.VisitaViewController', {
     extend: 'Ext.app.ViewController',
     alias: 'controller.visita.visita',
 
+    listen: {
+        controller: {
+            '*': {
+                resetActiveTabs: 'resetActiveTabs'
+            }
+        },
+        component: {
+            '*': {
+                resetActiveTabs: 'resetActiveTabs'
+            }
+        }
+    },
+
+    resetActiveTabs: function() {
+        console.log('reset active tabs');
+        const me=this;
+        const anagraficaTabPanel=me.lookupReference('anagraficaTabPanel');
+        const bottomTabPanel=me.lookupReference('bottomTabPanel');
+        anagraficaTabPanel.setActiveTab(0);
+        bottomTabPanel.setActiveTab(0);
+
+
+    },
+
     onPazienteComboboSelect: function(combo, record, eOpts) {
         const me=this;
         const viewModel=me.getViewModel();
@@ -37,6 +61,13 @@ Ext.define('AritmiaRef.view.visita.VisitaViewController', {
         const viewModel=me.getViewModel();
         const visitaRecord=viewModel.get('visitaRecord');
         visitaRecord.set('provenienza',record.get('descrizione'));
+    },
+
+    onAmbulatorioComboboxSelect: function(combo, record, eOpts) {
+        const me=this;
+        const viewModel=me.getViewModel();
+        const visitaRecord=viewModel.get('visitaRecord');
+        visitaRecord.set('ambulatorio',record.get('code'));
     },
 
     onEsciButtonClick: function(button, e, eOpts) {
@@ -111,6 +142,10 @@ Ext.define('AritmiaRef.view.visita.VisitaViewController', {
             }
         });
 
+    },
+
+    onVisitaPanelBeforeShow: function(component, eOpts) {
+        console.log('Before show')
     }
 
 });

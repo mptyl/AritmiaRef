@@ -61,6 +61,12 @@ Ext.define('AritmiaRef.view.MainView', {
                         },
                         {
                             xtype: 'menuitem',
+                            itemId: 'ospedalizzazioni',
+                            text: 'Ospedalizzazioni',
+                            focusable: true
+                        },
+                        {
+                            xtype: 'menuitem',
                             itemId: 'visite',
                             text: 'Visite',
                             focusable: true
@@ -71,8 +77,20 @@ Ext.define('AritmiaRef.view.MainView', {
                         },
                         {
                             xtype: 'menuitem',
-                            itemId: 'visita',
-                            text: 'Visita',
+                            itemId: 'telemedicina',
+                            text: 'Telemedicina',
+                            focusable: true
+                        },
+                        {
+                            xtype: 'menuitem',
+                            itemId: 'appuntamenti',
+                            text: 'Appuntamenti',
+                            focusable: true
+                        },
+                        {
+                            xtype: 'menuitem',
+                            itemId: 'dispositivi',
+                            text: 'Dispositivi',
                             focusable: true
                         }
                     ],
@@ -118,6 +136,30 @@ Ext.define('AritmiaRef.view.MainView', {
                 },
                 {
                     xtype: 'visita.visite'
+                },
+                {
+                    xtype: 'panel',
+                    itemId: 'ospedalizzazioniPanel',
+                    title: 'Ospedalizzazioni',
+                    titleAlign: 'center'
+                },
+                {
+                    xtype: 'panel',
+                    itemId: 'telemedicinaPanel',
+                    title: 'Telemedicina',
+                    titleAlign: 'center'
+                },
+                {
+                    xtype: 'panel',
+                    itemId: 'appuntamentiPanel',
+                    title: 'Appuntamenti',
+                    titleAlign: 'center'
+                },
+                {
+                    xtype: 'panel',
+                    itemId: 'dispositiviPanel',
+                    title: 'Dispositivi',
+                    titleAlign: 'center'
                 },
                 {
                     xtype: 'visita.visita'

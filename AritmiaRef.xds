@@ -14,8 +14,8 @@
                 "width": null
             }
         },
-        "urlPrefix": "http://localhost:51713/",
-        "exportPath": "",
+        "urlPrefix": "http://localhost:50445/",
+        "exportPath": "/Users/marcopancotti/jsonServer/public",
         "lockUrlPrefix": true,
         "buildShouldOverwriteIndex": true,
         "generateArchitectVersion": true,
@@ -25,7 +25,12 @@
         "cacheBust": false,
         "installStatus": "Not Installed",
         "urlPrefixTemplate": "http://localhost:{port}/{path}",
-        "sdkPath": ""
+        "sdkPath": "",
+        "lastBuildSelection": {
+            "value": "webBuild",
+            "display": "Build web app",
+            "buildPlatform": false
+        }
     },
     "xdsVersion": "4.3.2",
     "xdsBuild": 19,
@@ -64,7 +69,8 @@
             "d91ee2bc-576b-49b1-95b2-8caa6739fc07",
             "e264b462-ecce-4a12-acb5-d8dd1ee909a9",
             "6270fc65-8022-4b43-a1cf-830ef968cbe0",
-            "b5050386-48bd-43aa-91dd-4614104d6f52"
+            "b5050386-48bd-43aa-91dd-4614104d6f52",
+            "db904524-4da7-4577-bffc-d00519008c6f"
         ],
         "controller": [
             "02e19093-9c6b-4222-8b96-2632f82d7303"
@@ -77,10 +83,11 @@
             "2c3b5cf0-23cf-4923-9ab1-cfcdfb801e5b",
             "022ec52f-9628-4b5b-a0fe-759cc305388f",
             "4fda6260-cc2f-4cc2-b104-0c06e516e47b",
-            "f5ef2b91-2140-4ead-9142-77f9c8ee2f26"
+            "f5ef2b91-2140-4ead-9142-77f9c8ee2f26",
+            "a5fecb80-7ac6-45f6-9cb1-91d808e76c26"
         ],
         "resource": [
-            "73b9b406-e41a-49f9-8cf3-3c3f081fd486",
+            "12427595-3305-4132-b4f7-c328301e2806",
             "efa3151d-f411-416b-a78d-276e3b22783a",
             "3d10d034-00bb-4ac2-b233-bdb4a466e702"
         ],

@@ -17,7 +17,8 @@
             "Role",
             "Visita",
             "Provenienza",
-            "Paziente"
+            "Paziente",
+            "Ambulatorio"
         ],
         "name": "AritmiaRef",
         "stores": [
@@ -28,7 +29,8 @@
             "Visite",
             "Roles",
             "Provenienze",
-            "Pazienti"
+            "Pazienti",
+            "Ambulatori"
         ],
         "views": [
             "MainView",

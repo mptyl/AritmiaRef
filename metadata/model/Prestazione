@@ -73,7 +73,7 @@
             "codeClass": null,
             "userConfig": {
                 "designer|displayName": "prestazioneProxy",
-                "url": "http://localhost:3000/prestazioni"
+                "url": "/prestazioni"
             },
             "configAlternates": {
                 "designer|displayName": "string",

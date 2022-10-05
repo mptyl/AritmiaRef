@@ -112,6 +112,7 @@ Ext.define('AritmiaRef.view.visita.Visita', {
                                     xtype: 'datefield',
                                     flex: 1,
                                     fieldLabel: 'Data visita:',
+                                    readOnly: true,
                                     format: 'd/m/Y',
                                     bind: {
                                         value: '{visitaRecord.dataVisita}'
@@ -174,8 +175,11 @@ Ext.define('AritmiaRef.view.visita.Visita', {
                 {
                     xtype: 'tabpanel',
                     flex: 5,
+                    reference: 'anagraficaTabPanel',
                     border: true,
-                    activeTab: 0,
+                    bind: {
+                        activeTab: '0'
+                    },
                     items: [
                         {
                             xtype: 'panel',
@@ -192,6 +196,7 @@ Ext.define('AritmiaRef.view.visita.Visita', {
                                     items: [
                                         {
                                             xtype: 'fieldset',
+                                            padding: 10,
                                             title: 'Dati generali visita',
                                             items: [
                                                 {
@@ -229,19 +234,28 @@ Ext.define('AritmiaRef.view.visita.Visita', {
                                                     }
                                                 },
                                                 {
+                                                    xtype: 'combobox',
+                                                    anchor: '100%',
+                                                    fieldLabel: 'Ambulatorio',
+                                                    name: 'ambulatorioFk',
+                                                    displayField: 'code',
+                                                    queryMode: 'local',
+                                                    store: 'Ambulatori',
+                                                    typeAhead: true,
+                                                    valueField: 'id',
+                                                    bind: {
+                                                        value: '{visitaRecord.ambulatorioFk}'
+                                                    },
+                                                    listeners: {
+                                                        select: 'onAmbulatorioComboboxSelect'
+                                                    }
+                                                },
+                                                {
                                                     xtype: 'textfield',
                                                     anchor: '100%',
                                                     fieldLabel: 'Terapia in corso',
                                                     bind: {
                                                         value: '{visitaRecord.terapiaInCorso}'
-                                                    }
-                                                },
-                                                {
-                                                    xtype: 'checkboxfield',
-                                                    anchor: '100%',
-                                                    fieldLabel: 'Palermo:',
-                                                    bind: {
-                                                        value: '{visitaRecord.palermo}'
                                                     }
                                                 },
                                                 {
@@ -259,7 +273,7 @@ Ext.define('AritmiaRef.view.visita.Visita', {
                                                 {
                                                     xtype: 'textareafield',
                                                     anchor: '100%',
-                                                    minHeight: 120,
+                                                    minHeight: 90,
                                                     fieldLabel: 'Ecocardiografia:',
                                                     bind: {
                                                         value: '{visitaRecord.ecoCardiografia}'
@@ -280,18 +294,10 @@ Ext.define('AritmiaRef.view.visita.Visita', {
                                                 {
                                                     xtype: 'textareafield',
                                                     anchor: '100%',
-                                                    minHeight: 120,
+                                                    minHeight: 90,
                                                     fieldLabel: 'ECG:',
                                                     bind: {
                                                         value: '{visitaRecord.ecg}'
-                                                    }
-                                                },
-                                                {
-                                                    xtype: 'checkboxfield',
-                                                    anchor: '100%',
-                                                    fieldLabel: 'Stampa l\'appuntamento',
-                                                    bind: {
-                                                        value: '{visitaRecord.stampaAppuntamento}'
                                                     }
                                                 }
                                             ]
@@ -315,7 +321,7 @@ Ext.define('AritmiaRef.view.visita.Visita', {
                                     items: [
                                         {
                                             xtype: 'fieldset',
-                                            padding: '0 5 0 0 ',
+                                            padding: 10,
                                             title: 'Esami ematochimici',
                                             items: [
                                                 {
@@ -630,7 +636,7 @@ Ext.define('AritmiaRef.view.visita.Visita', {
                                                             xtype: 'textareafield',
                                                             colspan: 3,
                                                             anchor: '100%',
-                                                            minHeight: 90,
+                                                            minHeight: 80,
                                                             width: '100%',
                                                             fieldLabel: 'Altri esami ematochimici:',
                                                             bind: {
@@ -652,21 +658,21 @@ Ext.define('AritmiaRef.view.visita.Visita', {
                                 {
                                     xtype: 'form',
                                     bodyPadding: 10,
-                                    title: 'My Form',
                                     fieldDefaults: {
-                                        labelWidth: 160,
+                                        labelWidth: 200,
                                         labelAlign: 'right',
                                         selectOnFocus: true
                                     },
                                     items: [
                                         {
                                             xtype: 'fieldset',
+                                            padding: 10,
                                             title: 'Dati paziente',
                                             items: [
                                                 {
                                                     xtype: 'numberfield',
                                                     anchor: '100%',
-                                                    fieldLabel: 'Frequenza basale:',
+                                                    fieldLabel: 'Frequenza basale (bpm):',
                                                     bind: {
                                                         value: '{visitaRecord.frequenzaBasale}'
                                                     }
@@ -674,7 +680,7 @@ Ext.define('AritmiaRef.view.visita.Visita', {
                                                 {
                                                     xtype: 'numberfield',
                                                     anchor: '100%',
-                                                    fieldLabel: 'P.A. basale sistolica:',
+                                                    fieldLabel: 'P.A. basale sistolica (mmHg):',
                                                     bind: {
                                                         value: '{visitaRecord.paBasaleSistolica}'
                                                     }
@@ -682,7 +688,7 @@ Ext.define('AritmiaRef.view.visita.Visita', {
                                                 {
                                                     xtype: 'numberfield',
                                                     anchor: '100%',
-                                                    fieldLabel: 'P.A. basale diastolica:',
+                                                    fieldLabel: 'P.A. basale diastolica (mmHg):',
                                                     bind: {
                                                         value: '{visitaRecord.paBasaleDiastolica}'
                                                     }
@@ -690,7 +696,7 @@ Ext.define('AritmiaRef.view.visita.Visita', {
                                                 {
                                                     xtype: 'numberfield',
                                                     anchor: '100%',
-                                                    fieldLabel: 'Peso:',
+                                                    fieldLabel: 'Peso (Kg):',
                                                     bind: {
                                                         value: '{visitaRecord.peso}'
                                                     }
@@ -698,7 +704,7 @@ Ext.define('AritmiaRef.view.visita.Visita', {
                                                 {
                                                     xtype: 'numberfield',
                                                     anchor: '100%',
-                                                    fieldLabel: 'Altezza',
+                                                    fieldLabel: 'Altezza (cm):',
                                                     bind: {
                                                         value: '{visitaRecord.altezza}'
                                                     }
@@ -706,7 +712,7 @@ Ext.define('AritmiaRef.view.visita.Visita', {
                                                 {
                                                     xtype: 'numberfield',
                                                     anchor: '100%',
-                                                    fieldLabel: 'Superfice corporea',
+                                                    fieldLabel: 'Superfice corporea (BSA)',
                                                     readOnly: true,
                                                     bind: {
                                                         value: '{visitaRecord.superficieCorporea}'
@@ -721,11 +727,16 @@ Ext.define('AritmiaRef.view.visita.Visita', {
                         {
                             xtype: 'panel',
                             title: 'Conclusioni',
+                            tabConfig: {
+                                xtype: 'tab',
+                                bind: {
+                                    hidden: '{visitaRecord.visitaPappone}'
+                                }
+                            },
                             items: [
                                 {
                                     xtype: 'form',
                                     bodyPadding: 10,
-                                    title: 'My Form',
                                     fieldDefaults: {
                                         labelWidth: 160,
                                         labelAlign: 'right',
@@ -734,6 +745,7 @@ Ext.define('AritmiaRef.view.visita.Visita', {
                                     items: [
                                         {
                                             xtype: 'fieldset',
+                                            padding: 10,
                                             title: 'Conclusioni',
                                             items: [
                                                 {
@@ -818,7 +830,6 @@ Ext.define('AritmiaRef.view.visita.Visita', {
                                 {
                                     xtype: 'form',
                                     bodyPadding: 10,
-                                    title: 'My Form',
                                     fieldDefaults: {
                                         labelWidth: 160,
                                         labelAlign: 'right',
@@ -827,6 +838,7 @@ Ext.define('AritmiaRef.view.visita.Visita', {
                                     items: [
                                         {
                                             xtype: 'fieldset',
+                                            padding: 10,
                                             title: 'Visita prof. Pappone',
                                             items: [
                                                 {
@@ -844,7 +856,7 @@ Ext.define('AritmiaRef.view.visita.Visita', {
                                                 {
                                                     xtype: 'textareafield',
                                                     anchor: '100%',
-                                                    minHeight: 100,
+                                                    minHeight: 90,
                                                     fieldLabel: 'Relazione procedura:',
                                                     bind: {
                                                         value: '{visitaRecord.relazioneProceduraPappone}'
@@ -865,7 +877,7 @@ Ext.define('AritmiaRef.view.visita.Visita', {
                                                 {
                                                     xtype: 'textareafield',
                                                     anchor: '100%',
-                                                    minHeight: 100,
+                                                    minHeight: 90,
                                                     fieldLabel: 'Conclusioni:',
                                                     bind: {
                                                         value: '{visitaRecord.conclusioniVisitaPappone}'
@@ -886,7 +898,7 @@ Ext.define('AritmiaRef.view.visita.Visita', {
                                                 {
                                                     xtype: 'textareafield',
                                                     anchor: '100%',
-                                                    minHeight: 100,
+                                                    minHeight: 90,
                                                     fieldLabel: 'Visita:',
                                                     bind: {
                                                         value: '{visitaRecord.testoVisitaPappone}'
@@ -902,7 +914,7 @@ Ext.define('AritmiaRef.view.visita.Visita', {
                     dockedItems: [
                         {
                             xtype: 'toolbar',
-                            dock: 'bottom',
+                            dock: 'top',
                             ui: 'footer',
                             items: [
                                 {
@@ -917,14 +929,10 @@ Ext.define('AritmiaRef.view.visita.Visita', {
                                 },
                                 {
                                     xtype: 'button',
-                                    text: 'Salva e torna ala lista',
+                                    text: 'Salva e torna alla lista',
                                     listeners: {
                                         click: 'onSalvaEdEsciButtonClick'
                                     }
-                                },
-                                {
-                                    xtype: 'button',
-                                    text: 'Salva e procedi'
                                 }
                             ]
                         }
@@ -992,11 +1000,14 @@ Ext.define('AritmiaRef.view.visita.Visita', {
         },
         {
             xtype: 'tabpanel',
+            reference: 'bottomTabPanel',
             flex: 2,
             height: 100,
             bodyPadding: '0 0 10 0',
-            activeTab: 0,
             minTabWidth: 200,
+            bind: {
+                activeTab: '0'
+            },
             items: [
                 {
                     xtype: 'gridpanel',
@@ -1180,6 +1191,9 @@ Ext.define('AritmiaRef.view.visita.Visita', {
                 }
             ]
         }
-    ]
+    ],
+    listeners: {
+        beforeshow: 'onVisitaPanelBeforeShow'
+    }
 
 });

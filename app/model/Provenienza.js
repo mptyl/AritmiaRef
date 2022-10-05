@@ -38,7 +38,7 @@ Ext.define('AritmiaRef.model.Provenienza', {
 
     proxy: {
         type: 'rest',
-        url: 'http://localhost:3000/provenienze',
+        url: '/provenienze',
         reader: {
             type: 'json'
         }

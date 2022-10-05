@@ -136,7 +136,7 @@
             "codeClass": null,
             "userConfig": {
                 "designer|displayName": "operatoreProxy",
-                "url": "http://localhost:3000/operatori"
+                "url": "/operatori"
             },
             "configAlternates": {
                 "designer|displayName": "string",

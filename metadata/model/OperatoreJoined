@@ -200,7 +200,7 @@
             "codeClass": null,
             "userConfig": {
                 "designer|displayName": "operatoreJoinedProxy",
-                "url": "http://localhost:3000/operatoriJoined"
+                "url": "/operatoriJoined"
             },
             "configAlternates": {
                 "designer|displayName": "string",

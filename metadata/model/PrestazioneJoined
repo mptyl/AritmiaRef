@@ -124,7 +124,7 @@
             "codeClass": null,
             "userConfig": {
                 "designer|displayName": "prestazioneJoinedProxy",
-                "url": "http://localhost:3000/prestazioniJoined"
+                "url": "/prestazioniJoined"
             },
             "configAlternates": {
                 "designer|displayName": "string",

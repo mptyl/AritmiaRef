@@ -42,7 +42,7 @@ Ext.define('AritmiaRef.model.Prestazione', {
 
     proxy: {
         type: 'rest',
-        url: 'http://localhost:3000/prestazioni',
+        url: '/prestazioni',
         reader: {
             type: 'json'
         }

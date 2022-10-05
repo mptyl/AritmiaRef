@@ -7,11 +7,53 @@
     "codeClass": null,
     "userConfig": {
         "designer|userAlias": "visita.visita",
-        "designer|userClassName": "visita.VisitaViewController"
+        "designer|userClassName": "visita.VisitaViewController",
+        "listen": [
+            "{ controller:{",
+            "    '*': {",
+            "        resetActiveTabs: 'resetActiveTabs'",
+            "    }",
+            "}, component:{",
+            "    '*': {",
+            "        resetActiveTabs: 'resetActiveTabs'",
+            "    }",
+            "}",
+            "}"
+        ]
     },
     "configAlternates": {
         "designer|userAlias": "string",
-        "designer|userClassName": "string"
+        "designer|userClassName": "string",
+        "listen": "object"
     },
-    "designerId": "0071306f-3121-40d0-b92e-8a9f4cf7ef1c"
+    "designerId": "0071306f-3121-40d0-b92e-8a9f4cf7ef1c",
+    "cn": [
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "resetActiveTabs",
+                "implHandler": [
+                    "console.log('reset active tabs');",
+                    "const me=this;",
+                    "const anagraficaTabPanel=me.lookupReference('anagraficaTabPanel');",
+                    "const bottomTabPanel=me.lookupReference('bottomTabPanel');",
+                    "anagraficaTabPanel.setActiveTab(0);",
+                    "bottomTabPanel.setActiveTab(0);",
+                    "",
+                    ""
+                ]
+            },
+            "configAlternates": {
+                "fn": "string",
+                "implHandler": "code"
+            },
+            "name": "resetActiveTabs",
+            "designerId": "f43bb705-2002-43ca-a31a-5d5caf345893"
+        }
+    ]
 }

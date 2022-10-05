@@ -185,15 +185,15 @@
                     "userConfig": {
                         "fn": "onOperatoreComboboxSelect",
                         "implHandler": [
-                            "        const me=this;",
-                            "        const form=combo.up('form');",
-                            "        const viewModel= form.getViewModel();",
-                            "        const selectedRecord=viewModel.get('recordOperatore');",
-                            "        selectedRecord.set('firstName',record.get('firstName'));",
-                            "        selectedRecord.set('lastName',record.get('lastName'));",
-                            "        selectedRecord.set('email',record.get('email'));",
-                            "        selectedRecord.set('phone',record.get('phone'));",
-                            "        selectedRecord.set('idNumber',record.get('idNumber'));"
+                            "const me=this;",
+                            "const form=combo.up('form');",
+                            "const viewModel= form.getViewModel();",
+                            "const selectedRecord=viewModel.get('recordOperatore');",
+                            "selectedRecord.set('firstName',record.get('firstName'));",
+                            "selectedRecord.set('lastName',record.get('lastName'));",
+                            "selectedRecord.set('email',record.get('email'));",
+                            "selectedRecord.set('phone',record.get('phone'));",
+                            "selectedRecord.set('idNumber',record.get('idNumber'));"
                         ],
                         "name": "select",
                         "scope": "me"

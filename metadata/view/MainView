@@ -122,6 +122,26 @@
                             "codeClass": null,
                             "userConfig": {
                                 "focusable": true,
+                                "itemId": "ospedalizzazioni",
+                                "text": "Ospedalizzazioni"
+                            },
+                            "configAlternates": {
+                                "focusable": "boolean",
+                                "itemId": "string",
+                                "text": "string"
+                            },
+                            "name": "MyMenuItem12",
+                            "designerId": "e67cd49e-74b6-4e6f-89aa-8504a391d2a3"
+                        },
+                        {
+                            "type": "Ext.menu.Item",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "focusable": true,
                                 "itemId": "visite",
                                 "text": "Visite"
                             },
@@ -158,16 +178,56 @@
                             "codeClass": null,
                             "userConfig": {
                                 "focusable": true,
-                                "itemId": "visita",
-                                "text": "Visita"
+                                "itemId": "telemedicina",
+                                "text": "Telemedicina"
                             },
                             "configAlternates": {
                                 "focusable": "boolean",
                                 "itemId": "string",
                                 "text": "string"
                             },
-                            "name": "MyMenuItem12",
-                            "designerId": "66d7995c-694c-4d3e-ad94-d263d2900d69"
+                            "name": "MyMenuItem13",
+                            "designerId": "10d353f9-0b4b-4e94-94ce-590aec1d676b"
+                        },
+                        {
+                            "type": "Ext.menu.Item",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "focusable": true,
+                                "itemId": "appuntamenti",
+                                "text": "Appuntamenti"
+                            },
+                            "configAlternates": {
+                                "focusable": "boolean",
+                                "itemId": "string",
+                                "text": "string"
+                            },
+                            "name": "MyMenuItem14",
+                            "designerId": "c9d0e917-a7f9-43dd-857c-408dd31994e2"
+                        },
+                        {
+                            "type": "Ext.menu.Item",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "focusable": true,
+                                "itemId": "dispositivi",
+                                "text": "Dispositivi"
+                            },
+                            "configAlternates": {
+                                "focusable": "boolean",
+                                "itemId": "string",
+                                "text": "string"
+                            },
+                            "name": "MyMenuItem15",
+                            "designerId": "8a3e2bf0-b51c-4a49-a990-2ef543db86a9"
                         },
                         {
                             "type": "basiceventbinding",
@@ -302,6 +362,86 @@
                     "name": "visita.visite",
                     "designerId": "35e48fa7-cf8f-4df3-acb8-d8c480abfcf2",
                     "masterInstanceId": "4921fecf-c136-41e9-9b41-b0cd3fc19da4"
+                },
+                {
+                    "type": "Ext.panel.Panel",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "itemId": "ospedalizzazioniPanel",
+                        "title": "Ospedalizzazioni",
+                        "titleAlign": "center"
+                    },
+                    "configAlternates": {
+                        "itemId": "string",
+                        "title": "string",
+                        "titleAlign": "string"
+                    },
+                    "name": "MyPanel",
+                    "designerId": "6dff1cd2-49b3-45f2-84bb-12ebee841161"
+                },
+                {
+                    "type": "Ext.panel.Panel",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "itemId": "telemedicinaPanel",
+                        "title": "Telemedicina",
+                        "titleAlign": "center"
+                    },
+                    "configAlternates": {
+                        "itemId": "string",
+                        "title": "string",
+                        "titleAlign": "string"
+                    },
+                    "name": "MyPanel8",
+                    "designerId": "4068a98d-2b49-403b-9376-e23dc2c2ceae"
+                },
+                {
+                    "type": "Ext.panel.Panel",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "itemId": "appuntamentiPanel",
+                        "title": "Appuntamenti",
+                        "titleAlign": "center"
+                    },
+                    "configAlternates": {
+                        "itemId": "string",
+                        "title": "string",
+                        "titleAlign": "string"
+                    },
+                    "name": "MyPanel9",
+                    "designerId": "17738f67-a2ef-47dd-9eec-755636146d7f"
+                },
+                {
+                    "type": "Ext.panel.Panel",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "itemId": "dispositiviPanel",
+                        "title": "Dispositivi",
+                        "titleAlign": "center"
+                    },
+                    "configAlternates": {
+                        "itemId": "string",
+                        "title": "string",
+                        "titleAlign": "string"
+                    },
+                    "name": "MyPanel10",
+                    "designerId": "5824fdc1-88ec-42c1-8a07-debcbafd68dd"
                 },
                 {
                     "type": "linkedinstance",

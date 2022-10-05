@@ -217,6 +217,7 @@
                                         "fieldLabel": "Data visita:",
                                         "format": "d/m/Y",
                                         "layout|flex": 1,
+                                        "readOnly": true,
                                         "value": [
                                             "{visitaRecord.dataVisita}"
                                         ]
@@ -225,7 +226,8 @@
                                         "value": "binding",
                                         "fieldLabel": "string",
                                         "format": "string",
-                                        "layout|flex": "number"
+                                        "layout|flex": "number",
+                                        "readOnly": "boolean"
                                     },
                                     "name": "MyDateField2",
                                     "designerId": "b3c4c61e-02b3-496c-b11d-9f67525aece5"
@@ -387,16 +389,20 @@
                     },
                     "codeClass": null,
                     "userConfig": {
-                        "activeTab": 0,
+                        "activeTab": [
+                            "0"
+                        ],
                         "border": true,
                         "designer|displayName": "tabForm",
-                        "layout|flex": 5
+                        "layout|flex": 5,
+                        "reference": "anagraficaTabPanel"
                     },
                     "configAlternates": {
-                        "activeTab": "auto",
                         "border": "boolean",
                         "designer|displayName": "string",
-                        "layout|flex": "number"
+                        "layout|flex": "number",
+                        "activeTab": "binding",
+                        "reference": "string"
                     },
                     "name": "MyTabPanel",
                     "designerId": "40c6e336-5d57-47b7-98e3-19b6ca593c9b",
@@ -457,10 +463,12 @@
                                             },
                                             "codeClass": null,
                                             "userConfig": {
+                                                "padding": 10,
                                                 "title": "Dati generali visita"
                                             },
                                             "configAlternates": {
-                                                "title": "string"
+                                                "title": "string",
+                                                "padding": "auto"
                                             },
                                             "name": "MyFieldSet",
                                             "designerId": "50781c24-382c-4e15-9e1d-f4d1006d74d3",
@@ -575,6 +583,69 @@
                                                     ]
                                                 },
                                                 {
+                                                    "type": "Ext.form.field.ComboBox",
+                                                    "reference": {
+                                                        "name": "items",
+                                                        "type": "array"
+                                                    },
+                                                    "codeClass": null,
+                                                    "userConfig": {
+                                                        "displayField": "code",
+                                                        "fieldLabel": "Ambulatorio",
+                                                        "layout|anchor": "100%",
+                                                        "name": "ambulatorioFk",
+                                                        "queryMode": "local",
+                                                        "store": "Ambulatori",
+                                                        "typeAhead": true,
+                                                        "value": [
+                                                            "{visitaRecord.ambulatorioFk}"
+                                                        ],
+                                                        "valueField": "id"
+                                                    },
+                                                    "configAlternates": {
+                                                        "value": "binding",
+                                                        "displayField": "datafield",
+                                                        "fieldLabel": "string",
+                                                        "layout|anchor": "string",
+                                                        "name": "string",
+                                                        "queryMode": "string",
+                                                        "store": "store",
+                                                        "typeAhead": "boolean",
+                                                        "valueField": "datafield"
+                                                    },
+                                                    "name": "MyComboBox6",
+                                                    "designerId": "8a2987df-8cf2-497f-b1ad-973663dd6fd5",
+                                                    "cn": [
+                                                        {
+                                                            "type": "viewcontrollereventbinding",
+                                                            "reference": {
+                                                                "name": "listeners",
+                                                                "type": "array"
+                                                            },
+                                                            "codeClass": null,
+                                                            "userConfig": {
+                                                                "fn": "onAmbulatorioComboboxSelect",
+                                                                "implHandler": [
+                                                                    "        const me=this;",
+                                                                    "        const viewModel=me.getViewModel();",
+                                                                    "        const visitaRecord=viewModel.get('visitaRecord');",
+                                                                    "        visitaRecord.set('ambulatorio',record.get('code'));"
+                                                                ],
+                                                                "name": "select",
+                                                                "scope": "me"
+                                                            },
+                                                            "configAlternates": {
+                                                                "fn": "string",
+                                                                "implHandler": "code",
+                                                                "name": "string",
+                                                                "scope": "string"
+                                                            },
+                                                            "name": "onAmbulatorioComboboxSelect",
+                                                            "designerId": "59ef970e-f939-43f2-9a30-e121377b47a8"
+                                                        }
+                                                    ]
+                                                },
+                                                {
                                                     "type": "Ext.form.field.Text",
                                                     "reference": {
                                                         "name": "items",
@@ -597,34 +668,18 @@
                                                     "designerId": "8184a67e-77e0-42b9-b676-219bc5c60187"
                                                 },
                                                 {
-                                                    "type": "Ext.form.field.Checkbox",
-                                                    "reference": {
-                                                        "name": "items",
-                                                        "type": "array"
-                                                    },
-                                                    "codeClass": null,
-                                                    "userConfig": {
-                                                        "fieldLabel": "Palermo:",
-                                                        "layout|anchor": "100%",
-                                                        "value": [
-                                                            "{visitaRecord.palermo}"
-                                                        ]
-                                                    },
-                                                    "configAlternates": {
-                                                        "fieldLabel": "string",
-                                                        "layout|anchor": "string",
-                                                        "value": "binding"
-                                                    },
-                                                    "name": "MyCheckbox1",
-                                                    "designerId": "cfb6ba44-16cf-4807-a7b7-c2c9224cb23c"
-                                                },
-                                                {
                                                     "type": "Ext.toolbar.Toolbar",
                                                     "reference": {
                                                         "name": "items",
                                                         "type": "array"
                                                     },
                                                     "codeClass": null,
+                                                    "userConfig": {
+                                                        "designer|displayName": "toolbarFormGenerali"
+                                                    },
+                                                    "configAlternates": {
+                                                        "designer|displayName": "string"
+                                                    },
                                                     "name": "MyToolbar5",
                                                     "designerId": "e682f09a-8b0e-4adc-b47f-59f9e8914034",
                                                     "cn": [
@@ -676,7 +731,7 @@
                                                     "userConfig": {
                                                         "fieldLabel": "Ecocardiografia:",
                                                         "layout|anchor": "100%",
-                                                        "minHeight": 120,
+                                                        "minHeight": 90,
                                                         "value": [
                                                             "{visitaRecord.ecoCardiografia}"
                                                         ]
@@ -697,6 +752,12 @@
                                                         "type": "array"
                                                     },
                                                     "codeClass": null,
+                                                    "userConfig": {
+                                                        "designer|displayName": "toolbarTestiStandard"
+                                                    },
+                                                    "configAlternates": {
+                                                        "designer|displayName": "string"
+                                                    },
                                                     "name": "MyToolbar6",
                                                     "designerId": "a9dc8537-4001-48aa-a65a-8d139e876e50",
                                                     "cn": [
@@ -746,7 +807,7 @@
                                                     "userConfig": {
                                                         "fieldLabel": "ECG:",
                                                         "layout|anchor": "100%",
-                                                        "minHeight": 120,
+                                                        "minHeight": 90,
                                                         "value": [
                                                             "{visitaRecord.ecg}"
                                                         ]
@@ -759,28 +820,6 @@
                                                     },
                                                     "name": "MyTextArea1",
                                                     "designerId": "62836624-dfb1-432c-a406-5f500fa78912"
-                                                },
-                                                {
-                                                    "type": "Ext.form.field.Checkbox",
-                                                    "reference": {
-                                                        "name": "items",
-                                                        "type": "array"
-                                                    },
-                                                    "codeClass": null,
-                                                    "userConfig": {
-                                                        "fieldLabel": "Stampa l'appuntamento",
-                                                        "layout|anchor": "100%",
-                                                        "value": [
-                                                            "{visitaRecord.stampaAppuntamento}"
-                                                        ]
-                                                    },
-                                                    "configAlternates": {
-                                                        "fieldLabel": "string",
-                                                        "layout|anchor": "string",
-                                                        "value": "binding"
-                                                    },
-                                                    "name": "MyCheckbox2",
-                                                    "designerId": "d14ae5fd-0281-4086-b545-cadc8a2dbd8b"
                                                 }
                                             ]
                                         }
@@ -845,7 +884,7 @@
                                             "codeClass": null,
                                             "userConfig": {
                                                 "designer|displayName": "esamiEmatochimici",
-                                                "padding": "0 5 0 0 ",
+                                                "padding": 10,
                                                 "title": "Esami ematochimici"
                                             },
                                             "configAlternates": {
@@ -1731,7 +1770,7 @@
                                                                 "anchor": "100%",
                                                                 "fieldLabel": "Altri esami ematochimici:",
                                                                 "layout|colspan": 3,
-                                                                "minHeight": 90,
+                                                                "minHeight": 80,
                                                                 "value": [
                                                                     "{visitaRecord.altriEsamiEmatochimici}"
                                                                 ],
@@ -1793,9 +1832,8 @@
                                         "bodyPadding": 10,
                                         "designer|displayName": "formDatiPaziente",
                                         "fieldDefaults": [
-                                            "{labelWidth:160,labelAlign:'right',selectOnFocus:true}"
-                                        ],
-                                        "title": "My Form"
+                                            "{labelWidth:200,labelAlign:'right',selectOnFocus:true}"
+                                        ]
                                     },
                                     "configAlternates": {
                                         "bodyPadding": "auto",
@@ -1815,11 +1853,13 @@
                                             "codeClass": null,
                                             "userConfig": {
                                                 "designer|displayName": "datiPaziente",
+                                                "padding": 10,
                                                 "title": "Dati paziente"
                                             },
                                             "configAlternates": {
                                                 "designer|displayName": "string",
-                                                "title": "string"
+                                                "title": "string",
+                                                "padding": "auto"
                                             },
                                             "name": "MyFieldSet2",
                                             "designerId": "b42851ae-3f37-4e9e-bd6e-4e307bb4c847",
@@ -1832,7 +1872,7 @@
                                                     },
                                                     "codeClass": null,
                                                     "userConfig": {
-                                                        "fieldLabel": "Frequenza basale:",
+                                                        "fieldLabel": "Frequenza basale (bpm):",
                                                         "layout|anchor": "100%",
                                                         "value": [
                                                             "{visitaRecord.frequenzaBasale}"
@@ -1854,7 +1894,7 @@
                                                     },
                                                     "codeClass": null,
                                                     "userConfig": {
-                                                        "fieldLabel": "P.A. basale sistolica:",
+                                                        "fieldLabel": "P.A. basale sistolica (mmHg):",
                                                         "layout|anchor": "100%",
                                                         "value": [
                                                             "{visitaRecord.paBasaleSistolica}"
@@ -1876,7 +1916,7 @@
                                                     },
                                                     "codeClass": null,
                                                     "userConfig": {
-                                                        "fieldLabel": "P.A. basale diastolica:",
+                                                        "fieldLabel": "P.A. basale diastolica (mmHg):",
                                                         "layout|anchor": "100%",
                                                         "value": [
                                                             "{visitaRecord.paBasaleDiastolica}"
@@ -1898,7 +1938,7 @@
                                                     },
                                                     "codeClass": null,
                                                     "userConfig": {
-                                                        "fieldLabel": "Peso:",
+                                                        "fieldLabel": "Peso (Kg):",
                                                         "layout|anchor": "100%",
                                                         "value": [
                                                             "{visitaRecord.peso}"
@@ -1920,7 +1960,7 @@
                                                     },
                                                     "codeClass": null,
                                                     "userConfig": {
-                                                        "fieldLabel": "Altezza",
+                                                        "fieldLabel": "Altezza (cm):",
                                                         "layout|anchor": "100%",
                                                         "value": [
                                                             "{visitaRecord.altezza}"
@@ -1942,7 +1982,7 @@
                                                     },
                                                     "codeClass": null,
                                                     "userConfig": {
-                                                        "fieldLabel": "Superfice corporea",
+                                                        "fieldLabel": "Superfice corporea (BSA)",
                                                         "layout|anchor": "100%",
                                                         "readOnly": true,
                                                         "value": [
@@ -1987,6 +2027,14 @@
                                         "type": "object"
                                     },
                                     "codeClass": null,
+                                    "userConfig": {
+                                        "hidden": [
+                                            "{visitaRecord.visitaPappone}"
+                                        ]
+                                    },
+                                    "configAlternates": {
+                                        "hidden": "binding"
+                                    },
                                     "name": "TabConfig7",
                                     "designerId": "46eea041-6aa8-4d31-b163-9fb5e61e4abf"
                                 },
@@ -2002,8 +2050,7 @@
                                         "designer|displayName": "formConclusioni",
                                         "fieldDefaults": [
                                             "{labelWidth:160,labelAlign:'right',selectOnFocus:true}"
-                                        ],
-                                        "title": "My Form"
+                                        ]
                                     },
                                     "configAlternates": {
                                         "bodyPadding": "auto",
@@ -2023,11 +2070,13 @@
                                             "codeClass": null,
                                             "userConfig": {
                                                 "designer|displayName": "Conclusioni",
+                                                "padding": 10,
                                                 "title": "Conclusioni"
                                             },
                                             "configAlternates": {
                                                 "designer|displayName": "string",
-                                                "title": "string"
+                                                "title": "string",
+                                                "padding": "auto"
                                             },
                                             "name": "MyFieldSet3",
                                             "designerId": "eabe2707-6773-46e2-aac9-df335113c1ed",
@@ -2295,8 +2344,7 @@
                                         "designer|displayName": "formPappone",
                                         "fieldDefaults": [
                                             "{labelWidth:160,labelAlign:'right',selectOnFocus:true}"
-                                        ],
-                                        "title": "My Form"
+                                        ]
                                     },
                                     "configAlternates": {
                                         "bodyPadding": "auto",
@@ -2315,10 +2363,12 @@
                                             },
                                             "codeClass": null,
                                             "userConfig": {
+                                                "padding": 10,
                                                 "title": "Visita prof. Pappone"
                                             },
                                             "configAlternates": {
-                                                "title": "string"
+                                                "title": "string",
+                                                "padding": "auto"
                                             },
                                             "name": "MyFieldSet4",
                                             "designerId": "ebc325b8-85fe-42a9-9ccd-8a9d4678d6a4",
@@ -2379,7 +2429,7 @@
                                                     "userConfig": {
                                                         "fieldLabel": "Relazione procedura:",
                                                         "layout|anchor": "100%",
-                                                        "minHeight": 100,
+                                                        "minHeight": 90,
                                                         "value": [
                                                             "{visitaRecord.relazioneProceduraPappone}"
                                                         ]
@@ -2449,7 +2499,7 @@
                                                     "userConfig": {
                                                         "fieldLabel": "Conclusioni:",
                                                         "layout|anchor": "100%",
-                                                        "minHeight": 100,
+                                                        "minHeight": 90,
                                                         "value": [
                                                             "{visitaRecord.conclusioniVisitaPappone}"
                                                         ]
@@ -2519,7 +2569,7 @@
                                                     "userConfig": {
                                                         "fieldLabel": "Visita:",
                                                         "layout|anchor": "100%",
-                                                        "minHeight": 100,
+                                                        "minHeight": 90,
                                                         "value": [
                                                             "{visitaRecord.testoVisitaPappone}"
                                                         ]
@@ -2549,7 +2599,7 @@
                             "userConfig": {
                                 "designer|displayName": "visitaToolbar",
                                 "designer|uiInterfaceName": "footer",
-                                "dock": "bottom",
+                                "dock": "top",
                                 "ui": "footer"
                             },
                             "configAlternates": {
@@ -2632,7 +2682,7 @@
                                     "codeClass": null,
                                     "userConfig": {
                                         "layout|flex": null,
-                                        "text": "Salva e torna ala lista"
+                                        "text": "Salva e torna alla lista"
                                     },
                                     "configAlternates": {
                                         "layout|flex": "number",
@@ -2680,22 +2730,20 @@
                                     ]
                                 },
                                 {
-                                    "type": "Ext.button.Button",
+                                    "type": "Ext.tab.Tab",
                                     "reference": {
-                                        "name": "items",
-                                        "type": "array"
+                                        "name": "tabConfig",
+                                        "type": "object"
                                     },
                                     "codeClass": null,
                                     "userConfig": {
-                                        "layout|flex": null,
-                                        "text": "Salva e procedi"
+                                        "layout|flex": null
                                     },
                                     "configAlternates": {
-                                        "layout|flex": "number",
-                                        "text": "string"
+                                        "layout|flex": "number"
                                     },
-                                    "name": "MyButton11",
-                                    "designerId": "5ec00ad6-fc6b-4ddf-b603-9632fb65d174"
+                                    "name": "TabConfig3",
+                                    "designerId": "f1a47753-4e6a-40b1-a524-b4b9614a390c"
                                 }
                             ]
                         }
@@ -2921,22 +2969,26 @@
             },
             "codeClass": null,
             "userConfig": {
-                "activeTab": 0,
+                "activeTab": [
+                    "0"
+                ],
                 "bodyPadding": "0 0 10 0",
                 "designer|displayName": "tabGrids",
                 "flex": 2,
                 "height": 100,
                 "layout|flex": null,
-                "minTabWidth": 200
+                "minTabWidth": 200,
+                "reference": "bottomTabPanel"
             },
             "configAlternates": {
-                "activeTab": "auto",
+                "activeTab": "binding",
                 "designer|displayName": "string",
                 "layout|flex": "number",
                 "bodyPadding": "auto",
                 "minTabWidth": "number",
                 "flex": "number",
-                "height": "auto"
+                "height": "auto",
+                "reference": "string"
             },
             "name": "MyTabPanel1",
             "designerId": "ef8e6643-9644-496d-ab22-423b47072187",
@@ -3742,6 +3794,30 @@
                     ]
                 }
             ]
+        },
+        {
+            "type": "viewcontrollereventbinding",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "onVisitaPanelBeforeShow",
+                "implHandler": [
+                    "console.log('Before show')"
+                ],
+                "name": "beforeshow",
+                "scope": "me"
+            },
+            "configAlternates": {
+                "fn": "string",
+                "implHandler": "code",
+                "name": "string",
+                "scope": "string"
+            },
+            "name": "onVisitaPanelBeforeShow",
+            "designerId": "b00e5077-10e9-4d11-ac2a-17bce7aeb764"
         }
     ]
 }

@@ -28,7 +28,8 @@ Ext.application({
         'Role',
         'Visita',
         'Provenienza',
-        'Paziente'
+        'Paziente',
+        'Ambulatorio'
     ],
     stores: [
         'Prestazioni',
@@ -38,7 +39,8 @@ Ext.application({
         'Visite',
         'Roles',
         'Provenienze',
-        'Pazienti'
+        'Pazienti',
+        'Ambulatori'
     ],
     views: [
         'MainView',

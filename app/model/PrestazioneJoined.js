@@ -54,7 +54,7 @@ Ext.define('AritmiaRef.model.PrestazioneJoined', {
 
     proxy: {
         type: 'rest',
-        url: 'http://localhost:3000/prestazioniJoined',
+        url: '/prestazioniJoined',
         reader: {
             type: 'json'
         },

@@ -109,6 +109,12 @@
                                 "type": "object"
                             },
                             "codeClass": null,
+                            "userConfig": {
+                                "designer|displayName": "filtroDataVisita"
+                            },
+                            "configAlternates": {
+                                "designer|displayName": "string"
+                            },
                             "name": "MyDateFilter",
                             "designerId": "4b129622-9228-42c4-9856-b19b41a9d882"
                         }
@@ -141,6 +147,12 @@
                                 "type": "object"
                             },
                             "codeClass": null,
+                            "userConfig": {
+                                "designer|displayName": "filtroPaziente"
+                            },
+                            "configAlternates": {
+                                "designer|displayName": "string"
+                            },
                             "name": "MyStringFilter",
                             "designerId": "60806599-c071-4556-8fbc-25c6b95d64d2"
                         }
@@ -177,6 +189,12 @@
                                 "type": "object"
                             },
                             "codeClass": null,
+                            "userConfig": {
+                                "designer|displayName": "filtroEtà"
+                            },
+                            "configAlternates": {
+                                "designer|displayName": "string"
+                            },
                             "name": "MyNumberFilter",
                             "designerId": "429c8e78-9714-47fc-907a-d6ac72997caf"
                         }
@@ -209,6 +227,12 @@
                                 "type": "object"
                             },
                             "codeClass": null,
+                            "userConfig": {
+                                "designer|displayName": "filtroMedico"
+                            },
+                            "configAlternates": {
+                                "designer|displayName": "string"
+                            },
                             "name": "MyStringFilter1",
                             "designerId": "9e9bcc15-f8e9-475e-ac99-987f1c098445"
                         }
@@ -287,11 +311,13 @@
                     "codeClass": null,
                     "userConfig": {
                         "align": "center",
+                        "designer|displayName": "actionVisita",
                         "width": 40
                     },
                     "configAlternates": {
                         "align": "string",
-                        "width": "auto"
+                        "width": "auto",
+                        "designer|displayName": "string"
                     },
                     "name": "MyActionColumn2",
                     "designerId": "6b4fcd62-50db-4588-9c38-acbeb28cdf76",
@@ -304,10 +330,12 @@
                             },
                             "codeClass": null,
                             "userConfig": {
+                                "designer|displayName": "fieldActionVisita",
                                 "iconCls": "x-fa fa-pen"
                             },
                             "configAlternates": {
-                                "iconCls": "string"
+                                "iconCls": "string",
+                                "designer|displayName": "string"
                             },
                             "name": "MyActionColumnItem1",
                             "designerId": "97fda0a6-bb41-419f-bb11-5bd07a69fbad",
@@ -337,7 +365,10 @@
                                             "const grid=me.up('grid');",
                                             "viewModel.set('visitaRecord',record);",
                                             "viewModel.set('visitaGrid',grid);",
-                                            "this.fireEvent('redirectToVisita');"
+                                            "",
+                                            "visitaForm.fireEvent('resetActiveTabs');",
+                                            "this.fireEvent('redirectToVisita');",
+                                            ""
                                         ]
                                     },
                                     "configAlternates": {
@@ -411,9 +442,9 @@
                                             "const viewModel=visitaForm.getViewModel();",
                                             "const grid=me.lookupReference('visiteGrid');",
                                             "record.set('dataVisita', new Date());",
-                                            "",
-                                            "visitaForm.getViewModel().set('visitaRecord',record);",
-                                            "visitaForm.getViewModel().set('visitaGrid',grid);",
+                                            "viewModel.set('visitaRecord',record);",
+                                            "viewModel.set('visitaGrid',grid);",
+                                            "this.fireEvent('resetActiveTabs');",
                                             "",
                                             "this.redirectTo('visita');"
                                         ],
@@ -644,6 +675,7 @@
                             "const grid=me.lookupReference('visiteGrid');",
                             "viewModel.set('visitaRecord',record);",
                             "viewModel.set('visitaGrid',grid);",
+                            "visitaForm.fireEvent('resetActiveTabs');",
                             "me.redirectToVisita();",
                             ""
                         ],

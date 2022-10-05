@@ -20,7 +20,7 @@ Ext.define('AritmiaRef.model.Visita', {
         'Ext.data.field.String',
         'Ext.data.field.Date',
         'Ext.data.field.Boolean',
-        'Ext.data.field.Integer',
+        'Ext.data.field.Number',
         'Ext.data.proxy.Rest',
         'Ext.data.reader.Json',
         'Ext.data.writer.Json',
@@ -51,20 +51,12 @@ Ext.define('AritmiaRef.model.Visita', {
             name: 'provenienza'
         },
         {
-            type: 'boolean',
-            name: 'palermo'
-        },
-        {
             type: 'string',
             name: 'ecoCardiografia'
         },
         {
             type: 'string',
             name: 'ecg'
-        },
-        {
-            type: 'boolean',
-            name: 'stampaAppuntamento'
         },
         {
             type: 'int',
@@ -96,187 +88,228 @@ Ext.define('AritmiaRef.model.Visita', {
             dateFormat: 'Y-m-d'
         },
         {
-            type: 'int',
+            type: 'float',
+            allowNull: true,
             name: 'glicemia'
         },
         {
-            type: 'string',
+            type: 'float',
+            allowNull: true,
             name: 'terapiaInAtto'
         },
         {
-            type: 'int',
+            type: 'float',
+            allowNull: true,
             name: 'azotemia'
         },
         {
-            type: 'int',
+            type: 'float',
+            allowNull: true,
             name: 'creatinina'
         },
         {
-            type: 'int',
+            type: 'float',
+            allowNull: true,
             name: 'acidoUrico'
         },
         {
-            type: 'int',
+            type: 'float',
+            allowNull: true,
             name: 'transaminasiGO'
         },
         {
-            type: 'int',
+            type: 'float',
+            allowNull: true,
             name: 'transaminasiGP'
         },
         {
-            type: 'int',
+            type: 'float',
+            allowNull: true,
             name: 'fosfatasiAlcalica'
         },
         {
-            type: 'int',
+            type: 'float',
+            allowNull: true,
             name: 'ggt'
         },
         {
-            type: 'int',
+            type: 'float',
+            allowNull: true,
             name: 'cpk'
         },
         {
-            type: 'int',
+            type: 'float',
+            allowNull: true,
             name: 'cpkmB'
         },
         {
-            type: 'int',
+            type: 'float',
+            allowNull: true,
             name: 'ldh'
         },
         {
-            type: 'int',
+            type: 'float',
+            allowNull: true,
             name: 'bilirubinaTotale'
         },
         {
-            type: 'int',
+            type: 'float',
+            allowNull: true,
             name: 'bilirubinaDiretta'
         },
         {
-            type: 'int',
+            type: 'float',
+            allowNull: true,
             name: 'colesteroloTotale'
         },
         {
-            type: 'int',
+            type: 'float',
+            allowNull: true,
             name: 'colesteroloHDL'
         },
         {
-            type: 'int',
+            type: 'float',
+            allowNull: true,
             name: 'colesteroloLDL'
         },
         {
-            type: 'int',
+            type: 'float',
+            allowNull: true,
             name: 'trigliceridi'
         },
         {
-            type: 'int',
+            type: 'float',
+            allowNull: true,
             name: 'potassio'
         },
         {
-            type: 'int',
+            type: 'float',
+            allowNull: true,
             name: 'magnesio'
         },
         {
-            type: 'int',
+            type: 'float',
+            allowNull: true,
             name: 'pt'
         },
         {
-            type: 'int',
+            type: 'float',
+            allowNull: true,
             name: 'ves'
         },
         {
-            type: 'int',
+            type: 'float',
+            allowNull: true,
             name: 'hbsAg'
         },
         {
-            type: 'int',
+            type: 'float',
+            allowNull: true,
             name: 'ft3'
         },
         {
-            type: 'int',
+            type: 'float',
+            allowNull: true,
             name: 'ft4'
         },
         {
-            type: 'int',
+            type: 'float',
+            allowNull: true,
             name: 'cloro'
         },
         {
-            type: 'int',
+            type: 'float',
+            allowNull: true,
             name: 'elettroforesiProteica'
         },
         {
-            type: 'int',
+            type: 'float',
+            allowNull: true,
             name: 'ptt'
         },
         {
-            type: 'int',
+            type: 'float',
+            allowNull: true,
             name: 'vdrl'
         },
         {
-            type: 'int',
+            type: 'float',
+            allowNull: true,
             name: 'hvc'
         },
         {
-            type: 'int',
+            type: 'float',
+            allowNull: true,
             name: 'tsh'
         },
         {
-            type: 'int',
+            type: 'float',
+            allowNull: true,
             name: 'sodio'
         },
         {
-            type: 'int',
+            type: 'float',
+            allowNull: true,
+            defaultValue: null,
             name: 'calcio'
         },
         {
-            type: 'int',
+            type: 'float',
+            allowNull: true,
             name: 'emocromo'
         },
         {
-            type: 'int',
+            type: 'float',
+            allowNull: true,
             name: 'fibrinogeno'
-        },
-        {
-            type: 'int',
-            name: 'esameUrine'
         },
         {
             type: 'string',
             name: 'altriEsamiEmatochimici'
         },
         {
-            type: 'int',
+            type: 'float',
+            allowNull: true,
             name: 'frequenzaBasale'
         },
         {
-            type: 'int',
+            type: 'float',
+            allowNull: true,
             name: 'paBasaleSistolica'
         },
         {
-            type: 'int',
+            type: 'float',
+            allowNull: true,
             name: 'paBasaleDiastolica'
         },
         {
-            type: 'int',
+            type: 'float',
+            allowNull: true,
             name: 'peso'
         },
         {
-            type: 'int',
+            type: 'float',
+            allowNull: true,
             name: 'altezza'
         },
         {
-            type: 'int',
+            type: 'float',
+            allowNull: true,
             name: 'superficieCorporea'
         },
         {
             type: 'string',
+            allowNull: true,
             name: 'esameObiettivo'
         },
         {
             type: 'string',
+            allowNull: true,
             name: 'giudizioClinico'
         },
         {
             type: 'string',
+            allowNull: true,
             name: 'terapiaConsigliata'
         },
         {
@@ -294,12 +327,20 @@ Ext.define('AritmiaRef.model.Visita', {
         {
             type: 'string',
             name: 'MyString39'
+        },
+        {
+            type: 'int',
+            name: 'ambulatorioFk'
+        },
+        {
+            type: 'string',
+            name: 'ambulatorio'
         }
     ],
 
     proxy: {
         type: 'rest',
-        url: 'http://localhost:3000/visite',
+        url: '/visite',
         reader: {
             type: 'json'
         },

@@ -74,7 +74,7 @@ Ext.define('AritmiaRef.model.OperatoreJoined', {
 
     proxy: {
         type: 'rest',
-        url: 'http://localhost:3000/operatoriJoined',
+        url: '/operatoriJoined',
         reader: {
             type: 'json'
         },
